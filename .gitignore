@@ -1,0 +1,41 @@
+# Claude Code local config/cache
+.claude/
+.claude-orka/
+
+# BMAD framework (no pertenece al proyecto)
+_bmad/
+.bmad/
+
+# Design artifacts de otro proyecto
+design-artifacts/
+
+# Benchmark outputs (se regeneran)
+scripts/benchmark-results.md
+scripts/responses/
+benchmark-results.md
+responses/
+
+# Respuestas de modelos locales
+*.responses/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+
+# Dependencias accidentales
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
