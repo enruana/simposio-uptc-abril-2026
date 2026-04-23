@@ -67,7 +67,7 @@ for model in gemma4:e4b gemma4:26b; do
     EVAL_RATE=$(echo "$RESULT" | grep "eval rate:" | tail -1 | awk '{print $3}')
     LOAD_DUR=$(echo "$RESULT" | grep "load duration:" | awk '{print $3}')
     TOTAL_DUR=$(echo "$RESULT" | grep "total duration:" | awk '{print $3}')
-    EVAL_COUNT=$(echo "$RESULT" | grep "eval count:" | awk '{print $3}')
+    EVAL_COUNT=$(echo "$RESULT" | grep "^eval count:" | awk '{print $3}')
     PROMPT_EVAL_RATE=$(echo "$RESULT" | grep "prompt eval rate:" | awk '{print $4}')
 
     # Escribir sección

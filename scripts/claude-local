@@ -1,0 +1,54 @@
+#!/bin/bash
+# claude-local — Lanza Claude Code apuntando a Ollama (Gemma 4 local)
+#
+# Uso:
+#   claude-local                  # default: gemma4:e4b
+#   claude-local gemma4:26b       # modelo específico
+#   claude-local gemma4:26b -p "prompt"   # args extra se pasan a claude
+#
+# Prerequisitos:
+#   - Ollama corriendo en localhost:11434
+#   - settings.json en modo OLLAMA (correr: ./scripts/claude-mode.sh ollama)
+#
+# Autor: Felipe Mantilla — Ponencia UPTC 2026
+
+set -euo pipefail
+
+# Parsear primer arg: puede ser modelo, flag de ayuda, o flag que se pasa a claude
+if [ $# -eq 0 ]; then
+  MODEL="gemma4:e4b"
+elif [[ "$1" == "-h" || "$1" == "--help" ]]; then
+  cat <<HELP
+claude-local — Lanza Claude Code apuntando a Ollama (Gemma 4 local)
+
+Uso:
+  claude-local                     Default: gemma4:e4b
+  claude-local <modelo>            Modelo específico (ej: gemma4:26b)
+  claude-local <modelo> [args...]  Args extra pasados a claude
+
+Prerequisitos:
+  - Ollama corriendo en localhost:11434
+  - settings.json en modo OLLAMA (./scripts/claude-mode.sh ollama)
+HELP
+  exit 0
+elif [[ "$1" == -* ]]; then
+  # Primer arg es flag de claude, no un modelo — usar default
+  MODEL="gemma4:e4b"
+else
+  MODEL="$1"
+  shift
+fi
+
+# Sanity check: Ollama respondiendo
+if ! curl -s --max-time 2 http://localhost:11434/api/tags >/dev/null 2>&1; then
+  echo "✗ Ollama no responde en localhost:11434" >&2
+  echo "  Iniciá la app de Ollama o corré 'ollama serve'" >&2
+  exit 1
+fi
+
+export ANTHROPIC_BASE_URL="http://localhost:11434"
+export ANTHROPIC_AUTH_TOKEN="ollama"
+export ANTHROPIC_API_KEY=""
+
+echo "Claude Code → $MODEL (via Ollama local)"
+exec claude --model "$MODEL" "$@"

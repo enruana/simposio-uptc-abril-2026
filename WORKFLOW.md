@@ -110,92 +110,13 @@ La filtración del source map (31 marzo 2026) expuso las 512,000 líneas exactas
 - [x] #9 Descargar Gemma 4 E4B
 - [x] #10 Descargar Gemma 4 26B MoE
 
+### Benchmarks y configuración
+- [x] #11 Benchmark formal E4B vs 26B MoE — confirmado empíricamente ~86-87 tok/s en ambos (ver `scripts/benchmark-results.md`)
+- [x] #12 Script `scripts/claude-mode.sh` para alternar `settings.json` entre modo Ollama y Anthropic
+
 ---
 
 ## 5. Tareas pendientes (para ejecutar desde el Mac)
-
-### Tarea 11 — Benchmark formal y documentado
-
-**Qué:** Correr el script `scripts/benchmark.sh` en el Mac para generar números citables de rendimiento.
-
-**Cómo:**
-```bash
-cd ~/Desktop/simposio-uptc-abril-2026  # o donde clones el repo
-cd scripts
-./benchmark.sh
-```
-
-**Tiempo:** 3-5 minutos.
-
-**Output esperado:**
-- `benchmark-results.md` con tabla comparativa E4B vs 26B en 3 tareas
-- Carpeta `responses/` con las respuestas completas
-
-**Qué pasar al siguiente paso:** el contenido del `benchmark-results.md`.
-
----
-
-### Tarea 12 — Crear `~/.claude/settings.json` optimizado para modelos locales
-
-**Qué:** Agregar variables de entorno a Claude Code para que funcione bien con backends locales.
-
-**Cuidado:** tu `settings.json` actual tiene config de voice. **Hay que hacer MERGE, no sobreescribir.**
-
-**Estado actual:**
-```json
-{
-  "voiceEnabled": true,
-  "voice": {
-    "enabled": true,
-    "mode": "hold"
-  }
-}
-```
-
-**Estado objetivo:**
-```json
-{
-  "voiceEnabled": true,
-  "voice": {
-    "enabled": true,
-    "mode": "hold"
-  },
-  "env": {
-    "CLAUDE_CODE_ATTRIBUTION_HEADER": "0",
-    "DISABLE_PROMPT_CACHING": "1",
-    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
-    "API_TIMEOUT_MS": "600000",
-    "DISABLE_INTERLEAVED_THINKING": "1"
-  }
-}
-```
-
-**Por qué cada flag:**
-- `CLAUDE_CODE_ATTRIBUTION_HEADER=0` — evita invalidar KV cache (~90% slowdown sin esto)
-- `DISABLE_PROMPT_CACHING=1` — Ollama no entiende los cache_control fields de Anthropic
-- `CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1` — 100% local, sin telemetría
-- `API_TIMEOUT_MS=600000` — 10 min para tareas largas en local
-- `DISABLE_INTERLEAVED_THINKING=1` — Gemma no soporta thinking blocks de Claude
-
-**Comando sugerido para el merge:**
-```bash
-# Backup primero
-cp ~/.claude/settings.json ~/.claude/settings.json.bak
-
-# Usar jq para agregar env preservando el resto
-jq '. + {env: {
-  "CLAUDE_CODE_ATTRIBUTION_HEADER": "0",
-  "DISABLE_PROMPT_CACHING": "1",
-  "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
-  "API_TIMEOUT_MS": "600000",
-  "DISABLE_INTERLEAVED_THINKING": "1"
-}}' ~/.claude/settings.json > /tmp/settings.json && mv /tmp/settings.json ~/.claude/settings.json
-
-# Verificar
-cat ~/.claude/settings.json
-```
-
----
 
 ### Tarea 13 — Crear el script `claude-local`
 
@@ -430,6 +351,8 @@ git commit -m "Initial demo setup"
 | `docs/guia-practica-claude-code-gemma.md` | Integración Claude Code + Ollama |
 | `docs/guia-practica-mac-m5max.md` | Guía específica para MacBook M5 Max |
 | `scripts/benchmark.sh` | Script de benchmark E4B vs 26B |
+| `scripts/benchmark-results.md` | Resultados del benchmark (citables para la ponencia) |
+| `scripts/claude-mode.sh` | Toggle `settings.json` entre modo Ollama y Anthropic |
 | `WORKFLOW.md` | Este documento — estado y pasos siguientes |
 
 ---
@@ -445,6 +368,11 @@ ollama ps
 
 # Correr un prompt rápido
 ollama run gemma4:26b "prompt"
+
+# Alternar settings.json entre modo Ollama y Anthropic (persistente)
+./scripts/claude-mode.sh ollama      # activa flags para Gemma local
+./scripts/claude-mode.sh anthropic   # quita flags (modo API normal)
+./scripts/claude-mode.sh status      # ver modo actual
 
 # Claude Code con Anthropic API (normal)
 claude
