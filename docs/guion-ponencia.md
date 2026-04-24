@@ -2,8 +2,10 @@
 
 **Título:** IA Abierta: El Poder, la Arquitectura y el Precio de No Entender lo que Generas
 **Duración:** 45 minutos
-**Ponente:** Felipe Mantilla, egresado UPTC
-**Versión:** Draft 1 — para revisión e iteración
+**Ponentes:** Felipe Mantilla y Zabdiel
+**Versión:** Draft 2 — ponencia a dos voces
+
+> **Nota sobre dos ponentes:** este guion no asigna partes específicas a cada uno. Felipe y Zabdiel deciden en ensayo cómo dividir el texto. Sugerencia operativa: alternen secciones para mantener energía, y uno se encarga del demo mientras el otro narra para evitar silencios muertos durante la generación del modelo. Las referencias a "yo / nosotros" están escritas neutrales; donde es estrictamente personal (apertura del egresado UPTC, historia propia), está marcado `[habla uno, ajustar en ensayo]`.
 
 ---
 
@@ -23,15 +25,15 @@
 
 ## Minuto 0-1: Entrada en silencio
 
-`[ACCIÓN]` Felipe sube al escenario. No saluda todavía. Abre el laptop. Lo conecta al proyector. La pantalla muestra una terminal con Claude Code ya corriendo, con el cursor parpadeando listo para recibir input.
+`[ACCIÓN]` Felipe y Zabdiel suben al escenario. Uno de ellos se acerca al laptop, el otro se queda junto al micrófono principal. Nadie saluda todavía. El laptop se conecta al proyector. La pantalla muestra una terminal con Claude Code ya corriendo, con el cursor parpadeando listo para recibir input.
 
-`[ACCIÓN]` Felipe apaga el WiFi de forma visible — idealmente desconectando el cable de ethernet con un gesto deliberado, o click en el icono WiFi → Off en la barra superior del Mac, pantalla grande para que la audiencia vea.
+`[ACCIÓN]` Uno apaga el WiFi de forma visible — idealmente desconectando el cable de ethernet con un gesto deliberado, o click en el icono WiFi → Off en la barra superior del Mac, pantalla grande para que la audiencia vea.
 
 `[SLIDE]` No hay slide inicial. Solo la terminal proyectada.
 
 ## Minuto 1-2: El prompt
 
-`[ACCIÓN]` Felipe escribe, lento y claro, en Claude Code:
+`[ACCIÓN]` Uno de los ponentes escribe, lento y claro, en Claude Code:
 
 ```
 > Escribe una función en Python que encuentre los números primos
@@ -41,11 +43,11 @@
 
 `[ACCIÓN]` Presiona Enter. Gemma 4 26B MoE empieza a generar la respuesta.
 
-`[PAUSA]` 15 segundos de silencio. Felipe no dice nada. Se para al lado del laptop, mira a la audiencia, deja que procesen. El código empieza a escribirse en pantalla, línea por línea, visible para todos. La respuesta se completa.
+`[PAUSA]` 15 segundos de silencio. Ninguno de los dos dice nada. Uno se para al lado del laptop, el otro junto al micrófono; ambos miran a la audiencia y dejan que procesen. El código empieza a escribirse en pantalla, línea por línea, visible para todos. La respuesta se completa.
 
 ## Minuto 2-3: Primer texto — el contraste histórico
 
-`[ACCIÓN]` Felipe se acerca al micrófono. Tono firme, sin prisa.
+`[ACCIÓN]` Uno de los ponentes se acerca al micrófono. Tono firme, sin prisa.
 
 > **"Lo que acaban de ver lo hicieron, hace dos años, cuatro empresas en el mundo."**
 >
@@ -53,13 +55,15 @@
 >
 > *[Mira la pantalla, la señala con la mano abierta]*
 >
-> **"Hoy corre en mi laptop. Sin internet. Gratis. Y va a correr también en los suyos."**
+> **"Hoy corre en este laptop. Sin internet. Gratis. Y va a correr también en los suyos."**
 >
 > *[Pausa breve. Mira a la audiencia de frente]*
 >
-> **"Me llamo Felipe Mantilla. Soy egresado de UPTC. Y hoy volví a contarles por qué el mundo que construyeron sus profesores en cuatro años acaba de volverse, literalmente, más valioso que nunca."**
+> **"Somos Felipe Mantilla y Zabdiel. Felipe es egresado de UPTC. Y hoy volvimos a contarles por qué el mundo que construyeron sus profesores en cuatro años acaba de volverse, literalmente, más valioso que nunca."**
+>
+> `[nota: si Zabdiel también es egresado UPTC, ajustar a "Ambos egresados de UPTC"]`
 
-`[SLIDE]` Aparece el primer slide del deck: título de la ponencia + nombre del ponente + UPTC 2026.
+`[SLIDE]` Aparece el primer slide del deck: título de la ponencia + nombres de los ponentes + UPTC 2026.
 
 ---
 
@@ -85,7 +89,9 @@
 >
 > *[Tono baja aún más, mirada directa]*
 >
-> **"Yo estuve sentado donde están ustedes. Con ese mismo laptop. Con ese mismo miedo. Y aún me lo pregunto algunas noches."**
+> **"Nosotros estuvimos sentados donde están ustedes. Con ese mismo laptop. Con ese mismo miedo. Y aún nos lo preguntamos algunas noches."**
+>
+> `[habla uno, ajustar en ensayo — si prefieren mantener en primera persona singular, puede decirlo quien sea egresado UPTC]`
 
 ## Minuto 5-8: La filtración que lo cambió todo
 
@@ -171,21 +177,49 @@
 
 # ACTO 2 (18-28 min) — El poder en tu laptop
 
-## Minuto 18-20: Transición al demo
+## Minuto 18-20: Transición al demo — pesos, cuantización y el truco que cambia todo
 
 `[SLIDE]` Slide de transición: *"De la teoría a la terminal"* + logo de Ollama + logo de Gemma.
 
 > "Hasta acá hablamos de qué hicieron las empresas grandes. Ahora hablemos de qué podés hacer tú hoy."
 >
-> "La otra mitad del regalo es que en los últimos dos años, la comunidad open source liberó modelos que compiten directamente con lo que hasta hace poco era propietario. DeepSeek R1 bajo licencia MIT. Gemma 4 de Google bajo Apache 2.0. Llama 3. Qwen 3. Todos gratis. Todos descargables. Todos ejecutables en hardware razonable."
+> "La otra mitad del regalo es que en los últimos dos años, la comunidad open source liberó modelos que compiten directamente con lo que hasta hace poco era propietario. DeepSeek R1 bajo licencia MIT. Gemma 4 de Google bajo Apache 2.0. Llama 3. Qwen 3. Todos gratis. Todos descargables."
+
+`[SLIDE]` Nuevo slide: imagen visual con el concepto *"26 billones de parámetros"*. Puede ser una matriz estilizada de ceros y unos, o un número gigante con dígitos girando.
+
+> "Pero antes de mostrarles el demo, necesitan entender un número. Gemma 4 26B significa **veintiséis mil millones de parámetros**. Veintiséis mil millones de números que el modelo aprendió durante su entrenamiento."
+>
+> *[Pausa breve, que el número se asiente]*
+>
+> "¿Cuánto pesa eso? Cada parámetro, en su formato original de 16 bits, ocupa 2 bytes. Multipliquen. Son **52 gigabytes** solo de pesos. Ningún laptop consumer puede cargar eso en memoria."
+>
+> "Entonces, ¿cómo está corriendo en este laptop? La respuesta es una palabra: **cuantización**."
+
+`[SLIDE]` Tabla visual de cuantización:
+
+| Formato | Bits por peso | Tamaño modelo 26B | Calidad relativa |
+|---|---|---|---|
+| FP16 (original) | 16 bits | 52 GB | 100% |
+| Q8_0 | 8 bits | 26 GB | ~99% |
+| **Q4_K_M (recomendado)** | **4 bits** | **17 GB** | **~96-97%** |
+| Q3_K_M | 3 bits | ~14 GB | ~92% |
+| Q2_K | 2 bits | ~9 GB | ~85% |
+
+> "Cuantizar significa **reducir la precisión de cada peso**. En lugar de guardar un número decimal completo, guardamos una versión aproximada que cabe en menos bits. Es como comprimir una foto: perdés algo de calidad, pero si lo haces bien, casi no se nota."
+>
+> "Gemma 4 26B en Q4_K_M — cuatro bits por peso — pesa 17 GB. Pierde solo dos o tres por ciento de calidad comparado con el modelo original. A cambio, entra en un laptop normal."
+>
+> *[Tono de revelación]*
+>
+> **"Cuantización es lo que hizo posible la IA local. Sin esta técnica, los modelos open source seguirían viviendo en data centers. Con cuantización, viven en tu Lenovo."**
 >
 > *[Se acerca al laptop]*
 >
-> "Y gracias a herramientas como Ollama — también open source — correrlos ya no requiere ser experto en machine learning. Son dos comandos."
+> "Y gracias a herramientas como Ollama — también open source — correr modelos cuantizados no requiere ser experto en machine learning. Son dos comandos."
 
-## Minuto 20-25: DEMO COMPLETA
+## Minuto 20-22: Setup del demo
 
-`[ACCIÓN]` Felipe vuelve al laptop. WiFi sigue apagado (o lo apaga de nuevo visiblemente para reforzar).
+`[ACCIÓN]` Quien opera la terminal vuelve al laptop. WiFi sigue apagado (o se apaga de nuevo visiblemente para reforzar).
 
 `[DEMO]` En terminal:
 
@@ -195,7 +229,7 @@ ollama list
 ollama ps
 ```
 
-> "Miren. Gemma 4 26B MoE. 17 gigabytes. Es el modelo número 6 del ranking mundial de modelos de lenguaje — sí, compite con GPT-5.4 y con Claude. Apache 2.0. Y está corriendo en mi laptop ahora mismo."
+> "Miren. Gemma 4 26B MoE. 17 gigabytes cuantizados. Es el modelo número 6 del ranking mundial de modelos de lenguaje — sí, compite con GPT-5.4 y con Claude. Apache 2.0. Y está corriendo en este laptop ahora mismo."
 
 `[DEMO]` En terminal:
 
@@ -204,41 +238,104 @@ ollama ps
 claude-local gemma4:26b
 ```
 
-> "Voy a lanzar Claude Code exactamente como lo lancé al principio. Pero esta vez apuntando no a los servidores de Anthropic — están apagados para nosotros, no hay internet — sino a Gemma 4 corriendo en la RAM de este laptop."
+> "Vamos a lanzar Claude Code exactamente como lo lanzamos al principio. Pero esta vez apuntando no a los servidores de Anthropic — están apagados para nosotros, no hay internet — sino a Gemma 4 corriendo en la RAM de este laptop."
+
+## Minuto 22-26: DEMO VISUAL — Gemma construye una landing page en vivo
+
+> "Ahora, en lugar de pedirle código abstracto, le vamos a pedir algo que ustedes van a poder **ver** con sus ojos. Una landing page. Visible. Renderizada. Con colores, con tipografía, con estructura. Construida en vivo por un modelo que corre en este laptop."
 
 `[DEMO]` Adentro de Claude Code:
 
 ```
-> Lee el archivo vulnerable_login.py. Dime si tiene algún
-  problema de seguridad. Si lo tiene, escribe una versión
-  corregida y explícame por qué la original era insegura.
+> Crea una landing page moderna para el Simposio UPTC 2026 sobre
+  IA Open Source. Quiero:
+  - Un hero section con el título del evento y la fecha
+  - Sección "Sobre la ponencia" con un párrafo corto
+  - Sección de ponentes con 2 tarjetas (Felipe Mantilla y Zabdiel)
+  - Un footer con info de contacto
+
+  Usa HTML + CSS moderno (flexbox/grid), sin frameworks.
+  Guardalo en un solo archivo llamado simposio.html.
+  Estilo minimalista, paleta oscura, tipografía legible.
 ```
 
-`[ACCIÓN]` Esperar. Claude Code pide permiso para Read → aprobar. Lee. Detecta SQL injection. Pide permiso para Write → aprobar. Escribe versión parametrizada. Explica.
+`[ACCIÓN]` Claude Code pide permiso para Write → aprobar. Gemma genera el HTML + CSS. El archivo se crea.
 
-`[PAUSA]` Dejar que la audiencia procese lo que acaba de pasar.
+`[DEMO]` En terminal:
 
-## Minuto 25-28: Qué significa lo que acaban de ver
+```bash
+# Abrir el archivo directamente en el browser por defecto
+open simposio.html
+```
+
+`[ACCIÓN]` El navegador se abre en pantalla completa mostrando la landing page **renderizada**. La audiencia ve **el resultado visual**, no solo código.
+
+`[PAUSA]` 10 segundos de silencio mientras todos procesan que:
+1. Sus nombres aparecen en la página (Felipe y Zabdiel)
+2. Está escrito sobre el evento donde están AHORA MISMO
+3. Lo generó un modelo corriendo sin internet
+4. Se puede ver, tocar, renderizar como si fuera código de un desarrollador humano
+
+> *[Tono casi de asombro compartido]*
+>
+> "Esto no es un screenshot preparado. Esto no es código de Stack Overflow. Esto acabó de nacer, en este laptop, hace treinta segundos. Sin internet. Con un modelo que pueden descargar gratis cuando salgan de acá."
+>
+> *[Pausa]*
+>
+> "Y si quisieran hacer otra iteración — pedirle que agregue una sección de sponsors, que cambie la paleta a tonos verdes, que haga el hero más dramático — lo pueden hacer ahora mismo, también sin internet, también gratis."
+
+`[DEMO opcional si hay tiempo]` Pedir una segunda iteración corta:
+
+```
+> Perfecto. Ahora agregá una sección "Enemigos del viaje"
+  justo antes del footer, con 3 tarjetas que describan:
+  Over-engineering, Slopsquatting, y Prompt Injection.
+  Conservá el estilo actual.
+```
+
+`[ACCIÓN]` Refrescar el browser. Mostrar el cambio. 15 segundos.
+
+## Minuto 26-28: Requerimientos de hardware — accesibilidad real
 
 > *[Tono más bajo, reflexivo]*
 >
-> "Lo que acaban de ver requiere tres cosas. Un laptop con 8 GB de RAM — un Lenovo, un Dell, no necesitan un Mac caro. Ollama, que es gratis e instalable en tres comandos. Y Claude Code, que pueden bajarlo y usarlo con cuenta gratuita de Anthropic si lo único que necesitan es la interfaz."
+> "Ahora, les debemos una aclaración honesta. Este laptop no es cualquier laptop — es un MacBook Pro con 36 GB de memoria unificada. Tenemos que decirlo porque no queremos que se vayan pensando que esto solo corre en hardware caro."
 >
-> "Pero miren lo que NO requiere. No requiere internet. No requiere pagar suscripciones. No requiere permisos corporativos. No requiere datos que se vayan a servidores ajenos. No requiere cuenta de OpenAI ni de Anthropic ni de Google."
+> "La verdad es más matizada. Para el modelo de 26B que acaban de ver, sí, necesitan un laptop top-tier — MacBook Pro con chip M-series y al menos 32 GB, o un Lenovo/Dell con RTX 4070+ y 32 GB de RAM."
 >
-> "En este laptop, durante los próximos minutos, con el WiFi apagado, yo puedo hacer todo lo que alguien con un MacBook Pro de cinco mil dólares y suscripciones premium puede hacer."
+> "Pero eso no es el único camino. Gemma 4 viene en **cuatro tamaños**. Y los pequeños corren en laptops que muchos de ustedes ya tienen."
 
-`[SLIDE]` Tabla comparativa:
+`[SLIDE]` Tabla de requerimientos:
 
-| Herramienta | Costo mensual |
-|---|---|
-| Claude Code Max | $200 USD |
-| Cursor Pro | $20 USD |
-| GitHub Copilot | $10 USD |
-| ChatGPT Plus | $20 USD |
-| **Gemma 4 en Ollama** | **$0** |
+| Variante | Tamaño (Q4) | RAM mínima | Tokens/s | ¿En qué laptop corre? |
+|---|---|---|---|---|
+| **Gemma 4 E2B** | 2.5 GB | **4 GB** | 40-60 | Casi cualquier laptop de los últimos 5 años |
+| **Gemma 4 E4B** | 4 GB | **8 GB** | 70-100 | Lenovo / Dell / HP de gama media — el punto de entrada realista |
+| Gemma 4 12B | 8 GB | 16 GB | 30-50 | Gaming laptop con GPU dedicada |
+| Gemma 4 26B MoE (hoy) | 17 GB | **24-32 GB** | 45-65 | Laptops high-end (M-series, workstations) |
 
-> **"El ticket de entrada a esta economía acaba de bajar a cero. Y eso incluye a todos en esta sala."**
+> "El modelo E4B — 4 gigabytes, corre en 8 GB de RAM — genera código con calidad suficiente para el 80% de las tareas diarias de un desarrollador. Un Lenovo ThinkPad de hace 3 años lo corre sin problema. Un Dell Inspiron moderno lo corre sin problema. Hasta un Mac Air M1 base lo corre sin problema."
+>
+> *[Pausa]*
+>
+> **"No les estamos diciendo que corran Gemma 26B en un laptop de 8 GB. Les estamos diciendo que corran Gemma 4B en el laptop que ya tienen, y que eso ya es más poder del que tenían ayer."**
+>
+> "Y el que quiera el 26B después de graduarse y tener su primer trabajo de desarrollador — con los salarios que se pagan hoy — puede comprar un MacBook Pro usado o un workstation armado en seis meses de sueldo. El camino está."
+
+`[SLIDE]` Tabla comparativa de costos:
+
+| Herramienta | Costo mensual | Internet requerido | Datos salen de tu máquina |
+|---|---|---|---|
+| Claude Code Max | $200 USD | Sí | Sí |
+| Cursor Pro | $20 USD | Sí | Sí |
+| GitHub Copilot | $10 USD | Sí | Sí |
+| ChatGPT Plus | $20 USD | Sí | Sí |
+| **Gemma 4 E4B en Ollama** | **$0** | **No** | **No** |
+| **Gemma 4 26B en Ollama** | **$0** | **No** | **No** |
+
+> "Miren lo que **no** requiere el camino open source. No internet. No suscripciones. No permisos corporativos. No datos que viajen a servidores ajenos. No cuenta de OpenAI ni de Anthropic ni de Google."
+>
+> **"El ticket de entrada a esta economía acaba de bajar a cero. Y eso incluye a todos en esta sala — con el laptop que tengan hoy."**
 
 ---
 
@@ -338,7 +435,7 @@ claude-local gemma4:26b
 
 `[SLIDE]` Slide simple, fondo oscuro, solo texto centrado.
 
-> *[Felipe se aparta del laptop. Camina al centro del escenario. Tono firme, casi ceremonial]*
+> *[Quien esté hablando se aparta del laptop. Camina al centro del escenario. El otro se queda atrás, como marco silencioso. Tono firme, casi ceremonial]*
 >
 > "Entonces, volvamos al estudiante del que hablé al inicio. El que entró a esta sala con la duda existencial de si cuatro años de carrera le iban a servir para algo."
 >
@@ -368,7 +465,9 @@ claude-local gemma4:26b
 >
 > "Quiero cerrar con algo que me pasó a mí, no hace mucho."
 >
-> "Estudié en UPTC. Mismas condiciones que las que describí al inicio — no voy a repetirlas. Durante un tiempo pensé, como muchos de ustedes pueden estar pensando ahora, que la IA iba a reemplazarme. Que todo el esfuerzo que había puesto iba a quedar obsoleto."
+> "Estudiamos acá. Mismas condiciones que las que describimos al inicio — no las vamos a repetir. Durante un tiempo pensamos, como muchos de ustedes pueden estar pensando ahora, que la IA nos iba a reemplazar. Que todo el esfuerzo que habíamos puesto iba a quedar obsoleto."
+>
+> `[habla uno — ajustar a primera persona singular si Zabdiel no es egresado UPTC]`
 >
 > "Pasé de ese miedo a otra cosa cuando entendí algo simple: todo lo que estoy viendo hoy — los modelos open source, Ollama, Claude Code filtrado, Claw-Code, los miles de proyectos que están naciendo — no es un movimiento de Silicon Valley. Es un movimiento de personas. Muchas de ellas estudiantes. Muchas de ellas con laptops modestos. Muchas de ellas en países donde veinte dólares al mes es mucho dinero."
 >
@@ -384,11 +483,11 @@ claude-local gemma4:26b
 
 `[SLIDE]` Fondo oscuro. En el centro, logo de Claude Code con animación sutil de "respiración" — una pulsación muy lenta, como el ritmo de respiración pausada de alguien durmiendo.
 
-`[ACCIÓN]` Felipe se queda callado por 5-8 segundos. Deja que la audiencia vea la pantalla.
+`[ACCIÓN]` Ambos ponentes se quedan callados por 5-8 segundos. Dejan que la audiencia vea la pantalla.
 
 `[SLIDE]` Transición lenta: el logo de Claude Code se disuelve y se convierte en el logo de Claw-Code. Pausa. Se convierte en el logo de claurst. Pausa. Se convierte en el logo del repo del simposio. Pausa final.
 
-`[ACCIÓN]` Felipe se acerca al micrófono. Mirada directa a la audiencia.
+`[ACCIÓN]` Uno de los ponentes se acerca al micrófono. Mirada directa a la audiencia. El otro permanece a su lado.
 
 > *[Tono tranquilo, casi susurro que llega por el micro]*
 >
@@ -400,7 +499,7 @@ claude-local gemma4:26b
 
 `[SLIDE]` Fade to black. La pantalla queda en negro durante 5-10 segundos antes del aplauso.
 
-`[ACCIÓN]` Felipe da un paso atrás del micrófono. Breve inclinación de cabeza. Se queda en el escenario para las preguntas.
+`[ACCIÓN]` Ambos dan un paso atrás del micrófono. Breve inclinación de cabeza. Se quedan en el escenario para las preguntas.
 
 ---
 
@@ -439,7 +538,7 @@ claude-local gemma4:26b
 
 ## Versión de ensayo
 
-Esta es la versión 1 del guion. Está diseñada para ser iterada. Felipe debe:
+Esta es la versión 2 del guion (ponencia a dos voces). Está diseñada para ser iterada. Felipe y Zabdiel deben:
 
 1. Leerlo en voz alta una vez, marcar lo que no suena a su voz
 2. Ensayar con cronómetro — el tiempo real puede ser 50-55 min en el primer pase
