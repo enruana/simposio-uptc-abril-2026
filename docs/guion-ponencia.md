@@ -2,7 +2,7 @@
 
 **Título:** IA Abierta: El Poder, la Arquitectura y el Precio de No Entender lo que Generas
 **Duración:** 45 minutos
-**Ponentes:** Felipe Mantilla y Zabdiel
+**Ponentes:** Felipe Mantilla y Zabdiel Blanco
 **Versión:** Draft 2 — ponencia a dos voces
 
 > **Nota sobre dos ponentes:** este guion no asigna partes específicas a cada uno. Felipe y Zabdiel deciden en ensayo cómo dividir el texto. Sugerencia operativa: alternen secciones para mantener energía, y uno se encarga del demo mientras el otro narra para evitar silencios muertos durante la generación del modelo. Las referencias a "yo / nosotros" están escritas neutrales; donde es estrictamente personal (apertura del egresado UPTC, historia propia), está marcado `[habla uno, ajustar en ensayo]`.
@@ -59,7 +59,7 @@
 >
 > *[Pausa breve. Mira a la audiencia de frente]*
 >
-> **"Somos Felipe Mantilla y Zabdiel. Felipe es egresado de UPTC. Y hoy volvimos a contarles por qué el mundo que construyeron sus profesores en cuatro años acaba de volverse, literalmente, más valioso que nunca."**
+> **"Somos Felipe Mantilla y Zabdiel Blanco. Felipe es egresado de UPTC. Y hoy volvimos a contarles por qué el mundo que construyeron sus profesores en cuatro años acaba de volverse, literalmente, más valioso que nunca."**
 >
 > `[nota: si Zabdiel también es egresado UPTC, ajustar a "Ambos egresados de UPTC"]`
 
@@ -251,7 +251,7 @@ claude-local gemma4:26b
   IA Open Source. Quiero:
   - Un hero section con el título del evento y la fecha
   - Sección "Sobre la ponencia" con un párrafo corto
-  - Sección de ponentes con 2 tarjetas (Felipe Mantilla y Zabdiel)
+  - Sección de ponentes con 2 tarjetas (Felipe Mantilla y Zabdiel Blanco)
   - Un footer con info de contacto
 
   Usa HTML + CSS moderno (flexbox/grid), sin frameworks.
