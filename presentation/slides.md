@@ -398,25 +398,45 @@ Hacer contacto visual. Dejar que caiga.
 layout: center
 ---
 
-<h2 style="text-align: center; margin-bottom: 3rem;">
+<h2 style="text-align: center; margin-bottom: 2rem;">
 La pregunta que ningún desarrollador se hace
 </h2>
 
-<div class="grid-2" style="gap: 4rem; align-items: center;">
+<div class="grid-2" style="gap: 3rem; align-items: center;">
 
 <div style="text-align: center;">
-  <img src="/diagrams/brain-vs-body.svg" alt="Cerebro en silla vs cerebro con cuerpo" style="max-width: 100%;" />
+
+<div style="border-radius: 12px; overflow: hidden; border: 1px solid var(--border-default);">
+  <img src="/images/cientifico-jaula.png" alt="Científico encerrado en jaula de vidrio" style="display: block; width: 100%;" />
 </div>
 
-<div>
+<p class="font-serif text-xl text-danger" style="margin-top: 1.5rem; font-style: italic;">
+Opus 4.7 en la API
+</p>
+<p class="text-muted" style="margin-top: 0.5rem;">
+Un científico brillante encerrado en una jaula de vidrio.
+</p>
+<p class="text-sm text-muted" style="margin-top: 0.5rem;">
+Ve todo. No puede tocar nada.
+</p>
 
-<p class="text-lg text-muted" style="margin-bottom: 1rem;">A la izquierda:</p>
-<p class="font-serif text-xl">Opus 4.7 directo desde la API.</p>
-<p class="text-md" style="margin-top: 0.5rem;">Un cerebro brillante sentado en una silla. Te dice cosas. Nada más.</p>
+</div>
 
-<p class="text-lg text-muted" style="margin-top: 2rem; margin-bottom: 1rem;">A la derecha:</p>
-<p class="font-serif text-xl text-accent">Opus 4.7 en Claude Code.</p>
-<p class="text-md" style="margin-top: 0.5rem;"><strong>El mismo cerebro</strong> pero con manos, ojos, memoria y reglas.</p>
+<div style="text-align: center;">
+
+<div style="border-radius: 12px; overflow: hidden; border: 1px solid var(--accent); box-shadow: 0 0 30px var(--accent-glow);">
+  <img src="/images/cientifico-libre.png" alt="Científico con herramientas y laboratorio" style="display: block; width: 100%;" />
+</div>
+
+<p class="font-serif text-xl text-accent" style="margin-top: 1.5rem; font-style: italic;">
+Opus 4.7 en Claude Code
+</p>
+<p style="margin-top: 0.5rem;">
+<strong>El mismo científico</strong>, ahora con laboratorio completo.
+</p>
+<p class="text-sm text-muted" style="margin-top: 0.5rem;">
+Herramientas · Internet · Memoria · Asistentes
+</p>
 
 </div>
 
@@ -425,32 +445,37 @@ La pregunta que ningún desarrollador se hace
 <!--
 # SLIDE 8 · Modelo vs Harness (10-12 min)
 
-## El concepto más importante de toda la ponencia
+## EL CONCEPTO MÁS IMPORTANTE DE TODA LA PONENCIA
 Si la audiencia entiende ESTO, entiende todo lo demás.
 
-## Texto sugerido
-> "Acá está la pregunta que ningún desarrollador se hace. Cuando abren
-> ChatGPT en el browser, o usan Cursor en su IDE, están hablando con UN
-> MODELO. Un modelo es un cerebro. Muy brillante, capaz de razonar y generar
-> texto — pero solo eso. No puede leer los archivos de su proyecto. No puede
-> ejecutar comandos. No puede crear archivos. No recuerda nada entre sesiones.
-> Es un cerebro brillante sentado en una silla. Le preguntás, te contesta. Fin.
-> 
-> Claude Code, por otro lado, es ese mismo cerebro — puede usar Claude Opus 4.7
-> o Sonnet 4.6 por debajo — pero rodeado de un CUERPO completo. Tiene ojos:
-> puede leer todos los archivos de tu proyecto. Tiene manos: puede crear,
-> editar, borrar archivos. Tiene memoria: recuerda decisiones entre sesiones.
-> Tiene reglas: no hace cosas destructivas sin pedir permiso."
+## La analogía visual
+> "Miren las dos imágenes. A la izquierda, un científico brillante encerrado
+> en una jaula de vidrio. Puede ver los experimentos que pasan a su alrededor.
+> Puede pensar en ellos. Pero no puede tocar nada. No puede caminar hasta
+> un instrumento. No puede conectarse a internet para investigar más. Solo
+> puede decirte lo que sabe de memoria. Eso es Opus 4.7 cuando lo consumís
+> directo desde la API, o desde Cursor, o desde cualquier chat."
+>
+> "A la derecha, el mismo científico. Pero ahora está libre en su laboratorio.
+> Tiene las herramientas al alcance. Computadoras. Acceso a internet para
+> investigar. Asistentes que lo ayudan. Memoria de todo lo que ya probó.
+> Ese es Opus 4.7 cuando lo envolvés en Claude Code."
 
 ## LA FRASE ANCLA
-> **"El modelo no es el producto. El cuerpo — lo que llaman el 'harness' —
+> **"El modelo no es el producto. El laboratorio — lo que llaman el 'harness' —
 > ES el producto."**
 
 Decirla lento. Con pausa después. Dejar que caiga.
 
 ## Punto pedagógico
 La audiencia probablemente usa ChatGPT o Cursor. Esta es la primera vez
-que entienden que "Claude Code con Opus" ≠ "Opus en Cursor".
+que entienden que "Claude Code con Opus" ≠ "Opus en Cursor" ≠ "Opus en la API".
+Es el MISMO modelo. Lo que cambia es todo lo que está alrededor.
+
+## Gesto
+Señalar primero la imagen izquierda (jaula) al decir "encerrado".
+Después señalar la derecha (laboratorio) al decir "libre con herramientas".
+El contraste visual + verbal refuerza el concepto.
 
 -->
 

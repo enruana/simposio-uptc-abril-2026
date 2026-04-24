@@ -723,17 +723,34 @@ img { max-width: 100%; height: auto; }
 <!-- ============================================ -->
 <section class="slide" data-notes="slide-8">
   <h2 style="text-align: center; margin-bottom: 2rem;">La pregunta que ningún desarrollador se hace</h2>
-  <div class="grid-2" style="gap: 4rem; align-items: center;">
+  <div class="grid-2" style="gap: 3rem; align-items: center;">
     <div style="text-align: center;">
-      <img src="public/diagrams/brain-vs-body.svg" alt="Cerebro en silla vs cerebro con cuerpo" />
+      <div style="position: relative; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-default);">
+        <img src="public/images/cientifico-jaula.png" alt="Científico encerrado en jaula de vidrio" style="display: block; width: 100%;" />
+      </div>
+      <p class="font-serif text-xl text-danger" style="margin-top: 1.5rem; font-style: italic;">
+        Opus 4.7 en la API
+      </p>
+      <p class="text-muted" style="margin-top: 0.5rem; font-size: 1rem;">
+        Un científico brillante encerrado<br>en una jaula de vidrio.
+      </p>
+      <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-muted);">
+        Ve todo. No puede tocar nada.
+      </p>
     </div>
-    <div>
-      <p class="text-lg text-muted" style="margin-bottom: 1rem;">A la izquierda:</p>
-      <p class="font-serif text-xl">Opus 4.7 directo desde la API.</p>
-      <p style="margin-top: 0.5rem;">Un cerebro brillante sentado en una silla. Te dice cosas. Nada más.</p>
-      <p class="text-lg text-muted" style="margin-top: 2rem; margin-bottom: 1rem;">A la derecha:</p>
-      <p class="font-serif text-xl text-accent">Opus 4.7 en Claude Code.</p>
-      <p style="margin-top: 0.5rem;"><strong>El mismo cerebro</strong> pero con manos, ojos, memoria y reglas.</p>
+    <div style="text-align: center;">
+      <div style="position: relative; border-radius: 12px; overflow: hidden; border: 1px solid var(--accent); box-shadow: 0 0 30px var(--accent-glow);">
+        <img src="public/images/cientifico-libre.png" alt="Científico con herramientas y laboratorio" style="display: block; width: 100%;" />
+      </div>
+      <p class="font-serif text-xl text-accent" style="margin-top: 1.5rem; font-style: italic;">
+        Opus 4.7 en Claude Code
+      </p>
+      <p style="margin-top: 0.5rem; font-size: 1rem; color: var(--text-body);">
+        <strong>El mismo científico</strong>,<br>ahora con laboratorio completo.
+      </p>
+      <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-muted);">
+        Herramientas · Internet · Memoria · Asistentes
+      </p>
     </div>
   </div>
 </section>
@@ -1472,9 +1489,14 @@ const SPEAKER_NOTES = {
     html: `
       <h4>El concepto más importante de la ponencia</h4>
       <p>Si la audiencia entiende ESTO, entiende todo lo demás.</p>
+      <h4>La analogía visual</h4>
+      <blockquote>"Miren las dos imágenes. A la izquierda, un científico brillante encerrado en una jaula de vidrio. Puede ver los experimentos. Puede pensar en ellos. Pero no puede tocar nada, no puede caminar hasta un instrumento, no puede conectarse a internet para investigar más. Solo puede decirte lo que sabe de memoria. Eso es Opus 4.7 cuando lo consumís directo desde la API o desde Cursor."</blockquote>
+      <blockquote>"A la derecha, el mismo científico. Pero ahora está libre en su laboratorio. Tiene las herramientas al alcance. Computadoras. Acceso a internet para investigar. Asistentes. Memoria de lo que ya hizo. Ese es Opus 4.7 cuando lo envolvés en Claude Code."</blockquote>
       <h4>LA FRASE ANCLA</h4>
-      <blockquote><strong>"El modelo no es el producto. El cuerpo — el 'harness' — ES el producto."</strong></blockquote>
+      <blockquote><strong>"El modelo no es el producto. El laboratorio — lo que llamamos 'harness' — ES el producto."</strong></blockquote>
       <p>Decirla lento. Con pausa después. Dejar que caiga.</p>
+      <h4>Punto pedagógico</h4>
+      <p>La audiencia probablemente usa ChatGPT o Cursor. Esta es la primera vez que entienden que "Claude Code con Opus" ≠ "Opus en Cursor" ≠ "Opus en la API". Es el MISMO modelo, pero el entorno alrededor cambia todo.</p>
     `
   },
   'slide-9': {
