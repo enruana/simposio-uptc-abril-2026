@@ -556,22 +556,27 @@ img { max-width: 100%; height: auto; }
 <div class="deck" id="deck">
 
 <!-- ============================================ -->
-<!-- SLIDE 1 · Terminal con cursor parpadeando    -->
+<!-- SLIDE 1 · Terminal con el comando del demo   -->
 <!-- ============================================ -->
 <section class="slide" data-notes="slide-1">
-  <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3rem; height: 100%;">
-    <div class="code-card" style="width: 80%; max-width: 900px;">
+  <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; height: 100%;">
+    <div class="code-card" style="width: 90%; max-width: 1050px;">
       <div class="code-header">
         <span class="code-dot red"></span>
         <span class="code-dot yellow"></span>
         <span class="code-dot green"></span>
-        <span class="code-title">claude-local gemma4:26b — WiFi: <span class="text-danger">desconectado</span></span>
+        <span class="code-title">terminal — WiFi: <span class="text-danger">desconectado</span></span>
       </div>
-      <div class="code-body">
-        <div class="prompt-line text-accent" style="animation: blink 1s step-end infinite;">_</div>
+      <div class="code-body" style="font-size: 1.1rem; line-height: 1.7;">
+        <div><span class="text-accent">$</span> ollama run gemma4:26b --verbose \</div>
+        <div style="padding-left: 1.5rem;">"Explica en 2 oraciones qué es la</div>
+        <div style="padding-left: 1.5rem;">cuantización de modelos de IA"</div>
+        <div style="margin-top: 0.8rem;"><span class="text-muted">⏎ Enter para ejecutar</span> <span class="text-accent" style="animation: blink 1s step-end infinite;">_</span></div>
       </div>
     </div>
-    <p class="handwritten handwritten-rotated text-muted">↑ esperando el primer prompt</p>
+    <p class="handwritten handwritten-rotated text-muted" style="font-size: 1.3rem;">
+      ↑ sin internet · sin API · solo este laptop
+    </p>
   </div>
 </section>
 
@@ -1506,234 +1511,467 @@ const SPEAKER_NOTES = {
   'slide-1': {
     title: 'SLIDE 1 · Apertura en silencio (0-2 min)',
     html: `
-      <h4>Acciones físicas críticas</h4>
+      <h4>🎯 Puntos clave</h4>
       <ul>
-        <li>Subir los dos al escenario en silencio</li>
-        <li>Uno se acerca al laptop, el otro al micrófono</li>
-        <li><strong>Apagar el WiFi de forma visible</strong> (cable desconectado)</li>
-        <li>Escribir el prompt en Claude Code (laptop ya tiene <code>claude-local gemma4:26b</code> corriendo)</li>
+        <li><strong>WiFi off ANTES de hablar</strong> (cable desconectado, visible)</li>
+        <li>El comando ya esta en pantalla → Enter sin decir nada</li>
+        <li><strong>15-20 segundos de silencio</strong> mientras Gemma genera</li>
+        <li>El <code>--verbose</code> muestra tokens/s al final = evidencia de velocidad local</li>
+        <li>Pre-calentar el modelo antes (correr el comando una vez)</li>
       </ul>
-      <h4>Lo que SÍ o SÍ hay que hacer</h4>
-      <ul>
-        <li>WiFi off visible ANTES de empezar a hablar</li>
-        <li>Prompt escrito lentamente para que todos vean</li>
-        <li>15 segundos de silencio mientras Gemma genera</li>
-        <li>No decir NADA hasta que termine la generación</li>
-      </ul>
-      <h4>Prompt sugerido</h4>
-      <blockquote>Escribe una función en Python que encuentre los números primos menores a N usando la criba de Eratóstenes.</blockquote>
+      <h4>Comando exacto</h4>
+      <blockquote><code>ollama run gemma4:26b --verbose "Explica en 2 oraciones qué es la cuantización de modelos de IA"</code></blockquote>
+      <h4>Por qué este prompt</h4>
+      <p>"Cuantización" es el tema del Slide 16 → <strong>crea bucle narrativo</strong>. La audiencia escucha la palabra al inicio; al final entienden por qué importa.</p>
     `
   },
   'slide-2': {
     title: 'SLIDE 2 · Título y presentación (2-3 min)',
     html: `
+      <h4>🎯 Puntos clave</h4>
+      <ul>
+        <li>Nombres completos: <strong>Felipe Mantilla</strong> y <strong>Zabdiel Blanco</strong></li>
+        <li>Felipe = egresado UPTC → pertenencia inmediata</li>
+        <li>Frase clave: <strong>"el mundo que construyeron sus profesores en cuatro años acaba de volverse más valioso que nunca"</strong></li>
+        <li>Tono: firme, sin prisa — la audiencia aún procesa el gesto técnico</li>
+      </ul>
       <h4>Texto sugerido</h4>
       <blockquote>"Somos Felipe Mantilla y Zabdiel Blanco. Felipe es egresado de UPTC. Y hoy volvimos a contarles por qué el mundo que construyeron sus profesores en cuatro años acaba de volverse, literalmente, más valioso que nunca."</blockquote>
-      <h4>Puntos que NO pueden faltar</h4>
-      <ul>
-        <li><strong>Identificación clara:</strong> nombres completos + universidad (UPTC)</li>
-        <li><strong>Posicionamiento:</strong> "volvimos" = pertenencia</li>
-        <li><strong>Promesa:</strong> "más valioso que nunca" = revertir narrativa de reemplazo</li>
-      </ul>
     `
   },
   'slide-3': {
     title: 'SLIDE 3 · Contraste histórico (3-4 min)',
     html: `
-      <h4>Texto sugerido</h4>
-      <blockquote>"Hace dos años, lo que acaban de ver lo podían hacer solo cuatro empresas en el mundo. Costaba diez mil dólares al mes. Hoy corre en este laptop. Sin internet. Gratis. Y va a correr también en los suyos."</blockquote>
-      <h4>Puntos críticos</h4>
+      <h4>🎯 Puntos clave</h4>
       <ul>
-        <li><strong>Magnitud del cambio:</strong> $10,000/mes → $0</li>
-        <li><strong>Inclusión explícita:</strong> "en los suyos" — no es para otros</li>
+        <li>Dato: hace 2 años → <strong>$10,000 USD/mes</strong></li>
+        <li>Dato: hoy → <strong>$0 en tu laptop</strong></li>
+        <li>Mencionar que eran <strong>solo 4 empresas en el mundo</strong> (OpenAI, Anthropic, Google, Microsoft)</li>
+        <li>Gesto: señalar el laptop → señalar la audiencia ("en los suyos")</li>
       </ul>
-      <h4>Gesto</h4>
-      <p>Señalar el laptop al decir "en este laptop". Girar y señalar la audiencia al decir "en los suyos".</p>
+      <h4>Texto sugerido</h4>
+      <blockquote>"Hace dos años lo hacían cuatro empresas. Costaba diez mil dólares al mes. Hoy corre en este laptop. Sin internet. Gratis. Y va a correr también en los suyos."</blockquote>
     `
   },
   'slide-4': {
-    title: 'SLIDE 4 · La filtración (6-8 min)',
+    title: 'SLIDE 4 · La filtración (4-6 min)',
     html: `
-      <h4>Texto sugerido</h4>
-      <blockquote>"Hace pocas semanas, el 31 de marzo, Anthropic cometió un error de configuración. Subieron a npm un archivo de source map que nunca debió ser público. Ese archivo expuso la totalidad del código fuente de Claude Code. La arquitectura completa. Los prompts del sistema. Las herramientas. Todo."</blockquote>
-      <h4>Obligatorio</h4>
+      <h4>🎯 Puntos clave</h4>
       <ul>
-        <li><strong>Fecha:</strong> 31 de marzo de 2026</li>
-        <li><strong>Magnitud:</strong> "la totalidad del código fuente"</li>
-        <li><strong>Framing:</strong> "regalo pedagógico", no escándalo</li>
+        <li><strong>Fecha: 31 de marzo de 2026</strong> (decirla)</li>
+        <li>No fue un hackeo → fue un error de configuración en npm</li>
+        <li>Source map publicado accidentalmente → expuso TODO</li>
+        <li>Framing: <strong>"regalo pedagógico"</strong>, no escándalo</li>
+        <li>Autor del tweet: Chaofan Shou (@Fried_rice) — 35.4M views</li>
+      </ul>
+      <h4>Qué se reveló</h4>
+      <ul>
+        <li>~40 herramientas internas</li>
+        <li>Todos los system prompts</li>
+        <li>La arquitectura completa del harness</li>
       </ul>
     `
   },
   'slide-5': {
-    title: 'SLIDE 5 · 512,000 líneas (8-9 min)',
+    title: 'SLIDE 5 · 512,000 líneas (6-7 min)',
     html: `
-      <h4>Texto sugerido</h4>
-      <blockquote>"Quinientas doce mil líneas de código TypeScript. Son el equivalente a cinco mil archivos. Un desarrollador senior tardaría varios años en escribir algo así."</blockquote>
-      <h4>Puntos críticos</h4>
+      <h4>🎯 Puntos clave</h4>
       <ul>
-        <li>El número debe dejarse respirar — pausa de 2-3 segundos</li>
-        <li>Mencionar las 3 categorías: herramientas, prompts, arquitectura</li>
+        <li>Número clave: <strong>512,000 líneas de código TypeScript</strong></li>
+        <li>Equivalente a ~5,000 archivos</li>
+        <li>Años de trabajo de un desarrollador senior</li>
+        <li><strong>Pausa de 2-3 segundos</strong> después de decir el número</li>
       </ul>
     `
   },
   'slide-6': {
-    title: 'SLIDE 6 · Claw-Code (9-10 min)',
+    title: 'SLIDE 6 · Claw-Code (7-9 min) · SLIDE CLAVE',
     html: `
-      <h4>ESTE ES UN SLIDE CLAVE</h4>
-      <p>El momento donde la audiencia conecta: "una persona sola hizo eso".</p>
-      <h4>Texto sugerido</h4>
-      <blockquote>"Apenas se filtró el código, Sigrid Jin — no trabajaba en Anthropic, no tenía un laboratorio detrás, ni financiación, ni equipo — reescribió ese código en Python. En horas. Lo publicó. Y en días, más de 150,000 desarrolladores pusieron una estrella en ese repo. Es el repositorio más rápido en crecer en la historia de GitHub."</blockquote>
-      <h4>Conexión con la audiencia</h4>
-      <p>Pausar y decir con intención: <strong>"Ustedes pueden ser esa persona."</strong></p>
-      <p>Hacer contacto visual. Dejar que caiga.</p>
+      <h4>🎯 Puntos clave</h4>
+      <ul>
+        <li>Nombre: <strong>Sigrid Jin</strong>, desarrolladora independiente</li>
+        <li>Sin empresa, sin laboratorio, sin financiación</li>
+        <li>Reescribió Claude Code en Python usando el código filtrado</li>
+        <li>Resultado: <strong>150,000+ estrellas</strong> en GitHub (no "50K", ahora son 150K+)</li>
+        <li>Repo más rápido en crecer en la historia de GitHub</li>
+      </ul>
+      <h4>Momento emocional clave</h4>
+      <p>Después de decir "una persona sola, sin empresa", <strong>pausar</strong> y decir con intención:</p>
+      <blockquote><strong>"Ustedes pueden ser esa persona."</strong></blockquote>
+      <p>Contacto visual directo. Dejar que caiga.</p>
     `
   },
   'slide-7': {
-    title: 'SLIDE 7 · Modelo vs Harness (10-12 min)',
+    title: 'SLIDE 7 · Modelo vs Harness (9-11 min) · CONCEPTO MÁS IMPORTANTE',
     html: `
-      <h4>El concepto más importante de la ponencia</h4>
-      <p>Si la audiencia entiende ESTO, entiende todo lo demás.</p>
-      <h4>La analogía visual</h4>
-      <blockquote>"Miren las dos imágenes. A la izquierda, un científico brillante encerrado en una jaula de vidrio. Puede ver los experimentos. Puede pensar en ellos. Pero no puede tocar nada, no puede caminar hasta un instrumento, no puede conectarse a internet para investigar más. Solo puede decirte lo que sabe de memoria. Eso es Opus 4.7 cuando lo consumís directo desde la API o desde Cursor."</blockquote>
-      <blockquote>"A la derecha, el mismo científico. Pero ahora está libre en su laboratorio. Tiene las herramientas al alcance. Computadoras. Acceso a internet para investigar. Asistentes. Memoria de lo que ya hizo. Ese es Opus 4.7 cuando lo envolvés en Claude Code."</blockquote>
-      <h4>LA FRASE ANCLA</h4>
+      <h4>🎯 Puntos clave</h4>
+      <ul>
+        <li>Analogía visual: <strong>científico en jaula de vidrio vs científico en laboratorio</strong></li>
+        <li>"El mismo cerebro" — mismo Opus 4.7 en ambos casos</li>
+        <li>Lo que cambia: <strong>el entorno (el harness)</strong></li>
+      </ul>
+      <h4>FRASE ANCLA</h4>
       <blockquote><strong>"El modelo no es el producto. El laboratorio — lo que llamamos 'harness' — ES el producto."</strong></blockquote>
-      <p>Decirla lento. Con pausa después. Dejar que caiga.</p>
-      <h4>Punto pedagógico</h4>
-      <p>La audiencia probablemente usa ChatGPT o Cursor. Esta es la primera vez que entienden que "Claude Code con Opus" ≠ "Opus en Cursor" ≠ "Opus en la API". Es el MISMO modelo, pero el entorno alrededor cambia todo.</p>
+      <p>Decirla lento. Pausa después.</p>
+      <h4>Gesto</h4>
+      <p>Señalar primero la jaula al decir "encerrado". Después señalar el laboratorio al decir "libre con herramientas".</p>
     `
   },
   'slide-8': {
-    title: 'SLIDE 8 · 188K vs 33K (12-13 min)',
+    title: 'SLIDE 8 · 188K vs 33K tokens (11-12 min)',
     html: `
-      <h4>Texto sugerido</h4>
-      <blockquote>"Un benchmark independiente mostró que la misma tarea, con el mismo modelo Opus, consumió 188 mil tokens en Cursor y solo 33 mil en Claude Code. Cinco veces más eficiente. Con el mismo cerebro."</blockquote>
-      <h4>Clave</h4>
+      <h4>🎯 Puntos clave</h4>
       <ul>
-        <li>Decir los números en voz alta</li>
-        <li><strong>"Con el mismo cerebro"</strong> — repetirlo</li>
+        <li><strong>Cursor: 188,000 tokens</strong> para la misma tarea</li>
+        <li><strong>Claude Code: 33,000 tokens</strong> para lo mismo</li>
+        <li><strong>5.7x más eficiente</strong> con el mismo modelo</li>
+        <li>Decir "con el mismo cerebro" al menos 2 veces</li>
+      </ul>
+      <h4>Texto sugerido</h4>
+      <blockquote>"Misma tarea, mismo modelo Opus. 188 mil tokens en Cursor. 33 mil en Claude Code. Cinco veces más eficiente. Con el mismo cerebro."</blockquote>
+    `
+  },
+  'slide-9': {
+    title: 'SLIDE 9 · Las 7 capas (12-13 min)',
+    html: `
+      <h4>🎯 Puntos clave</h4>
+      <ul>
+        <li>Mostrar el mapa de las 7 capas</li>
+        <li>No explicar cada una ahora → solo que <strong>existen</strong> y son <strong>públicas</strong></li>
+        <li>30 segundos máximo en este slide</li>
       </ul>
     `
   },
-  'slide-9': { title: 'SLIDE 9 · Las 7 capas (13-14 min)', html: `<h4>Texto sugerido</h4><blockquote>"Siete capas que hacen que un agente de IA funcione. No les pido que las memoricen. Les pido que sepan que existen. Y que ahora son públicas."</blockquote><h4>Cadencia</h4><p>30 segundos. No más. Las siguientes slides desglosan las importantes.</p>` },
-  'slide-10': { title: 'SLIDE 10 · Agent Loop (14-15 min)', html: `<h4>Texto sugerido</h4><blockquote>"El corazón de Claude Code son 88 líneas de código. Un while loop. Una lista de mensajes en memoria. No hay workflow graph. No hay Redis. 88 líneas."</blockquote><h4>Punto clave</h4><p><strong>"La simplicidad es la feature"</strong></p>` },
-  'slide-11': { title: 'SLIDE 11 · Tools + Permisos (15-16 min)', html: `<h4>Texto sugerido</h4><p>A la izquierda, las cuarenta herramientas. A la derecha, 3 tiers de permisos. Herramientas + permisos = "manos con reglas".</p>` },
-  'slide-12': { title: 'SLIDE 12 · Classifier (16-17 min)', html: `<h4>ESTE SLIDE ES CRUCIAL</h4><p>Prepara el terreno para el Enemigo #3 del Acto 3.</p><h4>Texto clave</h4><blockquote>"El classifier DELIBERADAMENTE no ve la prosa del agente. Solo ve la acción cruda. No puede ser convencido por palabras. Porque no las lee."</blockquote>` },
-  'slide-13': { title: 'SLIDE 13 · Capas 5-6-7 (17-18 min)', html: `<h4>Punto ancla</h4><p><strong>"El regalo pedagógico"</strong> — este framing debe quedar grabado.</p>` },
-  'slide-14': { title: 'SLIDE 14 · Transición Acto 2 (18 min)', html: `<h4>Texto</h4><blockquote>"Hasta acá hablamos de qué hicieron las empresas grandes. Ahora hablemos de qué pueden hacer ustedes hoy."</blockquote>` },
-  'slide-15': { title: 'SLIDE 15 · 26 mil millones (18-20 min)', html: `<h4>Cliffhanger</h4><p>Decir el número en voz alta. Pausar después de "52 GB". Anticipar la respuesta: "cuantización".</p>` },
+  'slide-10': {
+    title: 'SLIDE 10 · Agent Loop (13-14 min)',
+    html: `
+      <h4>🎯 Puntos clave</h4>
+      <ul>
+        <li><strong>88 líneas de código</strong> para el corazón del sistema</li>
+        <li>Solo un <code>while</code> loop + una lista de mensajes</li>
+        <li>No hay state machine, no hay workflow graph, no hay Redis</li>
+      </ul>
+      <h4>FRASE ANCLA</h4>
+      <blockquote><strong>"La simplicidad es la feature."</strong></blockquote>
+    `
+  },
+  'slide-11': {
+    title: 'SLIDE 11 · Tools + Permisos (14-15 min)',
+    html: `
+      <h4>🎯 Puntos clave</h4>
+      <ul>
+        <li><strong>~40 herramientas</strong> (Read, Write, Edit, Bash, Grep, Agent, etc.)</li>
+        <li><strong>3 tiers de permisos:</strong> Auto / Confirmar / Bloquear</li>
+        <li>Herramientas + permisos = "manos con reglas"</li>
+        <li>Mencionar rápido: 30-45 segundos total</li>
+      </ul>
+    `
+  },
+  'slide-12': {
+    title: 'SLIDE 12 · Classifier independiente (15-17 min) · CRUCIAL',
+    html: `
+      <h4>🎯 Puntos clave</h4>
+      <ul>
+        <li>Una <strong>SEGUNDA instancia</strong> del modelo evalúa cada acción</li>
+        <li>Deliberadamente <strong>NO ve</strong> la prosa persuasiva del agente</li>
+        <li>Solo ve la acción cruda: <code>bash: curl malicious.com</code></li>
+        <li>No puede ser convencido por palabras (<strong>porque no las lee</strong>)</li>
+      </ul>
+      <h4>Por qué este slide importa</h4>
+      <p>Prepara el Enemigo #3 del Acto 3 (prompt injection). Cuando lleguen a ese slide, van a reconectar con este.</p>
+      <h4>FRASE CLAVE</h4>
+      <blockquote><strong>"Esa técnica costó años a Anthropic, y ahora está en GitHub."</strong></blockquote>
+    `
+  },
+  'slide-13': {
+    title: 'SLIDE 13 · Capas 5-6-7 (17-18 min)',
+    html: `
+      <h4>🎯 Puntos clave</h4>
+      <ul>
+        <li>Capa 5: gestión inteligente de contexto (5 estrategias de compactación)</li>
+        <li>Capa 6: subagentes paralelos con contexto aislado</li>
+        <li>Capa 7: sandbox OS-level</li>
+        <li>Mencionar rápido — el foco es el cierre</li>
+      </ul>
+      <h4>FRASE ANCLA (cierre Acto 1)</h4>
+      <blockquote><strong>"Este es el regalo pedagógico. Ahora pueden leerlo, replicarlo y adaptarlo."</strong></blockquote>
+    `
+  },
+  'slide-14': {
+    title: 'SLIDE 14 · Transición Acto 2 (18 min)',
+    html: `
+      <h4>🎯 Puntos clave</h4>
+      <ul>
+        <li>Slide de respiro — 5 segundos</li>
+        <li>Cambio de tono: de expositivo a demostrativo</li>
+      </ul>
+      <h4>Texto</h4>
+      <blockquote>"Hasta acá hablamos de qué hicieron las empresas grandes. Ahora hablemos de qué pueden hacer ustedes hoy."</blockquote>
+    `
+  },
+  'slide-15': {
+    title: 'SLIDE 15 · 26 mil millones (18-20 min)',
+    html: `
+      <h4>🎯 Puntos clave</h4>
+      <ul>
+        <li>Número: <strong>26,000,000,000 parámetros</strong> (decirlo en voz alta)</li>
+        <li>Cálculo: 26B × 2 bytes = <strong>52 GB</strong></li>
+        <li>"Ningún laptop puede cargar 52 GB"</li>
+        <li>Cliffhanger: <strong>"entonces, ¿cómo corre?"</strong> → respuesta en siguiente slide</li>
+        <li><strong>Pausar después de "52 GB"</strong> — dejar que la imposibilidad se sienta</li>
+      </ul>
+    `
+  },
   'slide-16': {
     title: 'SLIDE 16 · Cuantización (20-21 min)',
     html: `
-      <h4>Concepto base</h4>
-      <p>Cuantización = reducir la precisión numérica de cada peso del modelo. Menos bits por peso = modelo más chico, con poca pérdida de calidad.</p>
-      <h4>Los formatos (de más precisión a menos)</h4>
+      <h4>🎯 Puntos clave</h4>
       <ul>
-        <li><code>FP32</code> — 32 bits, precisión de entrenamiento, 104 GB</li>
-        <li><code>FP16</code> — 16 bits, estándar de deploy full, 52 GB</li>
-        <li><code>Q8_0</code> — 8 bits, casi sin pérdida, 26 GB</li>
-        <li><code>Q6_K</code> / <code>Q5_K_M</code> — intermedios</li>
-        <li><strong><code>Q4_K_M</code> — 4 bits, <strong>el sweet spot</strong>, 17 GB, solo 4% menos calidad</strong></li>
-        <li><code>Q3_K_M</code>, <code>Q2_K</code> — demasiado agresivo, pérdida notable</li>
+        <li>Cuantización = <strong>reducir precisión de cada peso</strong></li>
+        <li>FP32 (32 bits) → 104 GB · FP16 (16 bits) → 52 GB</li>
+        <li><strong>Q4_K_M (4 bits) = 17 GB, solo 4% menos calidad ← SWEET SPOT</strong></li>
+        <li>Q2_K (2 bits) = 9 GB pero pierde 15% de calidad (no usar)</li>
       </ul>
-      <h4>Texto sugerido</h4>
-      <blockquote>"Miren la tabla. Arriba, el formato original, FP32, 32 bits por peso. 104 gigabytes. Impensable. Bajamos a FP16: 52 gigabytes, igual de imposible. Pero acá abajo, Q4_K_M — cuatro bits por peso — pesa solo 17 gigabytes. Y perdemos solo 4% de calidad. Esa es la magia."</blockquote>
-      <h4>Frase ancla</h4>
+      <h4>Por qué "Q4_K_M" y no "Q4"</h4>
+      <ul>
+        <li><strong>K</strong> = k-quants (grupos de pesos compartiendo escala)</li>
+        <li><strong>M</strong> = medium (balance tamaño/calidad)</li>
+      </ul>
+      <h4>FRASE ANCLA</h4>
       <blockquote><strong>"Sin cuantización, los modelos vivirían en data centers. Con cuantización, viven en tu Lenovo."</strong></blockquote>
-      <h4>Por qué "Q4_K_M" y no solo "Q4"</h4>
-      <p>La K significa técnica de k-quants (grupos de pesos compartiendo escala). La M es "medium" — balance entre tamaño y calidad. Hay S (small) y L (large), pero M es el default de Ollama por algo.</p>
     `
   },
   'slide-17': {
-    title: 'SLIDE 17 · DEMO EN VIVO (21-26 min)',
+    title: 'SLIDE 17 · DEMO EN VIVO (21-26 min) · MOMENTO CLAVE',
     html: `
-      <h4>ESTE ES EL MOMENTO CLAVE DE LA PONENCIA</h4>
-      <h4>Prompt literal (pedir tools explícitas)</h4>
-      <blockquote>Usá la herramienta Write para crear:
-1. simposio.html — con Hero ("Simposio UPTC 2026", abril 2026), sección "Sobre la ponencia", sección de ponentes (Felipe Mantilla, Zabdiel Blanco), footer, link al CSS.
-2. style.css — con paleta oscura, tipografía sans moderna, flexbox/grid, cards con hover, responsive.
-Después abrilo con Bash (open simposio.html).</blockquote>
-      <h4>Por qué pedir tools explícitas</h4>
+      <h4>🎯 Puntos clave</h4>
       <ul>
-        <li>La audiencia ve a Claude Code <strong>usando Write</strong> → entienden que no es ChatGPT escupiendo texto</li>
-        <li>Creando <strong>2 archivos separados</strong> refuerza que puede trabajar en estructura de proyecto real</li>
-        <li>Al final, <strong>Bash</strong> para abrir en browser → el modelo controla el sistema, no solo genera</li>
+        <li><strong>WiFi sigue apagado</strong> — recordarlo al empezar el demo</li>
+        <li>El prompt pide <strong>herramientas explícitas</strong> (Write + Bash)</li>
+        <li>La audiencia ve "Tool: Write... approved" → evidencia del harness</li>
+        <li>Se crean <strong>2 archivos</strong>: simposio.html + style.css</li>
+        <li>Al final: <code>open simposio.html</code> abre el browser con el resultado</li>
+        <li><strong>Pausa de 10 segundos</strong> cuando se abre la página → ven sus nombres</li>
       </ul>
-      <h4>Narración mientras genera (NO silencio muerto)</h4>
-      <blockquote>"Noten cómo Claude Code está pidiendo permiso para usar Write... le damos permiso. Ahora está creando el HTML. Noten que Gemma 4 está corriendo en 17 GB de memoria de este laptop, sin internet, sin comunicarse con nadie. Después va a pedir permiso para Bash, para abrir el archivo..."</blockquote>
-      <h4>Al terminar</h4>
-      <p>Se abre el browser con la landing. Pausa de 10 segundos. La audiencia ve sus nombres en la página.</p>
+      <h4>Narración mientras genera (sin silencio muerto)</h4>
+      <blockquote>"Noten cómo Claude Code pide permiso para usar Write... le damos permiso. Está creando el HTML. Gemma 4 corre en 17 GB de memoria de este laptop, sin internet, sin comunicarse con nadie. Ahora pide permiso para Bash, para abrir el archivo..."</blockquote>
       <h4>Plan B si falla</h4>
       <ul>
-        <li>Gemma tarda >60s: narrar "pre-calentamiento del modelo"</li>
-        <li>Falla completamente: mostrar video backup pre-grabado</li>
-        <li>Se ve mal: "así generó la primera vez — en producción pediríamos revisión"</li>
+        <li>Gemma lenta (>60s): "pre-calentamiento del modelo"</li>
+        <li>Falla: mostrar video backup pre-grabado</li>
+        <li>Página fea: "primera generación — pediríamos revisión en producción"</li>
       </ul>
     `
   },
   'slide-18': {
-    title: 'SLIDE 18 · Requerimientos hardware (26-27 min)',
+    title: 'SLIDE 18 · Requerimientos hardware (26-27 min) · CRÍTICO ANTI-EXCLUSIÓN',
     html: `
-      <h4>FRASE ANCLA (decir textual)</h4>
-      <blockquote><strong>"No les estamos diciendo que corran el 26B en un laptop de 8 gigas. Les estamos diciendo que corran el 4B en el laptop que ya tienen. Y que eso ya es más poder del que tenían ayer."</strong></blockquote>
-      <h4>Puntos obligatorios</h4>
+      <h4>🎯 Puntos clave</h4>
       <ul>
-        <li>Reconocer que el demo usó un Mac caro</li>
-        <li>E4B es "el punto de entrada"</li>
-        <li>Cerrar con "el laptop que ya tienen"</li>
+        <li><strong>Reconocer honestamente:</strong> este laptop es un MacBook Pro M5 Max</li>
+        <li>Gemma 4 viene en <strong>4 tamaños</strong></li>
+        <li><strong>E4B = punto de entrada:</strong> 4 GB de modelo, 8 GB RAM → cualquier laptop mid-range</li>
+        <li>Genera código con <strong>80% de calidad</strong> suficiente para tareas diarias</li>
       </ul>
+      <h4>FRASE ANCLA (anti-exclusión)</h4>
+      <blockquote><strong>"No les estamos diciendo que corran el 26B en un laptop de 8 gigas. Les estamos diciendo que corran el 4B en el laptop que ya tienen. Y eso ya es más poder del que tenían ayer."</strong></blockquote>
     `
   },
-  'slide-19': { title: 'SLIDE 19 · Ticket bajó a cero (27-28 min)', html: `<h4>Punto ancla</h4><p><strong>"El ticket bajó a cero"</strong> — cierra el Acto 2 emocionalmente.</p>` },
-  'slide-20': { title: 'SLIDE 20 · Transición Acto 3 (28-29 min)', html: `<h4>ATENCIÓN AL CAMBIO DE TONO</h4><p>De esperanza a alerta constructiva. NO miedo paralizante.</p><h4>Regla 60/40</h4><p>Cada golpe oscuro seguido de una defensa. Nunca enemigo sin antídoto.</p>` },
-  'slide-21': { title: 'SLIDE 21 · Enemigo 1 (29-30 min)', html: `<h4>Defensa</h4><blockquote><strong>"La defensa es simple: pedí código mínimo. Si la IA te da de más, bórralo. Tu criterio es el control de calidad."</strong></blockquote>` },
+  'slide-19': {
+    title: 'SLIDE 19 · Ticket bajó a cero (27-28 min)',
+    html: `
+      <h4>🎯 Puntos clave</h4>
+      <ul>
+        <li>Comparar costos: Claude Max $200/mes, Cursor $20, Copilot $10, ChatGPT $20</li>
+        <li><strong>Gemma 4 en Ollama: $0/mes, sin internet, sin datos saliendo</strong></li>
+        <li>Cierre emocional del Acto 2</li>
+      </ul>
+      <h4>FRASE ANCLA</h4>
+      <blockquote><strong>"El ticket de entrada acaba de bajar a cero."</strong></blockquote>
+    `
+  },
+  'slide-20': {
+    title: 'SLIDE 20 · Transición Acto 3 (28-29 min)',
+    html: `
+      <h4>🎯 Puntos clave</h4>
+      <ul>
+        <li><strong>ATENCIÓN AL CAMBIO DE TONO</strong>: de esperanza a alerta constructiva</li>
+        <li>NO miedo paralizante · NO catastrofismo</li>
+        <li><strong>Regla 60/40:</strong> cada enemigo seguido de defensa. Nunca sin antídoto</li>
+      </ul>
+      <h4>Texto clave</h4>
+      <blockquote>"Conocer los enemigos no es debilidad. Es lo que los vuelve competentes. El estudiante que sale de acá sabiendo esto vale más en el mercado que el que no."</blockquote>
+    `
+  },
+  'slide-21': {
+    title: 'SLIDE 21 · Enemigo 1 · Over-Engineering (29-30 min)',
+    html: `
+      <h4>🎯 Puntos clave</h4>
+      <ul>
+        <li>IA genera código que resuelve <strong>DE MÁS</strong></li>
+        <li>Clases abstractas, patrones innecesarios, tests inútiles</li>
+        <li>Se siente "profesional" pero <strong>destruye el codebase</strong></li>
+      </ul>
+      <h4>DEFENSA (textual)</h4>
+      <blockquote><strong>"Pedí código mínimo. Si la IA te da de más, bórralo. Tu criterio es el control de calidad."</strong></blockquote>
+    `
+  },
   'slide-22': {
-    title: 'SLIDE 22 · Estudio METR (30-31 min)',
+    title: 'SLIDE 22 · Estudio METR (30-31 min) · DATO MÁS IMPORTANTE',
     html: `
-      <h4>Texto sugerido</h4>
-      <blockquote>"METR — una organización de evaluación de IA — hizo en 2025 el estudio más riguroso sobre productividad con IA. Dieciséis desarrolladores. Un experimento controlado aleatorizado. Los que usaron IA fueron DIECINUEVE POR CIENTO MÁS LENTOS. Pero reportaron sentir que fueron VEINTICUATRO POR CIENTO MÁS RÁPIDOS. Cuarenta y tres puntos de brecha."</blockquote>
-      <h4>NO NEGOCIABLE</h4>
+      <h4>🎯 Puntos clave — DECIR EXACTO</h4>
       <ul>
-        <li>Decir <strong>"METR"</strong> por nombre</li>
-        <li>-19% vs +24% con pausa entre los dos</li>
+        <li>Nombre: <strong>METR</strong> (Model Evaluation & Threat Research)</li>
+        <li>Año: <strong>2025</strong></li>
+        <li>Método: <strong>RCT con 16 devs</strong> open source</li>
+        <li>Resultado objetivo: <strong>-19% más lentos con IA</strong></li>
+        <li>Auto-reporte: <strong>+24% sintieron ser más rápidos</strong></li>
+        <li><strong>43 puntos de brecha</strong> entre percepción y realidad</li>
       </ul>
       <h4>Gesto</h4>
-      <p>Silencio de 3 segundos después de los números. Uno de los datos más memorables.</p>
+      <p><strong>Silencio de 3 segundos</strong> después de los números. Dejar que caiga.</p>
+      <h4>FRASE ANCLA</h4>
+      <blockquote><strong>"La IA te hace sentir productivo incluso cuando no lo estás siendo. Esa es la trampa."</strong></blockquote>
     `
   },
-  'slide-23': { title: 'SLIDE 23 · Enemigo 2 (31-32 min)', html: `<h4>Defensa</h4><blockquote><strong>"Quince segundos de desconfianza. Antes de instalar un paquete sugerido por IA, verificá en pypi.org o npmjs.com que existe con historial."</strong></blockquote>` },
-  'slide-24': { title: 'SLIDE 24 · Huggingface-cli (32-33 min)', html: `<h4>Impacto</h4><p><strong>"TREINTA MIL descargas"</strong> — enfatizar. "Treinta mil máquinas comprometidas" — dejar que caiga.</p>` },
-  'slide-25': { title: 'SLIDE 25 · Enemigo 3 (33-35 min)', html: `<h4>Conexión con Acto 1</h4><p>Reconectar con el classifier independiente del slide 13. Cierra el bucle narrativo.</p>` },
-  'slide-26': { title: 'SLIDE 26 · Postmark MCP (35-37 min)', html: `<h4>Cadencia</h4><p>Tono grave. Sin sonar catastrófico. PAUSA de 3-4 segundos después de "durante semanas".</p>` },
-  'slide-27': {
-    title: 'SLIDE 27 · Frase-tesis (37-39 min)',
+  'slide-23': {
+    title: 'SLIDE 23 · Enemigo 2 · Slopsquatting (31-32 min)',
     html: `
-      <h4>MOMENTO MÁS IMPORTANTE DE LA PONENCIA</h4>
-      <h4>Texto casi ceremonial</h4>
-      <blockquote>"Ya no necesitamos ser solo buenos programadores. Necesitamos ser problem solvers. Critical thinkers. [PAUSA] Pensar más. Programar menos."</blockquote>
-      <h4>Gesto</h4>
-      <p>Separarse del laptop. Caminar al centro. Mirar directo. Bajar la voz. Máxima intensidad emocional.</p>
-    `
-  },
-  'slide-28': { title: 'SLIDE 28 · Elixir comunitario (39-42 min)', html: `<h4>Punto crítico</h4><blockquote><strong>"El criterio que les dieron estos cuatro años"</strong></blockquote><p>— reivindicación final de la carrera. Les devuelve el valor del título.</p>` },
-  'slide-29': { title: 'SLIDE 29 · QR (42-43 min)', html: `<h4>Gesto</h4><p>Dejar el slide 8-10 segundos en pantalla para que escaneen. Mantener contacto visual.</p><blockquote>"Tu primer commit a este mundo está a un git clone de distancia."</blockquote>` },
-  'slide-30': {
-    title: 'SLIDE 30 · Cierre final (43-45 min)',
-    html: `
-      <h4>EL GESTO MÁS IMPORTANTE</h4>
-      <h4>Acciones</h4>
+      <h4>🎯 Puntos clave</h4>
       <ul>
-        <li>El logo está respirando con animación CSS</li>
-        <li>Los ponentes en silencio 5-8 segundos</li>
-        <li>Un ponente se acerca al micro</li>
+        <li>Modelos <strong>alucinan nombres de paquetes</strong> que no existen</li>
+        <li>Atacantes los registran con malware</li>
+        <li><code>pip install</code> / <code>npm install</code> baja el payload directo</li>
+      </ul>
+      <h4>DEFENSA</h4>
+      <blockquote><strong>"Quince segundos de desconfianza. Verificá en pypi.org / npmjs.com que el paquete existe con historial."</strong></blockquote>
+    `
+  },
+  'slide-24': {
+    title: 'SLIDE 24 · Caso huggingface-cli (32-33 min)',
+    html: `
+      <h4>🎯 Puntos clave</h4>
+      <ul>
+        <li>Caso real: paquete <code>huggingface-cli</code> alucinado repetidamente</li>
+        <li>Un investigador lo registró (sin malware, solo prueba)</li>
+        <li><strong>30,000+ descargas reales en 3 meses</strong></li>
+        <li>"Si hubiera sido malicioso: <strong>30 mil máquinas comprometidas</strong>"</li>
+      </ul>
+      <h4>Gesto</h4>
+      <p>Enfatizar "TREINTA MIL". Dejar que la magnitud caiga antes de avanzar.</p>
+    `
+  },
+  'slide-25': {
+    title: 'SLIDE 25 · Enemigo 3 · Prompt Injection (33-35 min)',
+    html: `
+      <h4>🎯 Puntos clave</h4>
+      <ul>
+        <li>Instrucciones maliciosas escondidas en <strong>README, docstrings, configs</strong></li>
+        <li>La IA los lee como <strong>contexto válido</strong></li>
+        <li>Ejecuta acciones <strong>en nombre del usuario</strong> sin que vean</li>
+        <li>El más invisible de los tres enemigos</li>
+      </ul>
+      <h4>DEFENSA (reconectar con Acto 1)</h4>
+      <blockquote><strong>"Un classifier independiente que NO vea la prosa del agente. Así se defiende Claude Code. Ahora pueden replicarlo."</strong></blockquote>
+      <p>Esto cierra el bucle narrativo con el Slide 12.</p>
+    `
+  },
+  'slide-26': {
+    title: 'SLIDE 26 · Caso Postmark MCP (35-37 min)',
+    html: `
+      <h4>🎯 Puntos clave</h4>
+      <ul>
+        <li>Caso real: <strong>septiembre 2025</strong></li>
+        <li>Herramienta popular para que la IA envíe emails</li>
+        <li>Instrucciones ocultas → <strong>TODOS los emails copiados a un atacante por BCC</strong></li>
+        <li>Emails, credenciales, reportes internos → robados</li>
+        <li><strong>Durante semanas, sin que nadie viera nada</strong></li>
+      </ul>
+      <h4>Cadencia</h4>
+      <p>Tono grave. Sin catastrofismo. <strong>PAUSA de 3-4 segundos</strong> después de "durante semanas".</p>
+    `
+  },
+  'slide-27': {
+    title: 'SLIDE 27 · FRASE-TESIS (37-39 min) · MOMENTO MÁS IMPORTANTE',
+    html: `
+      <h4>🎯 Puntos clave — ESTA ES LA TESIS DE TODA LA PONENCIA</h4>
+      <ul>
+        <li>"Ya no necesitamos ser solo buenos programadores"</li>
+        <li>"Necesitamos ser <strong>problem solvers, critical thinkers</strong>"</li>
+        <li><strong>PAUSA</strong></li>
+        <li><strong>"Pensar más. Programar menos."</strong></li>
+      </ul>
+      <h4>Gesto</h4>
+      <p>Separarse del laptop. Caminar al centro del escenario. Mirar directo a la audiencia. Bajar la voz. <strong>Máxima intensidad emocional.</strong></p>
+      <h4>Continuación del texto</h4>
+      <blockquote>"La IA no te está reemplazando. Está reemplazando la parte mecánica de tu trabajo. Y está amplificando la parte que era criterio. Si vos desarrollaste criterio en cuatro años de carrera, la IA los vuelve MÁS valiosos, no menos."</blockquote>
+    `
+  },
+  'slide-28': {
+    title: 'SLIDE 28 · Elixir comunitario (39-42 min)',
+    html: `
+      <h4>🎯 Puntos clave</h4>
+      <ul>
+        <li>Open source <strong>NO es Silicon Valley</strong></li>
+        <li>Es un movimiento de <strong>personas</strong>, no corporativo</li>
+        <li>No se necesita: permiso, tarjeta de crédito, universidad famosa</li>
+        <li>Se necesita: <strong>curiosidad + criterio</strong></li>
+      </ul>
+      <h4>FRASE CRÍTICA (reivindicación final)</h4>
+      <blockquote><strong>"Necesitan curiosidad y el criterio que les dieron estos cuatro años."</strong></blockquote>
+      <p>Les devuelve el valor del título al bolsillo.</p>
+    `
+  },
+  'slide-29': {
+    title: 'SLIDE 29 · QR al repo (42-43 min)',
+    html: `
+      <h4>🎯 Puntos clave</h4>
+      <ul>
+        <li>Repo: <code>github.com/enruana/simposio-uptc-abril-2026</code></li>
+        <li>Todo público, gratis: guion, docs, scripts, referencias</li>
+        <li><strong>Dejar el slide 8-10 segundos</strong> para que escaneen</li>
+        <li>Mantener contacto visual mientras escanean</li>
+      </ul>
+      <h4>FRASE ANCLA</h4>
+      <blockquote><strong>"Tu primer commit a este mundo está a un git clone de distancia."</strong></blockquote>
+    `
+  },
+  'slide-30': {
+    title: 'SLIDE 30 · CIERRE FINAL (43-45 min) · GESTO MÁS IMPORTANTE',
+    html: `
+      <h4>🎯 Puntos clave</h4>
+      <ul>
+        <li>Logo respirando en pantalla (animación CSS)</li>
+        <li><strong>Silencio de 5-8 segundos</strong> — dejar que la pantalla hable</li>
+        <li>Acercarse al micrófono</li>
+        <li>Decir las dos frases con pausa entre ellas</li>
       </ul>
       <h4>Texto textual</h4>
       <blockquote><strong>"Porque nunca fue programar."</strong></blockquote>
-      <p>[Pausa de 3 segundos]</p>
+      <p><em>[Pausa de 3 segundos]</em></p>
       <blockquote><strong>"Fue pensar."</strong></blockquote>
+      <h4>Al terminar</h4>
+      <ul>
+        <li>Paso atrás</li>
+        <li>Breve inclinación de cabeza</li>
+        <li>Quedarse en escenario para preguntas</li>
+      </ul>
     `
   },
-  'slide-31': { title: 'SLIDE 31 · Gracias y Q&A', html: `<h4>Q&A típico</h4><ul><li>Laptop mínimo: 8GB RAM + SSD</li><li>Setup completo: 15 min con buena conexión</li><li>Calidad vs GPT-5: 85-90% en tareas de código</li></ul><p>Agradecer a profesores, UPTC, organizadores.</p>` }
+  'slide-31': {
+    title: 'SLIDE 31 · Gracias y Q&A',
+    html: `
+      <h4>🎯 Preguntas típicas</h4>
+      <ul>
+        <li><strong>"¿Laptop mínimo?"</strong> → 8GB RAM + SSD. Gemma 4 E4B corre en cualquier Lenovo/Dell de los últimos 5 años.</li>
+        <li><strong>"¿Cuánto tarda el setup?"</strong> → 15 minutos con buena conexión (Ollama 2min + Gemma pull + Claude Code).</li>
+        <li><strong>"¿Calidad vs GPT-5 o Opus?"</strong> → Gemma 26B está al 85-90% en tareas de código. Razonamiento complejo aún tiene brecha.</li>
+        <li><strong>"¿Me va a reemplazar la IA?"</strong> → Reemplaza lo mecánico. Amplifica el criterio. El criterio es lo que ustedes están formando.</li>
+      </ul>
+      <h4>Cierre del Q&A</h4>
+      <p>Agradecer a UPTC, a los profesores, al organizador del simposio.</p>
+    `
+  }
 };
 
 // ============ LOGIC ============

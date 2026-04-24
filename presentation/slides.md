@@ -42,30 +42,44 @@ Este es el slide de arranque. La audiencia aún no sabe qué va a ver.
 - [ ] 15 segundos de silencio mientras Gemma genera
 - [ ] No decir NADA hasta que termine la generación
 
-## Prompt sugerido (copiable)
+## Comando a ejecutar (copiable — ya esta en pantalla)
 ```
-Escribe una función en Python que encuentre los números primos
-menores a N usando la criba de Eratóstenes. Incluye type hints.
+ollama run gemma4:26b --verbose "Explica en 2 oraciones qué es la cuantización de modelos de IA"
 ```
 
+## Por qué este prompt específico
+- **"Cuantización"** es el tema del Slide 16 → crea bucle narrativo
+- **`--verbose`** muestra tokens/s al final → evidencia de velocidad local
+- **"En 2 oraciones"** → respuesta corta, no demora
+
+## PRE-CALENTAMIENTO CRÍTICO
+Correr este mismo comando UNA vez antes de subir al escenario para que
+el modelo esté en memoria. Si no, el load duration agrega 5-10s extra.
+
 ## Transición al siguiente slide
-Cuando termine la generación, cambiar al slide 2 (título).
+Cuando termine la generación (con métricas `--verbose` visibles),
+cambiar al slide 2 (título).
 
 -->
 
-<div class="flex-center" style="height: 90vh; flex-direction: column;">
-  <div class="code-card" style="width: 80%; max-width: 900px;">
+<div class="flex-center" style="height: 90vh; flex-direction: column; gap: 2.5rem;">
+  <div class="code-card" style="width: 90%; max-width: 1050px;">
     <div class="code-header">
       <span class="code-dot red"></span>
       <span class="code-dot yellow"></span>
       <span class="code-dot green"></span>
-      <span class="code-title">claude-local gemma4:26b — WiFi: <span class="text-danger">desconectado</span></span>
+      <span class="code-title">terminal — WiFi: <span class="text-danger">desconectado</span></span>
     </div>
-    <div class="code-body">
-      <div class="prompt-line text-accent">_</div>
+    <div class="code-body" style="font-size: 1.1rem; line-height: 1.7;">
+      <div><span class="text-accent">$</span> ollama run gemma4:26b --verbose \</div>
+      <div style="padding-left: 1.5rem;">"Explica en 2 oraciones qué es la</div>
+      <div style="padding-left: 1.5rem;">cuantización de modelos de IA"</div>
+      <div style="margin-top: 0.8rem;"><span class="text-muted">⏎ Enter para ejecutar</span> <span class="text-accent">_</span></div>
     </div>
   </div>
-  <p class="handwritten handwritten-rotated text-muted" style="margin-top: 3rem;">↑ esperando el primer prompt</p>
+  <p class="handwritten handwritten-rotated text-muted" style="font-size: 1.3rem;">
+    ↑ sin internet · sin API · solo este laptop
+  </p>
 </div>
 
 ---
