@@ -78,7 +78,7 @@ layout: center
 El Poder, la Arquitectura y<br>el Precio de No Entender lo que Generas
 </div>
 
-<div style="margin-top: 4rem; display: flex; gap: 3rem; justify-content: center;">
+<div style="margin-top: 4rem; display: flex; gap: 3rem; justify-content: center; align-items: center;">
   <div>
     <div class="text-sm text-muted" style="letter-spacing: 0.2em; text-transform: uppercase;">Ponentes</div>
     <div class="font-serif text-xl" style="margin-top: 0.5rem;">Felipe Mantilla</div>
@@ -88,6 +88,9 @@ El Poder, la Arquitectura y<br>el Precio de No Entender lo que Generas
     <div class="text-sm text-muted" style="letter-spacing: 0.2em; text-transform: uppercase;">Evento</div>
     <div class="font-serif text-xl" style="margin-top: 0.5rem;">Simposio UPTC</div>
     <div class="font-mono text-muted text-sm">Abril 2026</div>
+  </div>
+  <div style="border-left: 1px solid rgba(255,255,255,0.1); padding-left: 3rem;">
+    <img src="/logos/uptc.png" alt="UPTC" style="height: 90px; filter: invert(1) brightness(1.2);" />
   </div>
 </div>
 
@@ -227,21 +230,35 @@ los siguientes 40 minutos pierden peso. La audiencia debe verse reflejada.
 layout: center
 ---
 
-<div style="text-align: center;">
+<div class="grid-2" style="gap: 3rem; align-items: center;">
 
-<div class="text-sm text-accent" style="letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 2rem;">
+<div>
+
+<div class="text-sm text-accent" style="letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 1.5rem;">
 31 · MARZO · 2026
 </div>
 
-<h1 style="font-size: clamp(2.5rem, 6vw, 4.5rem); max-width: 1100px; margin: 0 auto;">
+<h1 style="font-size: clamp(2rem, 4.5vw, 3.5rem); line-height: 1.15;">
 Anthropic accidentalmente expuso<br>
-<span class="text-accent font-serif" style="font-style: italic;">todo</span> el código fuente de<br>
-Claude Code en npm.
+<span class="text-accent font-serif" style="font-style: italic;">todo</span> el código fuente<br>
+de Claude Code en npm.
 </h1>
 
-<p class="font-mono text-muted" style="margin-top: 3rem;">
-// el regalo pedagógico que cambió la conversación
-</p>
+<div style="display: flex; align-items: center; gap: 1rem; margin-top: 2.5rem;">
+  <img src="/logos/claude.png" alt="Anthropic" style="height: 40px; opacity: 0.9;" />
+  <p class="font-mono text-muted" style="font-size: 0.9rem;">
+    // el regalo pedagógico<br>// que cambió la conversación
+  </p>
+</div>
+
+</div>
+
+<div style="text-align: center;">
+  <img src="/screenshots/x-filtracion.png" alt="Tweet de Chaofan Shou anunciando la filtración" style="max-width: 100%; max-height: 70vh; border-radius: 12px; box-shadow: 0 0 40px rgba(0, 255, 136, 0.15);" />
+  <p class="handwritten text-muted" style="margin-top: 1rem; font-size: 1rem;">
+    @Fried_rice · 35.4M views · 35K likes
+  </p>
+</div>
 
 </div>
 
@@ -324,24 +341,26 @@ layout: two-cols
 <p class="text-lg text-muted">Sigrid Jin, desarrolladora independiente.<br>Sin empresa. Sin laboratorio. Sin plata.</p>
 
 <p class="font-serif text-xl" style="margin-top: 2rem;">
-Reescribió el corazón de Claude Code en Python.
+Reescribió el corazón de Claude Code en Python usando el código filtrado como blueprint.
 </p>
 
-<p class="text-lg" style="margin-top: 2rem;">
-Dos horas de trabajo.<br>
-Publicado en GitHub.
+<div style="margin-top: 2rem;">
+  <div class="big-number" style="font-size: clamp(3rem, 7vw, 5rem);">150K+</div>
+  <div class="big-number-subtitle" style="font-size: 1.2rem;">estrellas de GitHub</div>
+</div>
+
+<p class="handwritten text-muted" style="margin-top: 1.5rem;">
+el repo más rápido en crecer<br>en la historia de GitHub
 </p>
 
 ::right::
 
-<div class="flex-center" style="height: 100%; flex-direction: column;">
+<div class="flex-center" style="height: 100%; flex-direction: column; padding: 0 1rem;">
 
-<div class="big-number" style="font-size: clamp(5rem, 12vw, 9rem);">50K</div>
-<div class="big-number-subtitle">estrellas en 2 horas</div>
+<img src="/logos/claw-code.png" alt="Claw-Code star history chart" style="max-width: 100%; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
 
-<p class="handwritten text-muted" style="margin-top: 3rem; text-align: center;">
-el repo más rápido<br>
-en la historia de GitHub
+<p class="handwritten text-accent" style="margin-top: 1rem; text-align: center; font-size: 1rem;">
+curva de estrellas real · abril 2026
 </p>
 
 </div>
@@ -846,6 +865,16 @@ class: 'transition-slide'
 
 <div class="act-label">Acto II</div>
 <h1 class="act-title">De la teoría<br>a la terminal</h1>
+
+<div style="display: flex; gap: 3rem; justify-content: center; align-items: center; margin-top: 3rem;">
+  <div style="background: white; padding: 1rem 1.5rem; border-radius: 8px;">
+    <img src="/logos/ollama.webp" alt="Ollama" style="height: 50px;" />
+  </div>
+  <span class="text-muted font-mono" style="font-size: 2rem;">+</span>
+  <div style="background: white; padding: 1rem; border-radius: 8px;">
+    <img src="/logos/gemma-4.png" alt="Gemma 4" style="height: 50px;" />
+  </div>
+</div>
 
 <p class="font-mono text-muted" style="margin-top: 2rem;">
 $ ollama run gemma4:26b

