@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" fill="none">
+  <defs>
+    <filter id="rough">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="1" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2"/>
+    </filter>
+    <style>
+      .stroke { stroke: #d4d4d4; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .stroke-thin { stroke: #6b6b6b; stroke-width: 1.5; fill: none; stroke-linecap: round; }
+      .accent { stroke: #00ff88; }
+      .text { font-family: 'Caveat', cursive; font-size: 20px; fill: #d4d4d4; }
+      .text-small { font-family: 'Caveat', cursive; font-size: 14px; fill: #6b6b6b; }
+      .text-accent { font-family: 'Caveat', cursive; font-size: 16px; fill: #00ff88; }
+    </style>
+  </defs>
+
+  <g filter="url(#rough)">
+    <!-- Laptop -->
+    <path class="stroke" d="M 130 280 L 370 280 L 390 360 L 110 360 Z"/>
+    <path class="stroke" d="M 155 200 L 345 200 L 345 280 L 155 280 Z"/>
+
+    <!-- Screen content -->
+    <path class="stroke accent" d="M 175 220 L 230 220"/>
+    <path class="stroke accent" d="M 175 235 L 280 235"/>
+    <path class="stroke accent" d="M 175 250 L 220 250"/>
+    <path class="stroke accent" d="M 175 265 L 310 265"/>
+
+    <!-- Person (simple silhouette, cabeza + hombros) -->
+    <ellipse class="stroke" cx="250" cy="120" rx="45" ry="50"/>
+
+    <!-- Hair/headphones cables -->
+    <path class="stroke-thin" d="M 210 100 Q 200 110 210 130"/>
+    <path class="stroke-thin" d="M 290 100 Q 300 110 290 130"/>
+
+    <!-- Headphones -->
+    <path class="stroke" d="M 205 115 Q 205 100 215 95"/>
+    <path class="stroke" d="M 295 115 Q 295 100 285 95"/>
+    <path class="stroke" d="M 215 95 Q 250 75 285 95"/>
+
+    <!-- Neck/shoulders -->
+    <path class="stroke" d="M 225 165 L 230 190 L 210 195 L 170 210"/>
+    <path class="stroke" d="M 275 165 L 270 190 L 290 195 L 330 210"/>
+
+    <!-- Thought bubble -->
+    <path class="stroke-thin" d="M 380 80 Q 420 60 450 90 Q 465 120 440 145 Q 425 155 400 150 Q 390 160 395 175"/>
+    <circle class="stroke-thin" cx="385" cy="155" r="4"/>
+    <circle class="stroke-thin" cx="375" cy="170" r="3"/>
+
+    <!-- Labels -->
+    <text class="text-small" x="395" y="105">¿servirá para algo</text>
+    <text class="text-small" x="400" y="125">todo esto?</text>
+
+    <text class="text-small" x="80" y="410">Lenovo, Dell...</text>
+    <text class="text-small" x="80" y="430">lo que alcanzó</text>
+    <text class="text-small" x="80" y="450">a pagar</text>
+
+    <!-- Moon / night indicator -->
+    <path class="stroke-thin" d="M 50 60 Q 45 40 65 35 Q 55 55 75 70 Q 55 80 50 60"/>
+    <text class="text-small" x="40" y="95">noche</text>
+
+    <!-- Arrow pointing to the student -->
+    <path class="stroke accent" d="M 430 240 Q 400 240 370 230" marker-end="url(#arrow)"/>
+    <text class="text-accent" x="430" y="255">el héroe</text>
+    <text class="text-accent" x="430" y="275">de esta sala</text>
+  </g>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#00ff88"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,421 @@
+/*
+  Theme: "Open Source Nights"
+  Simposio UPTC 2026 — IA Abierta
+  Felipe Mantilla y Zabdiel Blanco
+*/
+
+:root {
+  /* Paleta oscura */
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #111111;
+  --bg-tertiary: #1a1a1a;
+  --bg-card: #141414;
+
+  /* Texto */
+  --text-primary: #f5f5f5;
+  --text-body: #d4d4d4;
+  --text-muted: #6b6b6b;
+  --text-dim: #404040;
+
+  /* Accent (verde terminal) */
+  --accent: #00ff88;
+  --accent-soft: #00cc6f;
+  --accent-glow: rgba(0, 255, 136, 0.15);
+
+  /* Estados */
+  --danger: #ff3b5f;
+  --danger-soft: #cc2f4c;
+  --warning: #ffb800;
+  --info: #00d9ff;
+
+  /* Bordes */
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-default: rgba(255, 255, 255, 0.12);
+  --border-accent: var(--accent);
+
+  /* Tipografía */
+  --font-serif: 'Instrument Serif', 'Times New Roman', serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Menlo', 'Monaco', monospace;
+  --font-display: 'Space Grotesk', var(--font-sans);
+  --font-handwritten: 'Caveat', cursive;
+
+  /* Espaciado */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+
+  /* Sombras */
+  --shadow-glow: 0 0 40px var(--accent-glow);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* ============ BASE ============ */
+
+.slidev-layout {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-body);
+  font-family: var(--font-sans);
+  padding: var(--space-xl) var(--space-2xl);
+}
+
+.slidev-layout h1 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.slidev-layout h2 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.slidev-layout h3 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.slidev-layout p {
+  color: var(--text-body);
+  line-height: 1.6;
+}
+
+.slidev-layout code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--bg-tertiary);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  color: var(--accent);
+}
+
+/* ============ COMPONENTES ============ */
+
+/* Stat Block — números killer */
+.stat-block {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(4rem, 12vw, 10rem);
+  color: var(--accent);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  text-shadow: var(--shadow-glow);
+}
+
+.stat-label {
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: var(--space-md);
+}
+
+.stat-context {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--text-body);
+  margin-top: var(--space-sm);
+  font-style: italic;
+}
+
+/* Quote Block — frases ancla */
+.quote-ancla {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.25;
+  color: var(--text-primary);
+  padding-left: var(--space-lg);
+  border-left: 3px solid var(--accent);
+  max-width: 80%;
+  font-style: italic;
+}
+
+.quote-author {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-top: var(--space-md);
+  font-style: normal;
+  letter-spacing: 0.05em;
+}
+
+/* Tarjetas de comparación */
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-sans);
+}
+
+.comparison-table th {
+  background: var(--bg-secondary);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-align: left;
+  padding: var(--space-md);
+  border-bottom: 2px solid var(--border-default);
+}
+
+.comparison-table td {
+  padding: var(--space-md);
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-body);
+}
+
+.comparison-table tr.highlight td {
+  background: linear-gradient(90deg, var(--accent-glow) 0%, transparent 100%);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.comparison-table .price-free {
+  color: var(--accent);
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+
+/* Enemy Card — Acto 3 */
+.enemy-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  border-left: 4px solid var(--danger);
+  padding: var(--space-lg);
+  border-radius: 8px;
+  position: relative;
+}
+
+.enemy-card .enemy-number {
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
+  font-family: var(--font-display);
+  font-size: 3rem;
+  color: var(--danger-soft);
+  opacity: 0.5;
+  line-height: 1;
+}
+
+.enemy-card h3 {
+  font-family: var(--font-serif);
+  color: var(--danger);
+  margin-bottom: var(--space-sm);
+}
+
+.enemy-card .defense {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--border-subtle);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+}
+
+/* Person Card — ponentes / héroe */
+.person-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  padding: var(--space-lg);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.person-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+
+.person-card .role {
+  font-family: var(--font-sans);
+  color: var(--accent);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: var(--space-sm);
+}
+
+.person-card .name {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  color: var(--text-primary);
+}
+
+/* Code Card — bloques de terminal con estilo */
+.code-card {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: var(--font-mono);
+}
+
+.code-card .code-header {
+  background: var(--bg-secondary);
+  padding: var(--space-sm) var(--space-md);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.code-card .code-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.code-card .code-dot.red { background: #ff5f56; }
+.code-card .code-dot.yellow { background: #ffbd2e; }
+.code-card .code-dot.green { background: #27c93f; }
+
+.code-card .code-title {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-left: var(--space-sm);
+}
+
+.code-card .code-body {
+  padding: var(--space-lg);
+  color: var(--text-body);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.code-card .prompt-line::before {
+  content: '$ ';
+  color: var(--accent);
+}
+
+/* Big Number (para datos impactantes) */
+.big-number {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 15vw, 12rem);
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  text-shadow: var(--shadow-glow);
+}
+
+.big-number-subtitle {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--text-body);
+  margin-top: var(--space-md);
+  font-style: italic;
+}
+
+/* Transition slides — separadores dramáticos */
+.transition-slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  background: radial-gradient(ellipse at center, var(--bg-secondary) 0%, var(--bg-primary) 70%);
+}
+
+.transition-slide .act-label {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  margin-bottom: var(--space-lg);
+}
+
+.transition-slide .act-title {
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 8vw, 6rem);
+  color: var(--text-primary);
+  font-weight: 400;
+  line-height: 1.1;
+  max-width: 900px;
+}
+
+/* Breathing logo animation — para el cierre */
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 20px var(--accent-glow));
+  }
+  50% {
+    transform: scale(1.03);
+    filter: drop-shadow(0 0 40px var(--accent));
+  }
+}
+
+.breathing-logo {
+  animation: breathe 3s ease-in-out infinite;
+}
+
+/* Glitch effect — para dato oscuro */
+@keyframes glitch {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-1px, 1px); }
+  40% { transform: translate(-1px, -1px); }
+  60% { transform: translate(1px, 1px); }
+  80% { transform: translate(1px, -1px); }
+}
+
+.text-glitch:hover {
+  animation: glitch 0.3s ease-in-out infinite;
+}
+
+/* Hand-drawn look (para labels tipo Excalidraw) */
+.handwritten {
+  font-family: var(--font-handwritten);
+  color: var(--text-muted);
+  font-size: 1.5rem;
+  transform: rotate(-2deg);
+  display: inline-block;
+}
+
+.handwritten-arrow::before {
+  content: '→ ';
+  font-family: var(--font-handwritten);
+  color: var(--accent);
+}
+
+/* Utilidades */
+.text-accent { color: var(--accent); }
+.text-danger { color: var(--danger); }
+.text-muted { color: var(--text-muted); }
+.font-serif { font-family: var(--font-serif); }
+.font-mono { font-family: var(--font-mono); }
+.font-display { font-family: var(--font-display); }
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+/* Typography scale */
+.text-huge { font-size: clamp(4rem, 10vw, 8rem); }
+.text-xl { font-size: clamp(2rem, 5vw, 3rem); }
+.text-lg { font-size: 1.5rem; }
+.text-md { font-size: 1.125rem; }
+.text-sm { font-size: 0.875rem; }

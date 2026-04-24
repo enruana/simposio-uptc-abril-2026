@@ -1,0 +1,23 @@
+{
+  "name": "simposio-uptc-2026-slides",
+  "type": "module",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Presentación HTML/CSS para la ponencia 'IA Abierta' en el Simposio UPTC 2026 — Felipe Mantilla y Zabdiel Blanco",
+  "scripts": {
+    "dev": "slidev --open",
+    "build": "slidev build",
+    "export": "slidev export",
+    "export-pdf": "slidev export --format pdf",
+    "export-pptx": "slidev export --format pptx"
+  },
+  "dependencies": {
+    "@slidev/cli": "^0.49.0",
+    "@slidev/theme-default": "^0.25.0",
+    "@slidev/theme-seriph": "^0.25.0",
+    "vue": "^3.4.0"
+  },
+  "devDependencies": {
+    "playwright-chromium": "^1.40.0"
+  }
+}

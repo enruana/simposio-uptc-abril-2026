@@ -39,3 +39,11 @@ __pycache__/
 *.pyc
 .venv/
 venv/
+
+# Slidev build output
+presentation/dist/
+presentation/.slidev-temp/
+presentation/slides-export.pdf
+presentation/slides-export.pptx
+presentation/.vite/
+presentation/components.d.ts
