@@ -1,0 +1,456 @@
+/*
+  Global stylesheet — cargado automáticamente por Slidev
+  Simposio UPTC 2026 · IA Abierta
+  Felipe Mantilla y Zabdiel Blanco
+
+  Este archivo importa el theme y extiende con overrides
+  específicos para Slidev (seriph theme).
+*/
+
+/* Google Fonts — Instrument Serif, Inter, JetBrains Mono, Caveat, Space Grotesk */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Caveat:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+/* ============ VARIABLES DEL TEMA ============ */
+:root {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #111111;
+  --bg-tertiary: #1a1a1a;
+  --bg-card: #141414;
+
+  --text-primary: #f5f5f5;
+  --text-body: #d4d4d4;
+  --text-muted: #6b6b6b;
+  --text-dim: #404040;
+
+  --accent: #00ff88;
+  --accent-soft: #00cc6f;
+  --accent-glow: rgba(0, 255, 136, 0.15);
+
+  --danger: #ff3b5f;
+  --danger-soft: #cc2f4c;
+  --warning: #ffb800;
+  --info: #00d9ff;
+
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-default: rgba(255, 255, 255, 0.12);
+
+  --font-serif: 'Instrument Serif', 'Times New Roman', serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Menlo', 'Monaco', monospace;
+  --font-display: 'Space Grotesk', var(--font-sans);
+  --font-handwritten: 'Caveat', cursive;
+
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+
+  --shadow-glow: 0 0 40px var(--accent-glow);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* ============ OVERRIDES DE SLIDEV ============ */
+
+/* Force dark background on all slides */
+.slidev-page,
+.slidev-layout,
+section.slidev-slide {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-body) !important;
+  font-family: var(--font-sans);
+}
+
+/* Base typography */
+.slidev-layout {
+  padding: 3rem 4rem;
+}
+
+.slidev-layout h1 {
+  font-family: var(--font-serif) !important;
+  font-weight: 400 !important;
+  color: var(--text-primary) !important;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+}
+
+.slidev-layout h2 {
+  font-family: var(--font-serif) !important;
+  font-weight: 400 !important;
+  color: var(--text-primary) !important;
+  letter-spacing: -0.01em;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.slidev-layout h3 {
+  font-family: var(--font-sans) !important;
+  font-weight: 600 !important;
+  color: var(--text-primary) !important;
+  font-size: 1.5rem;
+}
+
+.slidev-layout p,
+.slidev-layout li {
+  color: var(--text-body) !important;
+  line-height: 1.6;
+}
+
+.slidev-layout code {
+  font-family: var(--font-mono) !important;
+  font-size: 0.9em;
+  background: var(--bg-tertiary) !important;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  color: var(--accent) !important;
+}
+
+.slidev-layout a {
+  color: var(--accent) !important;
+  text-decoration: none;
+}
+
+.slidev-layout pre {
+  background: var(--bg-tertiary) !important;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+/* Remove Slidev default background noise */
+.slidev-layout::before {
+  display: none !important;
+}
+
+/* ============ COMPONENTES CUSTOM ============ */
+
+.stat-block {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(4rem, 12vw, 10rem);
+  color: var(--accent);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  text-shadow: var(--shadow-glow);
+}
+
+.stat-label {
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 1rem;
+}
+
+.stat-context {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--text-body);
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+.quote-ancla {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 3.5vw, 2.75rem);
+  line-height: 1.25;
+  color: var(--text-primary);
+  padding-left: 2rem;
+  border-left: 3px solid var(--accent);
+  max-width: 900px;
+  font-style: italic;
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-sans);
+  margin: 1rem 0;
+}
+
+.comparison-table th {
+  background: var(--bg-secondary);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 2px solid var(--border-default);
+}
+
+.comparison-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-body);
+}
+
+.comparison-table tr.highlight td {
+  background: linear-gradient(90deg, var(--accent-glow) 0%, transparent 100%);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.comparison-table .price-free {
+  color: var(--accent);
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+
+.enemy-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  border-left: 4px solid var(--danger);
+  padding: 2rem;
+  border-radius: 8px;
+  position: relative;
+}
+
+.enemy-card .enemy-number {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-family: var(--font-display);
+  font-size: 3rem;
+  color: var(--danger-soft);
+  opacity: 0.5;
+  line-height: 1;
+}
+
+.enemy-card h3 {
+  font-family: var(--font-serif) !important;
+  color: var(--danger) !important;
+  margin-bottom: 0.5rem;
+  font-size: 1.8rem;
+}
+
+.enemy-card .defense {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-subtle);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+}
+
+.person-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  padding: 1.5rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.person-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+
+.person-card .role {
+  font-family: var(--font-sans);
+  color: var(--accent);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.5rem;
+}
+
+.person-card .name {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--text-primary);
+}
+
+.code-card {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: var(--font-mono);
+  margin: 1rem 0;
+}
+
+.code-card .code-header {
+  background: var(--bg-secondary);
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.code-card .code-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.code-card .code-dot.red { background: #ff5f56; }
+.code-card .code-dot.yellow { background: #ffbd2e; }
+.code-card .code-dot.green { background: #27c93f; }
+
+.code-card .code-title {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
+}
+
+.code-card .code-body {
+  padding: 1.5rem;
+  color: var(--text-body);
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
+.code-card .prompt-line::before {
+  content: '$ ';
+  color: var(--accent);
+}
+
+.big-number {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 15vw, 12rem);
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  text-shadow: var(--shadow-glow);
+}
+
+.big-number-subtitle {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--text-body);
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+.transition-slide {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  background: radial-gradient(ellipse at center, var(--bg-secondary) 0%, var(--bg-primary) 70%) !important;
+}
+
+.transition-slide .act-label {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  margin-bottom: 2rem;
+}
+
+.transition-slide .act-title {
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 8vw, 6rem);
+  color: var(--text-primary);
+  font-weight: 400;
+  line-height: 1.1;
+  max-width: 900px;
+}
+
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 20px var(--accent-glow));
+  }
+  50% {
+    transform: scale(1.03);
+    filter: drop-shadow(0 0 40px var(--accent));
+  }
+}
+
+.breathing-logo {
+  animation: breathe 3s ease-in-out infinite;
+}
+
+.handwritten {
+  font-family: var(--font-handwritten);
+  color: var(--text-muted);
+  font-size: 1.5rem;
+  display: inline-block;
+}
+
+.handwritten-rotated {
+  transform: rotate(-2deg);
+}
+
+/* Utilidades */
+.text-accent { color: var(--accent) !important; }
+.text-danger { color: var(--danger) !important; }
+.text-muted { color: var(--text-muted) !important; }
+.text-primary { color: var(--text-primary) !important; }
+.font-serif { font-family: var(--font-serif) !important; }
+.font-mono { font-family: var(--font-mono) !important; }
+.font-display { font-family: var(--font-display) !important; }
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.text-huge { font-size: clamp(4rem, 10vw, 8rem); }
+.text-xl { font-size: clamp(1.5rem, 3vw, 2rem); }
+.text-lg { font-size: 1.25rem; }
+.text-md { font-size: 1rem; }
+.text-sm { font-size: 0.875rem; }
+
+/* ============ SPEAKER NOTES OVERRIDE ============ */
+
+/* Cuando estamos en modo presentador, las notas ocupan más espacio y son legibles */
+.slidev-notes,
+.slidev-presenter-notes {
+  font-family: var(--font-sans) !important;
+  font-size: 1.05rem !important;
+  line-height: 1.65 !important;
+  color: #1a1a1a !important;
+}
+
+.slidev-notes strong,
+.slidev-presenter-notes strong {
+  color: #00cc6f !important;
+}
+
+.slidev-notes h4,
+.slidev-presenter-notes h4 {
+  color: #0a0a0a !important;
+  margin-top: 1rem !important;
+  margin-bottom: 0.5rem !important;
+  font-size: 0.85rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+}
+
+.slidev-notes ul,
+.slidev-presenter-notes ul {
+  padding-left: 1.2rem !important;
+  margin: 0.5rem 0 !important;
+}
+
+.slidev-notes blockquote,
+.slidev-presenter-notes blockquote {
+  border-left: 3px solid #00cc6f !important;
+  padding-left: 1rem !important;
+  color: #333 !important;
+  font-style: italic !important;
+}

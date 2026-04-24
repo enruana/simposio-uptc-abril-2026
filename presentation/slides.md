@@ -1,7 +1,7 @@
 ---
 theme: seriph
 background: '#0a0a0a'
-class: 'text-left'
+class: 'text-center'
 highlighter: shiki
 lineNumbers: false
 drawings:
@@ -12,36 +12,46 @@ info: |
   ## Simposio UPTC 2026
   **Ponentes:** Felipe Mantilla y Zabdiel Blanco
 
-  45 minutos — Hero's Journey para estudiantes de último semestre
+  Ponencia de 45 minutos con demo en vivo.
+  Estructura Hero's Journey con el estudiante como héroe.
 mdc: true
+colorSchema: 'dark'
 fonts:
   sans: 'Inter'
   serif: 'Instrument Serif'
   mono: 'JetBrains Mono'
-css: unocss
+routerMode: 'hash'
 ---
 
-<style>
-@import './styles/theme.css';
+<!--
+# SLIDE 1 · Apertura en silencio (0-2 min)
 
-/* Overrides de Slidev tema seriph */
-.slidev-layout {
-  background: #0a0a0a !important;
-  color: #d4d4d4 !important;
-}
+## Contexto
+Este es el slide de arranque. La audiencia aún no sabe qué va a ver.
 
-.slidev-layout h1, .slidev-layout h2 {
-  color: #f5f5f5 !important;
-}
+## Acciones físicas críticas
+- Subir los dos al escenario en silencio
+- Uno se acerca al laptop, el otro al micrófono
+- **Apagar el WiFi de forma visible** (cable ethernet desconectado o click en WiFi → Off)
+- Pantalla: mostrar esta slide con terminal y cursor parpadeando
+- Escribir el prompt en Claude Code (el laptop debe tener `claude-local gemma4:26b` ya corriendo)
 
-.slidev-layout a {
-  color: #00ff88 !important;
-}
-</style>
+## Lo que SÍ o SÍ hay que hacer
+- [ ] WiFi off visible ANTES de empezar a hablar
+- [ ] Prompt escrito lentamente para que todos vean
+- [ ] 15 segundos de silencio mientras Gemma genera
+- [ ] No decir NADA hasta que termine la generación
 
-<!-- ============================================ -->
-<!-- SLIDE 1 — Portada dramática (cursor en vivo) -->
-<!-- ============================================ -->
+## Prompt sugerido (copiable)
+```
+Escribe una función en Python que encuentre los números primos
+menores a N usando la criba de Eratóstenes. Incluye type hints.
+```
+
+## Transición al siguiente slide
+Cuando termine la generación, cambiar al slide 2 (título).
+
+-->
 
 <div class="flex-center" style="height: 90vh; flex-direction: column;">
   <div class="code-card" style="width: 80%; max-width: 900px;">
@@ -55,17 +65,8 @@ css: unocss
       <div class="prompt-line text-accent">_</div>
     </div>
   </div>
-  <p class="handwritten" style="margin-top: 3rem;">↑ esperando el primer prompt</p>
+  <p class="handwritten handwritten-rotated text-muted" style="margin-top: 3rem;">↑ esperando el primer prompt</p>
 </div>
-
-<!--
-[ACCIÓN] Felipe y Zabdiel suben al escenario.
-El laptop se proyecta. Terminal en pantalla completa.
-Uno de ellos apaga el WiFi visiblemente.
-El otro escribe el prompt:
-"Escribe una función en Python que encuentre los números primos menores a N usando la criba de Eratóstenes."
-15 segundos de silencio mientras Gemma genera la respuesta.
--->
 
 ---
 layout: center
@@ -90,6 +91,33 @@ El Poder, la Arquitectura y<br>el Precio de No Entender lo que Generas
   </div>
 </div>
 
+<!--
+# SLIDE 2 · Título y presentación (2-3 min)
+
+## Contexto
+Después del gesto técnico de Gemma respondiendo sin internet, aparece el título.
+Es el momento para identificarse.
+
+## Texto sugerido (casi literal)
+> "Somos Felipe Mantilla y Zabdiel Blanco. Felipe es egresado de UPTC.
+> Y hoy volvimos a contarles por qué el mundo que construyeron
+> sus profesores en cuatro años acaba de volverse,
+> literalmente, más valioso que nunca."
+
+## Puntos que NO pueden faltar
+- **Identificación clara:** nombres completos + universidad de origen (UPTC)
+- **Posicionamiento emocional:** "volvimos" = pertenencia, no extraños
+- **Promesa:** "más valioso que nunca" = revertir la narrativa de "la IA nos va a reemplazar"
+
+## Tono
+Firme, sin prisa. La audiencia todavía procesa el gesto técnico.
+Dejar que absorban el título antes de avanzar.
+
+## Opción alternativa
+Si Zabdiel también es egresado UPTC, cambiar a "ambos egresados de UPTC".
+
+-->
+
 ---
 layout: center
 ---
@@ -100,7 +128,7 @@ layout: center
 
   <div class="grid-2" style="gap: 4rem;">
     <div>
-      <div class="handwritten" style="color: #ff3b5f;">Hace 2 años</div>
+      <div class="handwritten text-danger">Hace 2 años</div>
       <div class="stat-block" style="color: #ff3b5f; font-size: 4rem; margin-top: 1rem;">$10,000</div>
       <div class="stat-label">al mes en infraestructura</div>
     </div>
@@ -112,17 +140,38 @@ layout: center
   </div>
 
   <p class="font-serif text-xl" style="margin-top: 4rem; color: #f5f5f5;">
-    El mundo que construyeron sus profesores en cuatro años<br>
-    acaba de volverse, literalmente, <span class="text-accent">más valioso que nunca</span>.
+    Esto hace dos años lo hicieron<br>
+    <span class="text-accent">cuatro empresas en el mundo.</span>
   </p>
 
 </div>
+
+<!--
+# SLIDE 3 · El contraste histórico (3-4 min)
+
+## Texto sugerido
+> "Hace dos años, lo que acaban de ver lo podían hacer solo cuatro empresas
+> en el mundo. OpenAI, Anthropic, Google y Microsoft. Costaba diez mil
+> dólares al mes en infraestructura. Requería permisos que la mayoría
+> de ustedes nunca iban a tener. Hoy corre en este laptop. Sin internet.
+> Gratis. Y va a correr también en los suyos."
+
+## Puntos críticos
+- **Magnitud del cambio:** $10,000/mes → $0
+- **Democratización real:** de "cuatro empresas" a "cualquier laptop"
+- **Inclusión explícita:** "en los suyos" — no es para otros, es para ellos
+
+## Gesto recomendado
+Señalar con el brazo el laptop al decir "en este laptop".
+Después girar y señalar hacia la audiencia al decir "en los suyos".
+
+-->
 
 ---
 
 # El héroe de esta sala
 
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2rem;">
+<div class="grid-2" style="gap: 3rem; margin-top: 2rem; align-items: center;">
 
 <div>
 
@@ -130,22 +179,49 @@ layout: center
 
 </div>
 
-<div style="display: flex; flex-direction: column; justify-content: center;">
+<div>
 
 <p class="text-lg" style="line-height: 1.8;">
-Un estudiante. <br>
-Octavo, noveno semestre. <br>
-Un <strong>Lenovo</strong> o <strong>Dell</strong>, no un Mac caro. <br>
-Audífonos entre clases. <br>
+Un estudiante.<br>
+Octavo, noveno semestre.<br>
+Un <strong>Lenovo</strong> o <strong>Dell</strong>, no un Mac caro.<br>
+Audífonos entre clases.<br>
 </p>
 
-<p class="quote-ancla" style="margin-top: 2rem; font-size: 1.5rem; max-width: 100%;">
-"¿Todo este esfuerzo de cuatro años va a servir para algo en un mundo donde la IA parece escribir código mejor que yo?"
+<p class="quote-ancla" style="margin-top: 2rem; font-size: 1.4rem; max-width: 100%;">
+"¿Todo este esfuerzo de cuatro años va a servir para algo?"
 </p>
 
 </div>
 
 </div>
+
+<!--
+# SLIDE 4 · Nombrando al héroe (4-6 min)
+
+## Contexto
+Acá cambia el tono. Baja a conversación íntima. La audiencia debe sentir
+que están hablando de alguien específico, no de "los estudiantes en general".
+
+## Texto sugerido (tono íntimo)
+> "Quiero hablarles de alguien que está en esta sala. Un estudiante a pocos
+> meses de graduarse. Abre su laptop — no un MacBook de cinco mil dólares,
+> un Lenovo o un Dell, el que alcanzó a pagar. Tiene audífonos puestos casi
+> siempre. Y en algún rincón de su cabeza, una pregunta que no lo deja dormir:
+> ¿todo este esfuerzo de cuatro años va a servir para algo en un mundo donde
+> la IA parece escribir código mejor que yo?"
+
+## Puntos NO negociables
+- **Especificidad económica:** mencionar Lenovo/Dell explícitamente
+- **Vulnerabilidad:** "no le sobra dinero para Cursor de $20/mes"
+- **La pregunta existencial:** debe decirse EN ESAS PALABRAS exactas
+- **Cierre honesto:** "yo también me lo pregunto algunas noches" / "nosotros también nos lo preguntamos"
+
+## Por qué importa
+Este es el anclaje emocional de toda la ponencia. Si este slide no conecta,
+los siguientes 40 minutos pierden peso. La audiencia debe verse reflejada.
+
+-->
 
 ---
 layout: center
@@ -157,7 +233,7 @@ layout: center
 31 · MARZO · 2026
 </div>
 
-<h1 style="font-size: clamp(3rem, 7vw, 5rem); max-width: 1000px;">
+<h1 style="font-size: clamp(2.5rem, 6vw, 4.5rem); max-width: 1100px; margin: 0 auto;">
 Anthropic accidentalmente expuso<br>
 <span class="text-accent font-serif" style="font-style: italic;">todo</span> el código fuente de<br>
 Claude Code en npm.
@@ -168,6 +244,30 @@ Claude Code en npm.
 </p>
 
 </div>
+
+<!--
+# SLIDE 5 · La filtración del source map (6-8 min)
+
+## Texto sugerido
+> "Hace pocas semanas, el 31 de marzo, Anthropic — la empresa detrás de Claude —
+> cometió un error de configuración. Subieron a npm, el registro público de
+> paquetes, un archivo de source map que nunca debió ser público. Ese archivo
+> expuso la totalidad del código fuente de Claude Code. La arquitectura completa.
+> Los prompts del sistema. Las herramientas internas. Los mecanismos anti-jailbreak.
+> Todo."
+
+## Puntos obligatorios
+- **Fecha específica:** 31 de marzo de 2026 (mostrar en slide + decirla)
+- **Naturaleza del error:** "configuración accidental, no un hackeo"
+- **Magnitud:** "la totalidad del código fuente"
+- **Efecto pedagógico:** "cambió la conversación" — no es escándalo, es oportunidad
+
+## Lo que NO decir
+- No usar tono de escándalo o crítica a Anthropic
+- No victimizar a Anthropic (fue su error, pero no es lo relevante)
+- Mantener el framing positivo: "regalo pedagógico"
+
+-->
 
 ---
 layout: center
@@ -194,6 +294,27 @@ líneas de código expuestas
   </div>
 </div>
 
+<!--
+# SLIDE 6 · 512,000 líneas (8-9 min)
+
+## Texto sugerido
+> "Quinientas doce mil líneas de código TypeScript.
+> Para ponerlo en perspectiva: son el equivalente a cinco mil archivos.
+> Un desarrollador senior tardaría varios años en escribir algo así.
+> Y todo eso, con el rigor de una empresa valuada en decenas de miles
+> de millones de dólares, quedó público de un día para otro."
+
+## Puntos críticos
+- **El número debe dejarse respirar** — pausa de 2-3 segundos después de decirlo
+- Mencionar las 3 categorías: herramientas, prompts, arquitectura
+- **NO hacer lista exhaustiva** — el número solo basta
+
+## Gesto
+Dejar que la pantalla hable. No leer las tarjetas. Solo mencionar
+que están ahí y explicar en el siguiente slide.
+
+-->
+
 ---
 layout: two-cols
 ---
@@ -218,18 +339,47 @@ Publicado en GitHub.
 <div class="big-number" style="font-size: clamp(5rem, 12vw, 9rem);">50K</div>
 <div class="big-number-subtitle">estrellas en 2 horas</div>
 
-<p class="handwritten text-muted" style="margin-top: 3rem;">
+<p class="handwritten text-muted" style="margin-top: 3rem; text-align: center;">
 el repo más rápido<br>
 en la historia de GitHub
 </p>
 
 </div>
 
+<!--
+# SLIDE 7 · Claw-Code — una persona, dos horas (9-10 min)
+
+## ESTE ES UN SLIDE CLAVE
+El momento donde la audiencia conecta: "una persona sola hizo eso".
+
+## Texto sugerido
+> "Y acá está la parte que más me emociona. Apenas se filtró el código,
+> una desarrolladora llamada Sigrid Jin — no trabajaba en Anthropic, no tenía
+> un laboratorio detrás, ni financiación, ni equipo — tomó ese código y lo
+> reescribió en Python. En dos horas. Lo publicó en GitHub con el nombre de
+> Claw-Code. Y en cuestión de dos horas, cincuenta mil desarrolladores pusieron
+> una estrella en ese repositorio. Es el repositorio más rápido en crecer
+> en la historia de GitHub. Una persona. Sola. Dos horas."
+
+## Puntos obligatorios
+- **Sigrid Jin por nombre** — es importante darle crédito
+- **La palabra "sola"** — recalcar la agencia individual
+- **"Dos horas"** — repetir dos veces en la narración
+- **"50,000 estrellas"** = 50,000 desarrolladores validando
+
+## Conexión con la audiencia
+Pausar después y decir (con intención):
+> "Ustedes pueden ser esa persona."
+
+Hacer contacto visual. Dejar que caiga.
+
+-->
+
 ---
 layout: center
 ---
 
-<h2 style="font-size: 2.5rem; text-align: center; margin-bottom: 3rem;">
+<h2 style="text-align: center; margin-bottom: 3rem;">
 La pregunta que ningún desarrollador se hace
 </h2>
 
@@ -252,6 +402,38 @@ La pregunta que ningún desarrollador se hace
 </div>
 
 </div>
+
+<!--
+# SLIDE 8 · Modelo vs Harness (10-12 min)
+
+## El concepto más importante de toda la ponencia
+Si la audiencia entiende ESTO, entiende todo lo demás.
+
+## Texto sugerido
+> "Acá está la pregunta que ningún desarrollador se hace. Cuando abren
+> ChatGPT en el browser, o usan Cursor en su IDE, están hablando con UN
+> MODELO. Un modelo es un cerebro. Muy brillante, capaz de razonar y generar
+> texto — pero solo eso. No puede leer los archivos de su proyecto. No puede
+> ejecutar comandos. No puede crear archivos. No recuerda nada entre sesiones.
+> Es un cerebro brillante sentado en una silla. Le preguntás, te contesta. Fin.
+> 
+> Claude Code, por otro lado, es ese mismo cerebro — puede usar Claude Opus 4.7
+> o Sonnet 4.6 por debajo — pero rodeado de un CUERPO completo. Tiene ojos:
+> puede leer todos los archivos de tu proyecto. Tiene manos: puede crear,
+> editar, borrar archivos. Tiene memoria: recuerda decisiones entre sesiones.
+> Tiene reglas: no hace cosas destructivas sin pedir permiso."
+
+## LA FRASE ANCLA
+> **"El modelo no es el producto. El cuerpo — lo que llaman el 'harness' —
+> ES el producto."**
+
+Decirla lento. Con pausa después. Dejar que caiga.
+
+## Punto pedagógico
+La audiencia probablemente usa ChatGPT o Cursor. Esta es la primera vez
+que entienden que "Claude Code con Opus" ≠ "Opus en Cursor".
+
+-->
 
 ---
 layout: center
@@ -283,60 +465,112 @@ El modelo no es el producto.<br>
 
 </div>
 
+<!--
+# SLIDE 9 · El dato que lo prueba (12-13 min)
+
+## Texto sugerido
+> "Y tengo el dato que lo prueba. Un benchmark independiente mostró que
+> la misma tarea de desarrollo, con el mismo modelo Opus por detrás,
+> consumió ciento ochenta y ocho mil tokens en Cursor y solo treinta y
+> tres mil en Claude Code. Cinco veces más eficiente. Con el mismo
+> cerebro. ¿Por qué? Porque el harness de Claude Code sabe buscar mejor,
+> compactar contexto mejor, delegar mejor. El modelo hace lo mismo.
+> La orquestación es lo que cambia."
+
+## Puntos clave
+- **Decir los números en voz alta** — la contundencia es parte del mensaje
+- **"Con el mismo cerebro"** — repetirlo para que quede claro
+- Conectar con el concepto del slide anterior: harness = producto
+
+## Nota técnica (por si alguien pregunta)
+Este benchmark es público y está documentado en análisis post-filtración
+de Claude Code. Referencia: estudios comunitarios sobre eficiencia de
+tool-use en 2025.
+
+-->
+
 ---
 
 # Las 7 capas del harness
 
-<div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.5rem; margin-top: 3rem;">
+<div class="grid-3" style="gap: 1rem; margin-top: 2rem;">
 
   <div class="person-card" style="text-align: center; padding: 1rem;">
     <div class="big-number" style="font-size: 2.5rem;">1</div>
-    <div class="text-sm" style="margin-top: 0.5rem;">Agent Loop</div>
+    <div class="text-sm" style="margin-top: 0.5rem; color: var(--text-primary);">Agent Loop</div>
     <div class="font-mono text-muted text-sm">88 líneas</div>
   </div>
 
   <div class="person-card" style="text-align: center; padding: 1rem;">
     <div class="big-number" style="font-size: 2.5rem;">2</div>
-    <div class="text-sm" style="margin-top: 0.5rem;">~40 Tools</div>
+    <div class="text-sm" style="margin-top: 0.5rem; color: var(--text-primary);">~40 Tools</div>
     <div class="font-mono text-muted text-sm">Read/Write/Bash</div>
   </div>
 
   <div class="person-card" style="text-align: center; padding: 1rem;">
     <div class="big-number" style="font-size: 2.5rem;">3</div>
-    <div class="text-sm" style="margin-top: 0.5rem;">Permisos</div>
+    <div class="text-sm" style="margin-top: 0.5rem; color: var(--text-primary);">Permisos</div>
     <div class="font-mono text-muted text-sm">3 tiers</div>
   </div>
 
+</div>
+
+<div class="grid-3" style="gap: 1rem; margin-top: 1rem;">
+
   <div class="person-card" style="text-align: center; padding: 1rem;">
     <div class="big-number" style="font-size: 2.5rem;">4</div>
-    <div class="text-sm" style="margin-top: 0.5rem;">Classifier</div>
+    <div class="text-sm" style="margin-top: 0.5rem; color: var(--text-primary);">Classifier</div>
     <div class="font-mono text-muted text-sm">Independiente</div>
   </div>
 
   <div class="person-card" style="text-align: center; padding: 1rem;">
     <div class="big-number" style="font-size: 2.5rem;">5</div>
-    <div class="text-sm" style="margin-top: 0.5rem;">Contexto</div>
+    <div class="text-sm" style="margin-top: 0.5rem; color: var(--text-primary);">Contexto</div>
     <div class="font-mono text-muted text-sm">5 estrategias</div>
   </div>
 
   <div class="person-card" style="text-align: center; padding: 1rem;">
     <div class="big-number" style="font-size: 2.5rem;">6</div>
-    <div class="text-sm" style="margin-top: 0.5rem;">Subagentes</div>
+    <div class="text-sm" style="margin-top: 0.5rem; color: var(--text-primary);">Subagentes</div>
     <div class="font-mono text-muted text-sm">Paralelo</div>
   </div>
 
+</div>
+
+<div style="max-width: 33%; margin: 1rem auto 0;">
+
   <div class="person-card" style="text-align: center; padding: 1rem;">
     <div class="big-number" style="font-size: 2.5rem;">7</div>
-    <div class="text-sm" style="margin-top: 0.5rem;">Sandbox</div>
+    <div class="text-sm" style="margin-top: 0.5rem; color: var(--text-primary);">Sandbox</div>
     <div class="font-mono text-muted text-sm">OS-level</div>
   </div>
 
 </div>
 
-<p class="text-center text-muted" style="margin-top: 3rem;">
-Todo lo que una empresa valuada en decenas de miles de millones construyó en años<br>
-<span class="text-accent">ahora está documentado públicamente</span>.
+<p class="text-center text-muted" style="margin-top: 2rem;">
+Todo documentado públicamente · listo para que cualquiera lo estudie
 </p>
+
+<!--
+# SLIDE 10 · Las 7 capas en overview (13-14 min)
+
+## Texto sugerido
+> "Entonces, ¿qué reveló la filtración? Siete capas que hacen que un
+> agente de IA funcione. No les pido que las memoricen. Les pido que
+> sepan que existen. Y que ahora son públicas. Cualquiera puede
+> estudiarlas. Las voy a mostrar brevemente, para que cuando escuchen
+> 'agente de IA' no piensen en magia, piensen en ingeniería."
+
+## Puntos clave
+- **No detallar cada capa aún** — solo presentar el mapa
+- Anunciar que las siguientes slides profundizan en las más críticas
+- **Anclaje:** "no es magia, es ingeniería"
+
+## Cadencia
+Dedicar 30 segundos a este slide. No más.
+Los siguientes 4 slides desglosan las capas importantes.
+
+-->
 
 ---
 layout: center
@@ -355,8 +589,10 @@ layout: center
     <span class="code-dot green"></span>
     <span class="code-title">agent_loop.ts — ~88 líneas</span>
   </div>
-  <div class="code-body" style="font-size: 0.85rem;">
-<pre><code>while (true) {
+  <div class="code-body" style="font-size: 0.8rem;">
+
+```typescript
+while (true) {
   const response = await callModel(
     messages, tools
   );
@@ -371,7 +607,9 @@ layout: center
       messages.push(result);
     }
   }
-}</code></pre>
+}
+```
+
   </div>
 </div>
 
@@ -395,6 +633,31 @@ La simplicidad es la feature.
 
 </div>
 
+<!--
+# SLIDE 11 · Agent Loop · 88 líneas (14-15 min)
+
+## Texto sugerido
+> "El corazón de Claude Code — el loop que hace toda la magia —
+> son 88 líneas de código. Un while loop. Una lista de mensajes en memoria.
+> No hay workflow graph. No hay base de datos distribuida. No hay Redis.
+> 88 líneas.
+> 
+> Esto me emociona porque muchos ingenieros que empiezan creen que para
+> construir un agente necesitan un framework pesado, una arquitectura
+> compleja, un equipo grande. No. Empiezan con 88 líneas."
+
+## Punto clave
+- **"La simplicidad es la feature"** — decir esta frase con énfasis
+- Mencionar que esto mismo lo pueden escribir ellos
+
+## Gesto
+Señalar el código en pantalla. Leer una línea cualquiera en voz alta
+para hacer el código tangible:
+> "Miren esta línea: 'if response.stopReason === end_turn return response'.
+> Es legible. Es entendible. No es magia."
+
+-->
+
 ---
 
 # 2-3. Herramientas + Permisos
@@ -405,7 +668,7 @@ La simplicidad es la feature.
 
 <h3 class="text-accent">~40 herramientas</h3>
 
-<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; margin-top: 1rem; font-family: var(--font-mono); font-size: 0.85rem;">
+<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; margin-top: 1rem; font-family: var(--font-mono); font-size: 0.9rem;">
   <div>Read</div>
   <div>Write</div>
   <div>Edit</div>
@@ -417,7 +680,7 @@ La simplicidad es la feature.
   <div>Agent</div>
   <div>TaskCreate</div>
   <div>NotebookEdit</div>
-  <div>...</div>
+  <div class="text-muted">...</div>
 </div>
 
 <p class="text-sm text-muted" style="margin-top: 1rem;">
@@ -432,17 +695,17 @@ Cada una con su esquema JSON, parámetros y sandbox.
 
 <div style="margin-top: 1rem;">
 
-<div style="padding: 0.75rem; background: var(--bg-card); border-left: 3px solid #00ff88; margin-bottom: 0.5rem; border-radius: 4px;">
+<div style="padding: 0.75rem 1rem; background: var(--bg-card); border-left: 3px solid #00ff88; margin-bottom: 0.5rem; border-radius: 4px;">
   <strong>Tier 1 — Auto</strong><br>
   <span class="text-sm text-muted">Lecturas, búsquedas</span>
 </div>
 
-<div style="padding: 0.75rem; background: var(--bg-card); border-left: 3px solid #ffb800; margin-bottom: 0.5rem; border-radius: 4px;">
+<div style="padding: 0.75rem 1rem; background: var(--bg-card); border-left: 3px solid #ffb800; margin-bottom: 0.5rem; border-radius: 4px;">
   <strong>Tier 2 — Confirmar</strong><br>
   <span class="text-sm text-muted">Escrituras, comandos shell</span>
 </div>
 
-<div style="padding: 0.75rem; background: var(--bg-card); border-left: 3px solid #ff3b5f; border-radius: 4px;">
+<div style="padding: 0.75rem 1rem; background: var(--bg-card); border-left: 3px solid #ff3b5f; border-radius: 4px;">
   <strong>Tier 3 — Bloquear</strong><br>
   <span class="text-sm text-muted">Destructivas sin permiso</span>
 </div>
@@ -452,6 +715,29 @@ Cada una con su esquema JSON, parámetros y sandbox.
 </div>
 
 </div>
+
+<!--
+# SLIDE 12 · Tools + Permisos (15-16 min)
+
+## Texto sugerido
+> "A la izquierda, las cuarenta herramientas. Read, Write, Edit, Bash,
+> Grep, Glob, WebFetch, Agent, TaskCreate. Cada una con su esquema JSON,
+> sus parámetros. El modelo elige cuál usar en cada momento.
+> 
+> A la derecha, el sistema de permisos. Tres niveles. Tier uno: lecturas
+> y búsquedas se auto-aprueban. Tier dos: escrituras y comandos shell
+> te preguntan. Tier tres: acciones destructivas sin permiso están
+> bloqueadas. Fin."
+
+## Punto clave
+- La granularidad de permisos = lo que previene que un agente autónomo
+  borre tu proyecto
+- Herramientas + permisos = "manos con reglas"
+
+## Tiempo
+30-45 segundos. No detenerse demasiado, el siguiente slide es más jugoso.
+
+-->
 
 ---
 layout: center
@@ -466,8 +752,8 @@ Una <strong>segunda instancia</strong> del modelo evalúa cada acción.
 </p>
 
 <div class="enemy-card" style="border-left-color: #00ff88;">
-<div class="enemy-number" style="color: #00ff88;">🛡️</div>
-<h3 class="text-accent">Anti prompt-injection</h3>
+<div class="enemy-number" style="color: #00ff88;">🛡</div>
+<h3 style="color: var(--accent) !important;">Anti prompt-injection</h3>
 <p style="margin-top: 0.5rem;">
 El classifier <strong>deliberadamente NO ve</strong> la prosa persuasiva del agente. Solo ve la acción cruda:
 </p>
@@ -479,11 +765,43 @@ No puede ser convencido por palabras. Porque no las lee.
 </p>
 </div>
 
-<p class="handwritten" style="margin-top: 2rem; text-align: center;">
+<p class="handwritten text-muted" style="margin-top: 2rem; text-align: center;">
 esa técnica costó años a Anthropic → ahora está en GitHub
 </p>
 
 </div>
+
+<!--
+# SLIDE 13 · Classifier independiente (16-17 min)
+
+## ESTE ES UN SLIDE CRUCIAL
+Preparar el terreno para el tercer enemigo del Acto 3 (prompt injection).
+
+## Texto sugerido
+> "Esta capa es mi favorita. El classifier independiente. Resulta que cuando
+> Claude Code quiere ejecutar una acción peligrosa, la acción no la autoriza
+> el mismo agente. La autoriza una SEGUNDA instancia del modelo, corriendo
+> en paralelo. Y acá viene lo brillante: ese classifier DELIBERADAMENTE
+> no ve la prosa del agente. Solo ve la acción cruda. 
+> 
+> ¿Por qué? Porque la prosa podría ser manipulada. Un atacante podría
+> convencer al modelo con palabras bonitas: 'necesito enviar este archivo
+> al servidor para ayudarte'. Pero el classifier no lee palabras. Solo ve
+> 'bash: curl a servidor.malicioso.com'. Y dice no.
+> 
+> No puede ser convencido por palabras. Porque no las lee."
+
+## Puntos críticos
+- **"La prosa no se lee" es la innovación clave**
+- Esto se reconecta con el enemigo #3 del Acto 3 (prompt injection)
+- **"Esa técnica costó años a Anthropic y ahora está en GitHub"**
+
+## Valor pedagógico
+Los estudiantes van a entender que la seguridad en agentes de IA no es
+"confiar en el modelo" sino "diseñar capas que no dependan del modelo".
+Ese mindset de defensa en profundidad es oro puro.
+
+-->
 
 ---
 
@@ -518,10 +836,33 @@ esa técnica costó años a Anthropic → ahora está en GitHub
 
 </div>
 
-<p class="quote-ancla" style="margin-top: 3rem; text-align: center; border-left: none; font-size: 1.75rem; max-width: 100%;">
+<p class="quote-ancla" style="margin-top: 3rem; text-align: center; border-left: none; font-size: 1.5rem; max-width: 100%;">
 Este es el <span class="text-accent">regalo pedagógico</span>.<br>
-Ahora lo podés leer, replicar y adaptar.
+Ahora podés leerlo, replicarlo y adaptarlo.
 </p>
+
+<!--
+# SLIDE 14 · Capas 5-6-7 (17-18 min)
+
+## Texto sugerido
+> "Las últimas tres capas, rápido para no quedarnos atascados.
+> Cinco: gestión inteligente de contexto, cinco estrategias de compactación
+> cuando se llena la ventana. Seis: subagentes paralelos, delegación con
+> contexto aislado. Siete: sandbox a nivel del sistema operativo, aislamiento
+> que protege incluso si algo sale mal.
+> 
+> Pero lo importante no es cada capa. Lo importante es esto: todo esto,
+> que una empresa construyó durante años, ahora está documentado públicamente.
+> Es el regalo pedagógico. Ahora podés leerlo, replicarlo y adaptarlo."
+
+## Punto ancla
+**"El regalo pedagógico"** — este framing debe quedar grabado.
+
+## Cadencia
+30-40 segundos. Acá cerramos el Acto 1.
+Siguiente slide = transición al Acto 2.
+
+-->
 
 ---
 layout: center
@@ -535,11 +876,27 @@ class: 'transition-slide'
 $ ollama run gemma4:26b
 </p>
 
+<!--
+# SLIDE 15 · Transición al Acto 2 (18 min)
+
+## Contexto
+Slide de descanso visual. Separador dramático. 10 segundos.
+
+## Texto sugerido
+> "Hasta acá hablamos de qué hicieron las empresas grandes.
+> Ahora hablemos de qué pueden hacer ustedes hoy."
+
+## Gesto
+Pausa breve. Tomar aire. El ritmo de la charla cambia aquí
+de expositivo a demostrativo.
+
+-->
+
 ---
 layout: center
 ---
 
-<div class="big-number" style="font-size: clamp(3.5rem, 9vw, 7rem);">
+<div class="big-number" style="font-size: clamp(3rem, 8vw, 6rem);">
 26,000,000,000
 </div>
 <div class="big-number-subtitle">parámetros en Gemma 4 26B MoE</div>
@@ -549,15 +906,42 @@ layout: center
   <div style="margin-top: 0.5rem;">ningún laptop consumer puede cargar eso</div>
 </div>
 
-<p class="handwritten" style="margin-top: 3rem; color: #00ff88; font-size: 2rem;">
+<p class="handwritten text-accent" style="margin-top: 3rem; font-size: 2rem;">
 ¿Cómo corre en este laptop entonces? →
 </p>
+
+<!--
+# SLIDE 16 · 26 mil millones de parámetros (18-20 min)
+
+## Texto sugerido
+> "Antes del demo, un número que tienen que entender.
+> Gemma 4 26B tiene veintiséis mil millones de parámetros.
+> Veintiséis mil millones de números que el modelo aprendió durante
+> su entrenamiento.
+> 
+> ¿Cuánto pesa eso? Cada parámetro, en su formato original de 16 bits,
+> ocupa 2 bytes. Multipliquen: son cincuenta y dos gigabytes solo de pesos.
+> Ningún laptop consumer puede cargar eso en memoria. Entonces... ¿cómo
+> está corriendo en este laptop? La respuesta es una palabra:
+> cuantización."
+
+## Puntos críticos
+- **Decir el número en voz alta:** "veintiséis mil millones"
+- **Pausar después de "52 GB"** — dejar que la imposibilidad se sienta
+- **Cliffhanger:** "¿cómo corre entonces?" → siguiente slide responde
+
+## Por qué importa
+Este es el setup para entender cuantización. Sin este slide, la siguiente
+tabla es abstracta. Con este slide, la cuantización se siente como un
+truco mágico necesario.
+
+-->
 
 ---
 
 # Cuantización — la técnica que hizo posible la IA local
 
-<div style="margin-top: 2rem;">
+<div style="margin-top: 1rem;">
 
 <table class="comparison-table">
   <thead>
@@ -604,10 +988,34 @@ layout: center
 
 </div>
 
-<p class="quote-ancla" style="margin-top: 2rem; font-size: 1.5rem; max-width: 100%;">
-Sin cuantización, los modelos open source vivirían en data centers.<br>
+<p class="quote-ancla" style="margin-top: 1.5rem; font-size: 1.3rem; max-width: 100%;">
+Sin cuantización, los modelos vivirían en data centers.<br>
 <span class="text-accent">Con cuantización, viven en tu Lenovo.</span>
 </p>
+
+<!--
+# SLIDE 17 · Tabla de cuantización (20-21 min)
+
+## Texto sugerido
+> "Cuantizar significa reducir la precisión de cada peso.
+> En lugar de guardar un número decimal completo en 16 bits, guardamos
+> una versión aproximada que cabe en menos bits. Es como comprimir una foto.
+> 
+> Miren la fila resaltada: Q4 K M. Cuatro bits por peso. El modelo baja
+> de 52 gigabytes a 17. Y perdemos solo 2 o 3 por ciento de calidad.
+> A cambio, entra en un laptop. Sin cuantización, los modelos vivirían
+> en data centers. Con cuantización, viven en tu Lenovo."
+
+## Puntos clave
+- **Q4_K_M es el sweet spot** (la fila resaltada)
+- **"Viven en tu Lenovo"** es una frase que reivindica al héroe del Acto 1
+- No entrar en detalles de qué significa "K_M" (se puede explicar en Q&A)
+
+## Gesto
+Señalar la fila resaltada de Q4_K_M al mencionarla.
+Pausa después de "viven en tu Lenovo".
+
+-->
 
 ---
 layout: center
@@ -636,24 +1044,62 @@ sin internet, en segundos.
 </div>
 
 <!--
-[DEMO]
-En terminal: claude-local gemma4:26b
+# SLIDE 18 · Demo en vivo (21-26 min)
 
-Prompt:
-> Crea una landing page moderna para el Simposio UPTC 2026.
-  Hero section, "Sobre la ponencia", 2 tarjetas de ponentes
-  (Felipe Mantilla y Zabdiel Blanco), footer.
-  HTML + CSS vanilla, estilo minimalista oscuro.
+## ESTE ES EL MOMENTO CLAVE DE LA PONENCIA
 
-[ACCIÓN] Abrir el archivo en el browser.
-[PAUSA] 10 segundos. La audiencia ve sus nombres en la página.
+## Setup previo
+- El laptop debe tener `claude-local gemma4:26b` ya ejecutado
+- WiFi SIGUE APAGADO (refrescar si es necesario)
+- Directorio demo limpio: `~/demo-ponencia-uptc`
+
+## Prompt literal (copiable)
+```
+Crea una landing page moderna para el Simposio UPTC 2026 sobre
+IA Open Source. Hero section con título del evento y fecha,
+sección "Sobre la ponencia" con un párrafo corto, sección de
+ponentes con 2 tarjetas (Felipe Mantilla y Zabdiel Blanco),
+footer con info de contacto. HTML + CSS moderno (flexbox/grid),
+sin frameworks. Guardalo en un archivo simposio.html.
+Estilo minimalista oscuro, tipografía legible.
+```
+
+## Acciones escénicas
+1. Un ponente escribe el prompt
+2. El otro narra mientras Gemma genera (NO dejar silencio muerto):
+   > "Noten que no tengo internet. Si abro una pestaña, no carga.
+   > Gemma 4 está corriendo en los 17 GB de memoria de este laptop,
+   > sin comunicarse con nadie. Está generando HTML y CSS real,
+   > no código de Stack Overflow copiado. Real. Acá. Ahora."
+3. Cuando termine: `open simposio.html` para abrir en navegador
+4. PAUSAR 10 segundos. Dejar que la audiencia vea la página con
+   sus nombres en ella.
+
+## Opcional si hay tiempo (y si fluye bien)
+Pedirle una iteración:
+```
+Perfecto. Agregá una sección "Enemigos del viaje" antes del footer
+con 3 tarjetas: Over-Engineering, Slopsquatting, Prompt Injection.
+Conservá el estilo.
+```
+
+## Backup si algo falla
+- Si Gemma tarda >60s: cambiar narración a "pre-caliento del modelo"
+- Si falla completamente: mostrar el video backup grabado antes
+- Si la página se ve mal: decir "así es como generó la primera vez,
+  en producción pedirías una revisión — la haríamos en otra iteración"
+
+## Puntos de cierre del demo
+> "Sin internet. Sin pagar. Sin datos saliendo. Hace dos años esto
+> era ciencia ficción. Hoy corre en un laptop."
+
 -->
 
 ---
 
 # Requerimientos de hardware — accesibilidad real
 
-<p class="text-muted" style="margin-bottom: 2rem;">
+<p class="text-muted" style="margin-bottom: 1.5rem;">
 El laptop del demo es un MacBook Pro M5 Max. Pero Gemma 4 viene en 4 tamaños:
 </p>
 
@@ -676,7 +1122,7 @@ El laptop del demo es un MacBook Pro M5 Max. Pero Gemma 4 viene en 4 tamaños:
       <td>Cualquier laptop de los últimos 5 años</td>
     </tr>
     <tr class="highlight">
-      <td><strong>Gemma 4 E4B</strong> <span class="text-accent text-sm">← el punto de entrada</span></td>
+      <td><strong>Gemma 4 E4B</strong> <span class="text-accent text-sm">← punto de entrada</span></td>
       <td>4 GB</td>
       <td class="price-free">8 GB</td>
       <td>70-100</td>
@@ -699,10 +1145,41 @@ El laptop del demo es un MacBook Pro M5 Max. Pero Gemma 4 viene en 4 tamaños:
   </tbody>
 </table>
 
-<p class="quote-ancla" style="margin-top: 2rem; font-size: 1.25rem; max-width: 100%;">
+<p class="quote-ancla" style="margin-top: 1.5rem; font-size: 1.2rem; max-width: 100%;">
 Corran <span class="text-accent">Gemma 4B</span> en el laptop que ya tienen.<br>
 Eso ya es más poder del que tenían ayer.
 </p>
+
+<!--
+# SLIDE 19 · Requerimientos de hardware (26-27 min)
+
+## ESTE SLIDE ES CRÍTICO PARA EVITAR EXCLUSIÓN
+Felipe específicamente pidió que no se sienta que "solo corre en hardware caro".
+
+## Texto sugerido (honesto y directo)
+> "Ahora, les debemos una aclaración honesta. El laptop del demo no es
+> cualquier laptop — es un MacBook Pro M5 Max con 36 GB. Tenemos que
+> decirlo porque no queremos que se vayan pensando que esto solo corre
+> en hardware caro. La verdad es más matizada.
+> 
+> Gemma 4 viene en cuatro tamaños. Miren la fila resaltada: Gemma 4 E4B,
+> el punto de entrada. Pesa 4 gigabytes. Corre en 8 gigabytes de RAM.
+> Un Lenovo ThinkPad de gama media. Un Dell Inspiron normal. Incluso
+> un Mac Air base. Genera código con calidad suficiente para el 80 por
+> ciento de las tareas diarias de un desarrollador."
+
+## FRASE ANCLA (decir textual)
+> **"No les estamos diciendo que corran el 26B en un laptop de 8 gigas.
+> Les estamos diciendo que corran el 4B en el laptop que ya tienen.
+> Y que eso ya es más poder del que tenían ayer."**
+
+## Puntos obligatorios
+- Reconocer explícitamente que el demo usó un Mac caro
+- **Señalar E4B como "el punto de entrada"**
+- Cuantificar: "el 80% de tareas diarias"
+- Cerrar con "el laptop que ya tienen" (reivindica al héroe UPTC)
+
+-->
 
 ---
 layout: center
@@ -754,9 +1231,30 @@ layout: center
 </table>
 
 <p class="quote-ancla" style="margin-top: 3rem; text-align: center; border-left: none; font-size: 1.75rem; max-width: 100%;">
-El ticket de entrada a esta economía<br>
+El ticket de entrada<br>
 acaba de bajar a <span class="text-accent">cero</span>.
 </p>
+
+<!--
+# SLIDE 20 · El ticket bajó a cero (27-28 min)
+
+## Texto sugerido
+> "Miren la comparación. Claude Code Max, doscientos dólares al mes.
+> Cursor, veinte. Copilot, diez. ChatGPT, veinte. Gemma 4 en Ollama,
+> cero. Para siempre. Sin internet. Sin datos saliendo. Sin dependencia
+> de un servidor ajeno.
+> 
+> El ticket de entrada a esta economía acaba de bajar a cero.
+> Y eso incluye a todos en esta sala — con el laptop que tengan hoy."
+
+## Punto ancla
+**"El ticket bajó a cero"** — esta frase cierra el Acto 2 emocionalmente.
+
+## Cadencia
+Tono declarativo. No es pregunta, es afirmación.
+Pausa después. Transición al Acto 3.
+
+-->
 
 ---
 layout: center
@@ -770,6 +1268,29 @@ class: 'transition-slide'
 Conocer a los enemigos no es debilidad.<br>
 Es lo que te vuelve competente.
 </p>
+
+<!--
+# SLIDE 21 · Transición al Acto 3 (28-29 min)
+
+## ATENCIÓN AL CAMBIO DE TONO
+El tono cambia. De esperanza empoderadora a alerta constructiva.
+Pero NO miedo paralizante. NO catastrofismo.
+
+## Texto sugerido
+> "Hasta acá les mostramos el poder. Ahora les toca la otra mitad:
+> las trampas. Los enemigos. Las cosas que si no las reconocen, los
+> pueden quemar.
+> 
+> No les estamos mostrando esto para asustarlos. Les estamos mostrando
+> esto porque reconocer a los enemigos del viaje es lo que los vuelve
+> competentes. El estudiante que sale de acá sabiendo que estos existen
+> vale más en el mercado que el que no. Así de simple."
+
+## Regla del 60/40 del Acto 3
+Cada golpe oscuro (slides de enemigo) debe ir SEGUIDO de una defensa.
+Nunca un enemigo en pantalla sin su antídoto visible.
+
+-->
 
 ---
 layout: center
@@ -789,6 +1310,29 @@ layout: center
   </div>
 </div>
 
+<!--
+# SLIDE 22 · Enemigo 1 · Over-Engineering (29-30 min)
+
+## Texto sugerido
+> "El primer enemigo es el más común y el más sutil: el Demonio del
+> Over-Engineering. Le pedís a la IA que haga una función simple —
+> validar un email. Y te responde con una clase abstracta, un patrón
+> Factory, tres niveles de herencia, manejo de internacionalización
+> para 27 idiomas, y tests unitarios para casos que nunca van a ocurrir.
+> 
+> Y acá está la trampa: el código funciona. Se ve profesional.
+> Te hace sentir productivo. Mientras destruye tu codebase con
+> complejidad innecesaria que nadie va a mantener."
+
+## Defensa (decir textual)
+> **"La defensa es simple: pedí código mínimo. Si la IA te da de más,
+> bórralo. Tu criterio es el control de calidad."**
+
+## Gesto
+Señalar la línea "Defensa" en el slide mientras se dice.
+
+-->
+
 ---
 layout: center
 ---
@@ -796,7 +1340,7 @@ layout: center
 <div style="text-align: center;">
 
 <div class="text-sm text-muted" style="letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1rem;">
-Estudio METR · 2025 · RCT con 16 devs open source
+Estudio METR · 2025 · 16 devs · RCT
 </div>
 
 <div class="grid-2" style="gap: 4rem; max-width: 900px; margin: 2rem auto;">
@@ -821,6 +1365,41 @@ incluso cuando <span class="text-danger">no lo estás siendo</span>.
 
 </div>
 
+<!--
+# SLIDE 23 · El estudio METR (30-31 min)
+
+## Texto sugerido
+> "Y tengo el dato más inquietante de todos. METR — una organización
+> de evaluación de IA — hizo en 2025 el estudio más riguroso sobre
+> productividad con IA. Dieciséis desarrolladores open source
+> experimentados. Un experimento controlado aleatorizado. La mitad
+> usaron IA, la mitad no.
+> 
+> Resultado objetivo: los que usaron IA fueron DIECINUEVE POR CIENTO
+> MÁS LENTOS. Pasaron más tiempo limpiando over-engineering, validando,
+> y deshaciendo.
+> 
+> Pero acá viene la parte que duele. Esos mismos desarrolladores,
+> encuestados, reportaron haber sido VEINTICUATRO POR CIENTO MÁS RÁPIDOS.
+> Cuarenta y tres puntos de brecha entre lo que sintieron y lo que
+> realmente pasó.
+> 
+> La IA te hace sentir productivo incluso cuando no lo estás siendo.
+> Esa es la trampa."
+
+## PUNTOS NO NEGOCIABLES
+- Decir **"METR"** por nombre (da credibilidad)
+- **"Dieciséis desarrolladores"** + **"experimento controlado"** (rigor)
+- **-19% vs +24%** con pausa entre los dos
+- **"43 puntos de brecha"**
+
+## Gesto
+Después de decir los números, hacer un silencio de 3 segundos.
+Dejar que la audiencia procese. Es uno de los datos más memorables
+de toda la ponencia.
+
+-->
+
 ---
 layout: center
 ---
@@ -838,6 +1417,32 @@ layout: center
     🛡 Defensa: <strong>Verificá cada paquete antes de instalar. 15 segundos salvan el proyecto.</strong>
   </div>
 </div>
+
+<!--
+# SLIDE 24 · Enemigo 2 · Slopsquatting (31-32 min)
+
+## Texto sugerido
+> "Segundo enemigo: más técnico y más caro. Se llama slopsquatting.
+> Los modelos de IA, cuando les pedís que recomienden paquetes para
+> instalar — en pip, en npm, en cargo — a veces ALUCINAN nombres
+> que no existen. La IA inventa un nombre que suena real.
+> 
+> Los atacantes se dieron cuenta de esto. Ahora REGISTRAN esos nombres
+> alucinados en los repositorios públicos con payloads maliciosos.
+> Cuando un desarrollador le pide a la IA un script para procesar
+> imágenes, y la IA le sugiere un paquete inventado, pip install
+> baja el malware directamente en la máquina del desarrollador."
+
+## Defensa
+> **"Defensa: quince segundos de desconfianza.
+> Antes de instalar un paquete sugerido por IA,
+> verificá en pypi.org o npmjs.com que existe con historial.
+> Mirá las descargas. Mirá el autor. Quince segundos salvan un proyecto."**
+
+## Flujo
+Este slide prepara el siguiente, que es el caso huggingface-cli.
+
+-->
 
 ---
 layout: center
@@ -870,6 +1475,32 @@ layout: center
 
 </div>
 
+<!--
+# SLIDE 25 · Caso huggingface-cli (32-33 min)
+
+## Texto sugerido
+> "Caso real. La IA alucinaba constantemente el nombre 'huggingface-cli' —
+> un paquete que NO existía. Un investigador de seguridad lo registró
+> como prueba de concepto, sin malware, solo para contar descargas.
+> En tres meses: MÁS DE TREINTA MIL descargas REALES.
+> 
+> Treinta mil desarrolladores ejecutaron un paquete recomendado por IA
+> que no había existido antes de que un atacante lo creara. Si ese
+> paquete hubiera sido malicioso, treinta mil máquinas estarían
+> comprometidas ahora mismo."
+
+## PUNTO DE IMPACTO
+- **"TREINTA MIL descargas"** — enfatizar
+- **"Treinta mil máquinas comprometidas"** — dejar que la imagen caiga
+
+## Conexión
+Es un caso real + verificable. Felipe debe saber que si alguien pregunta
+"¿cómo se llama el investigador?", la respuesta es Bar Lanyado
+(investigador de Lasso Security). Pero no es necesario mencionar
+el nombre si no preguntan.
+
+-->
+
 ---
 layout: center
 ---
@@ -889,6 +1520,33 @@ layout: center
   </div>
 </div>
 
+<!--
+# SLIDE 26 · Enemigo 3 · Prompt Injection (33-35 min)
+
+## Texto sugerido
+> "Tercer enemigo: el más difícil de detectar porque es INVISIBLE a
+> simple vista. Se llama prompt injection indirecto.
+> 
+> La idea: un atacante escribe instrucciones maliciosas escondidas en
+> un README de GitHub, en un docstring de Python, en los comentarios de
+> un archivo de configuración. Texto perfectamente normal para un humano.
+> Pero cuando la IA lee ese archivo como contexto, lo interpreta como
+> INSTRUCCIONES VÁLIDAS. Y las ejecuta en tu nombre. Sin que vos sepas."
+
+## Defensa — reconexión con Acto 1
+> **"¿Y la defensa? Acá es donde la filtración de Claude Code se vuelve
+> regalo. Anthropic implementa un classifier INDEPENDIENTE que NO ve
+> la prosa del agente. Solo ve la acción cruda. No puede ser convencido
+> por palabras. Esa técnica — que costó a Anthropic años de investigación —
+> ahora está documentada en GitHub. Pueden leerla. Pueden replicarla.
+> Pueden implementarla en sus propios agentes."**
+
+## Valor pedagógico
+Este slide cierra el bucle narrativo: el Acto 1 mostró el classifier
+como "capa 4", y ahora el Acto 3 muestra POR QUÉ existe esa capa.
+
+-->
+
 ---
 layout: center
 ---
@@ -906,7 +1564,7 @@ Una herramienta popular para que la IA mande emails.
 </p>
 
 <p class="text-lg" style="margin-top: 1rem;">
-Instrucciones ocultas en su config hicieron que <strong>todos los emails enviados</strong> fueran copiados por <code>BCC</code> a un atacante.
+Instrucciones ocultas en su config hicieron que <strong>todos los emails</strong> fueran copiados por <code>BCC</code> a un atacante.
 </p>
 
 <div style="margin-top: 2rem; padding: 2rem; background: var(--bg-card); border-left: 4px solid var(--danger); text-align: left;">
@@ -923,6 +1581,33 @@ En silencio. Durante semanas.
 
 </div>
 
+<!--
+# SLIDE 27 · Caso Postmark MCP (35-37 min)
+
+## Texto sugerido
+> "Y tengo un caso real, reciente. Septiembre del año pasado. Una
+> herramienta llamada Postmark MCP — permite que la IA mande emails —
+> tenía instrucciones ocultas en su configuración que hacían que TODOS
+> los emails enviados fueran copiados por BCC a un atacante.
+> 
+> Emails confidenciales. Credenciales. Reportes internos. Todo copiado.
+> Durante SEMANAS. El usuario no vio nada. La interfaz no mostró nada.
+> La IA hizo exactamente lo que el atacante le pidió, en silencio."
+
+## Cadencia
+Tono grave. Sin sonar catastrófico, pero serio.
+Este es el punto más oscuro de la ponencia.
+
+## PAUSA CRÍTICA
+Después de "durante semanas", pausar 3-4 segundos.
+Dejar que la imagen se asiente antes de ir al cierre del Acto 3.
+
+## Lo siguiente
+El próximo slide (la frase-tesis) es LA recompensa. La audiencia
+acaba de atravesar los tres enemigos y está listos para la esperanza.
+
+-->
+
 ---
 layout: center
 ---
@@ -930,7 +1615,7 @@ layout: center
 <div style="max-width: 1100px;">
 
 <p class="text-sm text-accent" style="letter-spacing: 0.3em; text-transform: uppercase; text-align: center; margin-bottom: 2rem;">
-Cierre Acto III · La tesis de todo esto
+Cierre Acto III · La tesis
 </p>
 
 <h1 style="text-align: center; font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.2;">
@@ -949,6 +1634,36 @@ Critical thinkers.
 
 </div>
 
+<!--
+# SLIDE 28 · Frase-tesis (37-39 min)
+
+## ESTE ES EL MOMENTO MÁS IMPORTANTE DE LA PONENCIA
+
+## Texto sugerido (casi ceremonial)
+> "Entonces, volvamos al estudiante del que hablamos al inicio.
+> El que entró a esta sala con la duda existencial de si cuatro años
+> de carrera le iban a servir para algo. La respuesta a esa duda es esta:
+> 
+> Ya no necesitamos ser solo buenos programadores. Necesitamos ser
+> problem solvers. Critical thinkers. [PAUSA] Pensar más. Programar menos.
+> 
+> La IA no te está reemplazando. Está reemplazando a la PARTE de tu
+> trabajo que era mecánica. Y está amplificando la parte que era CRITERIO.
+> Si vos desarrollaste criterio en cuatro años de carrera — y lo
+> desarrollaron — la IA los vuelve MÁS valiosos, no menos."
+
+## PUNTOS NO NEGOCIABLES
+- **"Pensar más. Programar menos."** — decirlo como un mantra
+- **PAUSA** entre "critical thinkers" y "pensar más"
+- Conectar de vuelta con el "héroe" del Acto 1
+
+## Gesto recomendado
+Separarse del laptop. Caminar al centro del escenario.
+Mirar a la audiencia directo. Bajar la voz.
+Este es el momento de más intensidad emocional.
+
+-->
+
 ---
 layout: center
 class: 'transition-slide'
@@ -956,6 +1671,17 @@ class: 'transition-slide'
 
 <div class="act-label">Cierre</div>
 <h1 class="act-title">El elixir<br>comunitario</h1>
+
+<!--
+# SLIDE 29 · Transición al cierre (39 min)
+
+## Contexto
+Slide de respiro antes del cierre. 5 segundos.
+
+## Si dicen algo
+> "Una última cosa antes de cerrar."
+
+-->
 
 ---
 
@@ -983,19 +1709,42 @@ Es un movimiento de <span class="text-accent">personas</span>.
 
 <div style="display: flex; flex-direction: column; justify-content: center;">
 
-<p class="quote-ancla" style="max-width: 100%;">
+<p class="quote-ancla" style="max-width: 100%; font-size: 1.4rem;">
 No necesitás permiso para entrar.<br>
 No necesitás tarjeta de crédito.<br>
 No necesitás ser de una universidad famosa.<br>
 <br>
-<span class="text-accent">Necesitás curiosidad</span><br>
-<span class="text-accent">y el criterio que les dieron</span><br>
-<span class="text-accent">estos cuatro años.</span>
+<span class="text-accent">Necesitás curiosidad<br>
+y el criterio que les dieron<br>
+estos cuatro años.</span>
 </p>
 
 </div>
 
 </div>
+
+<!--
+# SLIDE 30 · El elixir comunitario (39-42 min)
+
+## Texto sugerido (tono íntimo)
+> "Esto no es Silicon Valley. Todo lo que vimos — los modelos open source,
+> Ollama, Claude Code filtrado, Claw-Code — no es un movimiento corporativo.
+> Es un movimiento de personas. Muchas son estudiantes. Muchas usan laptops
+> modestos. Muchas están en países donde veinte dólares al mes es mucha plata.
+> 
+> La comunidad open source es, literalmente, la cosa más democrática que
+> existe en tecnología hoy. No necesitan permiso para entrar. No necesitan
+> tarjeta de crédito. No necesitan ser de una universidad famosa. Necesitan
+> curiosidad. Y el criterio que les dieron estos cuatro años."
+
+## Punto crítico
+**"El criterio que les dieron estos cuatro años"** — reivindicación final
+de la carrera de Ingeniería de Sistemas. Les devuelve el valor del título.
+
+## Tono
+Íntimo. Casi en confidencia. Mirar a ojos, no a la audiencia como masa.
+
+-->
 
 ---
 layout: center
@@ -1007,8 +1756,7 @@ layout: center
 
 <div style="display: flex; gap: 4rem; justify-content: center; align-items: center; margin-top: 2rem;">
   <div style="padding: 2rem; background: white; border-radius: 12px;">
-    <!-- QR placeholder - generar con herramienta real apuntando al repo -->
-    <div style="width: 240px; height: 240px; background: #0a0a0a; display: flex; align-items: center; justify-content: center; color: white; font-family: monospace;">
+    <div style="width: 240px; height: 240px; background: #0a0a0a; display: flex; align-items: center; justify-content: center; color: white; font-family: monospace; border: 8px solid white;">
       [QR CODE]
     </div>
   </div>
@@ -1023,12 +1771,39 @@ layout: center
   </div>
 </div>
 
-<p class="quote-ancla" style="margin-top: 4rem; border-left: none; text-align: center; max-width: 100%; font-size: 2rem;">
+<p class="quote-ancla" style="margin-top: 3rem; border-left: none; text-align: center; max-width: 100%; font-size: 1.75rem;">
 Tu primer commit a este mundo<br>
 está a un <code>git clone</code> de distancia.
 </p>
 
 </div>
+
+<!--
+# SLIDE 31 · QR al repo (42-43 min)
+
+## IMPORTANTE
+Este slide necesita el QR REAL generado.
+Ver README.md para instrucciones de generación.
+
+## Texto sugerido
+> "Todo lo que escucharon hoy — los documentos técnicos, los scripts,
+> el guion de esta ponencia, las referencias a los estudios que
+> citamos — está en este repositorio de GitHub. Público. Gratis.
+> Y está en español. Escaneen el QR ahora si quieren, con el celular.
+> [Pausa de 8-10 segundos para que escaneen.]
+> 
+> Su primer commit a este mundo está a un git clone de distancia."
+
+## Gesto
+Después de decir la frase, dejar el slide en pantalla durante
+8-10 segundos para que la audiencia escanee. Mantener contacto visual.
+
+## Si preguntan después
+- Repo: github.com/enruana/simposio-uptc-abril-2026
+- Todo bajo licencia abierta
+- Contribuciones bienvenidas
+
+-->
 
 ---
 layout: center
@@ -1036,18 +1811,17 @@ layout: center
 
 <div class="flex-center" style="flex-direction: column; height: 100vh;">
 
-<!-- Logo "respirando" con animación CSS -->
 <div class="breathing-logo" style="font-family: var(--font-mono); font-size: 6rem; color: var(--accent); letter-spacing: -0.05em;">
   {·}
 </div>
 
 <div style="margin-top: 6rem; text-align: center; max-width: 800px;">
 
-<p class="font-serif" style="font-size: clamp(3rem, 6vw, 4.5rem); color: var(--text-primary); line-height: 1.1;">
+<p class="font-serif" style="font-size: clamp(2.5rem, 5vw, 4rem); color: var(--text-primary); line-height: 1.1;">
 Porque nunca fue programar.
 </p>
 
-<p class="font-serif text-accent" style="font-size: clamp(3rem, 6vw, 4.5rem); margin-top: 1.5rem; font-style: italic;">
+<p class="font-serif text-accent" style="font-size: clamp(2.5rem, 5vw, 4rem); margin-top: 1.5rem; font-style: italic;">
 Fue pensar.
 </p>
 
@@ -1056,10 +1830,37 @@ Fue pensar.
 </div>
 
 <!--
-[ACCIÓN] Fade to black después de 10 segundos.
-Los ponentes dan un paso atrás.
-Breve inclinación.
-Se quedan para las preguntas.
+# SLIDE 32 · Cierre final (43-45 min)
+
+## EL GESTO MÁS IMPORTANTE DE LA PONENCIA
+
+## Acciones
+1. El logo `{·}` está respirando con animación CSS
+2. Los ponentes se paran en silencio 5-8 segundos
+3. Un ponente se acerca al micro
+4. Dice la frase casi en susurro (que llega por el micro)
+
+## Texto textual (casi literal, sin cambios)
+> **"Porque nunca fue programar."**
+>
+> [Pausa de 3 segundos]
+>
+> **"Fue pensar."**
+
+## Después
+- Fade to black (o dejar la pantalla)
+- Paso atrás de ambos ponentes
+- Breve inclinación de cabeza
+- Se quedan en escenario para las preguntas
+
+## Sobre la frase
+Esta es la frase final. Es la destilación poética de la tesis del Acto 3.
+No es repetición — es eco minimalista. La tesis del Acto 3 es la consigna
+profesional. Esta es el mantra.
+
+## Si hay aplauso antes de que digas la frase final
+Dejar que pase. Ajustar el timing.
+
 -->
 
 ---
@@ -1083,3 +1884,40 @@ Preguntas →
 </p>
 
 </div>
+
+<!--
+# SLIDE 33 · Gracias / Q&A (45 min+)
+
+## Uso
+Este slide queda en pantalla durante las preguntas del público.
+
+## Preguntas probables y respuestas base
+
+### "¿Cuál es el laptop mínimo que recomiendan?"
+> "Cualquiera con 8 GB de RAM y SSD. Probamos en un Lenovo ThinkPad de
+> gama media y funciona. El punto de entrada realista es Gemma 4 E4B
+> que pesa 4 GB y corre en 8 GB de RAM."
+
+### "¿Cuánto tarda instalar todo?"
+> "Ollama: 2 minutos. Descargar Gemma 4 E4B: lo que tarde la conexión
+> (son 3 GB). Claude Code: 1 minuto. Total: 15 minutos con buena conexión."
+
+### "¿La calidad comparada con GPT-5 o Claude Opus?"
+> "Para tareas de código general, Gemma 4 26B está al 85-90% de calidad.
+> Para razonamiento complejo, todavía hay brecha. Pero la brecha se cierra
+> cada 3-6 meses."
+
+### "¿Pueden compartir el guion?"
+> "Sí, todo está en el repositorio. El guion, los fundamentos técnicos,
+> las referencias. Link en el slide anterior."
+
+### "¿Y si la IA me reemplaza igual?"
+> "La IA reemplaza la parte mecánica del trabajo. La parte de pensar,
+> de validar, de decidir arquitectura, de entender contexto de negocio,
+> de comunicarse con humanos — eso sigue siendo nuestro. Y eso es lo
+> que están formando ustedes acá."
+
+## Cierre del Q&A
+Agradecer a los profesores, a la UPTC, al organizador del simposio.
+
+-->
