@@ -401,6 +401,22 @@ code {
   border-color: var(--accent);
 }
 
+.nav-controls button.btn-presenter {
+  background: rgba(0, 255, 136, 0.15);
+  color: var(--accent);
+  border-color: var(--accent);
+  font-weight: 600;
+}
+
+.nav-controls button.btn-presenter:hover {
+  background: rgba(0, 255, 136, 0.25);
+}
+
+.nav-controls button.btn-presenter.active {
+  background: var(--accent);
+  color: var(--bg-primary);
+}
+
 .nav-counter {
   color: var(--accent);
   font-family: var(--font-mono);
@@ -1070,41 +1086,45 @@ img { max-width: 100%; height: auto; }
   </div>
 
   <!-- Prompt visible en pantalla -->
-  <div class="code-card" style="max-width: 900px; margin: 2rem auto 0; text-align: left;">
+  <div class="code-card" style="max-width: 950px; margin: 1.5rem auto 0; text-align: left;">
     <div class="code-header">
       <span class="code-dot red"></span>
       <span class="code-dot yellow"></span>
       <span class="code-dot green"></span>
       <span class="code-title">claude-local gemma4:26b — prompt del demo</span>
     </div>
-    <div class="code-body" style="font-size: 0.9rem; line-height: 1.75;">
-<span class="text-accent">&gt;</span> Crea una landing page moderna para el <strong class="text-accent">Simposio UPTC 2026</strong>
-  sobre IA Open Source. Incluye:
+    <div class="code-body" style="font-size: 0.85rem; line-height: 1.7;">
+<span class="text-accent">&gt;</span> Usá la herramienta <strong class="text-accent">Write</strong> para crear los siguientes archivos:
 
-  - Hero section con el título del evento y la fecha (abril 2026)
-  - Sección "Sobre la ponencia" con un párrafo corto
-  - Sección de ponentes con 2 tarjetas:
-      · <strong class="text-accent">Felipe Mantilla</strong>
-      · <strong class="text-accent">Zabdiel Blanco</strong>
-  - Footer con información de contacto
+  <strong class="text-accent">1. simposio.html</strong> — con estas secciones:
+     · Hero con el título del evento "Simposio UPTC 2026" y fecha abril 2026
+     · Sección "Sobre la ponencia" con un párrafo corto
+     · Sección de ponentes con 2 tarjetas (<strong class="text-accent">Felipe Mantilla</strong>, <strong class="text-accent">Zabdiel Blanco</strong>)
+     · Footer con info de contacto
+     · Link al CSS externo (style.css)
 
-  Usa HTML + CSS moderno (flexbox/grid), sin frameworks.
-  Guardalo en un solo archivo <code>simposio.html</code>.
-  Estilo minimalista, paleta oscura, tipografía legible.
+  <strong class="text-accent">2. style.css</strong> — con estos estilos:
+     · Paleta oscura (fondo negro, accent verde)
+     · Tipografía sans-serif moderna
+     · Layout con Flexbox y Grid
+     · Cards con hover effect
+     · Responsive para mobile
+
+  Después abrilo en el browser con <code>Bash</code> (<code>open simposio.html</code>).
     </div>
   </div>
 
-  <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem; align-items: center;">
-    <div class="handwritten text-muted" style="font-size: 1.1rem;">
+  <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 1rem; align-items: center;">
+    <div class="handwritten text-muted">
+      🔧 Tools: <span class="text-accent">Write</span> + <span class="text-accent">Bash</span>
+    </div>
+    <div class="handwritten text-muted">·</div>
+    <div class="handwritten text-muted">
       WiFi: <span class="text-danger">off</span>
     </div>
-    <div class="handwritten text-muted" style="font-size: 1.1rem;">·</div>
-    <div class="handwritten text-muted" style="font-size: 1.1rem;">
+    <div class="handwritten text-muted">·</div>
+    <div class="handwritten text-muted">
       Modelo: <span class="text-accent">Gemma 4 26B local</span>
-    </div>
-    <div class="handwritten text-muted" style="font-size: 1.1rem;">·</div>
-    <div class="handwritten text-muted" style="font-size: 1.1rem;">
-      Internet: <span class="text-danger">cero</span>
     </div>
   </div>
 </section>
@@ -1446,9 +1466,10 @@ img { max-width: 100%; height: auto; }
 <!-- Controls -->
 <div class="nav-controls">
   <button onclick="prev()" title="Anterior (←)">◀</button>
-  <span class="nav-counter" id="counter">1 / 33</span>
+  <span class="nav-counter" id="counter">1 / 32</span>
   <button onclick="next()" title="Siguiente (→)">▶</button>
-  <button onclick="toggleNotes()" title="Notas (N)">📝</button>
+  <button onclick="openPresenterWindow()" title="Abrir notas en ventana separada (P)" class="btn-presenter">📺 Notas</button>
+  <button onclick="toggleNotes()" title="Mostrar notas inline (N)">📝</button>
   <button onclick="toggleHelp()" title="Ayuda (?)">?</button>
 </div>
 
@@ -1460,22 +1481,29 @@ img { max-width: 100%; height: auto; }
 
 <!-- Help overlay -->
 <div class="help-overlay" id="helpOverlay" onclick="toggleHelp()">
-  <div class="help-content" onclick="event.stopPropagation()">
-    <h3>Atajos de teclado</h3>
+  <div class="help-content" onclick="event.stopPropagation()" style="max-width: 600px;">
+    <h3>Atajos y modo presentador</h3>
+
+    <div style="background: rgba(0,255,136,0.08); border: 1px solid var(--accent); padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+      <strong class="text-accent">🎤 Para la ponencia:</strong> apretá <code style="background: var(--accent); color: #000; padding: 2px 6px; border-radius: 3px;">P</code> o hacé click en <strong>📺 Notas</strong>. Se abre una ventana nueva con las notas del speaker.
+      <p class="text-sm text-muted" style="margin-top: 0.5rem;">
+        Arrastrá la <strong>ventana principal</strong> al proyector (pantalla completa con F).<br>
+        Mantené la <strong>ventana de notas</strong> en tu laptop.<br>
+        Las dos se sincronizan automáticamente.
+      </p>
+    </div>
+
+    <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">Atajos</h3>
     <table>
       <tr><td>→ / Espacio</td><td>Siguiente slide</td></tr>
       <tr><td>←</td><td>Anterior slide</td></tr>
-      <tr><td>Home</td><td>Primera slide</td></tr>
-      <tr><td>End</td><td>Última slide</td></tr>
-      <tr><td>N</td><td>Mostrar/ocultar notas</td></tr>
+      <tr><td>Home / End</td><td>Primera / última slide</td></tr>
+      <tr><td>P</td><td><strong class="text-accent">Abrir notas en ventana</strong></td></tr>
+      <tr><td>N</td><td>Notas inline (abajo)</td></tr>
       <tr><td>F</td><td>Pantalla completa</td></tr>
       <tr><td>?</td><td>Esta ayuda</td></tr>
       <tr><td>Esc</td><td>Cerrar</td></tr>
     </table>
-    <p class="text-muted text-sm" style="margin-top: 1.5rem;">
-      💡 <strong>Modo presentador:</strong> para ver las notas en un tab separado,
-      abrí <code>presenter.html</code> en otra pestaña.
-    </p>
   </div>
 </div>
 
@@ -1627,13 +1655,28 @@ const SPEAKER_NOTES = {
   'slide-17': {
     title: 'SLIDE 17 · DEMO EN VIVO (21-26 min)',
     html: `
-      <h4>ESTE ES EL MOMENTO CLAVE</h4>
-      <h4>Prompt literal</h4>
-      <blockquote>Crea una landing page moderna para el Simposio UPTC 2026 sobre IA Open Source. Hero section, "Sobre la ponencia", 2 tarjetas de ponentes (Felipe Mantilla y Zabdiel Blanco), footer. HTML + CSS vanilla, estilo minimalista oscuro.</blockquote>
+      <h4>ESTE ES EL MOMENTO CLAVE DE LA PONENCIA</h4>
+      <h4>Prompt literal (pedir tools explícitas)</h4>
+      <blockquote>Usá la herramienta Write para crear:
+1. simposio.html — con Hero ("Simposio UPTC 2026", abril 2026), sección "Sobre la ponencia", sección de ponentes (Felipe Mantilla, Zabdiel Blanco), footer, link al CSS.
+2. style.css — con paleta oscura, tipografía sans moderna, flexbox/grid, cards con hover, responsive.
+Después abrilo con Bash (open simposio.html).</blockquote>
+      <h4>Por qué pedir tools explícitas</h4>
+      <ul>
+        <li>La audiencia ve a Claude Code <strong>usando Write</strong> → entienden que no es ChatGPT escupiendo texto</li>
+        <li>Creando <strong>2 archivos separados</strong> refuerza que puede trabajar en estructura de proyecto real</li>
+        <li>Al final, <strong>Bash</strong> para abrir en browser → el modelo controla el sistema, no solo genera</li>
+      </ul>
       <h4>Narración mientras genera (NO silencio muerto)</h4>
-      <blockquote>"Noten que no tengo internet. Gemma 4 está corriendo en los 17 GB de memoria de este laptop, sin comunicarse con nadie..."</blockquote>
+      <blockquote>"Noten cómo Claude Code está pidiendo permiso para usar Write... le damos permiso. Ahora está creando el HTML. Noten que Gemma 4 está corriendo en 17 GB de memoria de este laptop, sin internet, sin comunicarse con nadie. Después va a pedir permiso para Bash, para abrir el archivo..."</blockquote>
       <h4>Al terminar</h4>
-      <p>Abrir archivo en browser. Pausa de 10 segundos. La audiencia ve sus nombres.</p>
+      <p>Se abre el browser con la landing. Pausa de 10 segundos. La audiencia ve sus nombres en la página.</p>
+      <h4>Plan B si falla</h4>
+      <ul>
+        <li>Gemma tarda >60s: narrar "pre-calentamiento del modelo"</li>
+        <li>Falla completamente: mostrar video backup pre-grabado</li>
+        <li>Se ve mal: "así generó la primera vez — en producción pediríamos revisión"</li>
+      </ul>
     `
   },
   'slide-18': {
@@ -1752,6 +1795,76 @@ function toggleFullscreen() {
   }
 }
 
+// ============ PRESENTER WINDOW ============
+let presenterWindow = null;
+
+function openPresenterWindow() {
+  // Si ya está abierta, traerla al frente
+  if (presenterWindow && !presenterWindow.closed) {
+    presenterWindow.focus();
+    return;
+  }
+
+  const width = 900;
+  const height = 750;
+  // Ubicación: al lado derecho de la pantalla actual
+  const left = (window.screen.availWidth - width) / 2 + 100;
+  const top = 50;
+
+  const features = [
+    `width=${width}`,
+    `height=${height}`,
+    `left=${left}`,
+    `top=${top}`,
+    'menubar=no',
+    'toolbar=no',
+    'location=no',
+    'status=no',
+    'scrollbars=yes',
+    'resizable=yes',
+    'noopener=no',
+    'noreferrer=no'
+  ].join(',');
+
+  presenterWindow = window.open('presenter.html', 'UPTC2026_Presenter', features);
+
+  if (!presenterWindow) {
+    alert(
+      '⚠️ El navegador bloqueó la ventana emergente.\n\n' +
+      'Por favor permitilas para este sitio/archivo:\n' +
+      '• Chrome/Safari: haz click en el ícono de bloqueado en la barra de URL\n' +
+      '• O usa la alternativa: abre presenter.html manualmente (Cmd+click en el archivo).'
+    );
+    return;
+  }
+
+  // Marcar el botón como activo
+  const btn = document.querySelector('.btn-presenter');
+  if (btn) btn.classList.add('active');
+
+  // Inmediatamente sincronizar el estado actual
+  try {
+    localStorage.setItem('currentSlide', currentSlide);
+  } catch(e) {}
+
+  // Checar periódicamente si se cerró
+  const checkInterval = setInterval(() => {
+    if (!presenterWindow || presenterWindow.closed) {
+      clearInterval(checkInterval);
+      presenterWindow = null;
+      const btn = document.querySelector('.btn-presenter');
+      if (btn) btn.classList.remove('active');
+    }
+  }, 1000);
+}
+
+// Cerrar la ventana del presenter cuando se cierra el deck
+window.addEventListener('beforeunload', () => {
+  if (presenterWindow && !presenterWindow.closed) {
+    presenterWindow.close();
+  }
+});
+
 // Keyboard
 document.addEventListener('keydown', (e) => {
   if (e.target.tagName === 'INPUT') return;
@@ -1777,6 +1890,11 @@ document.addEventListener('keydown', (e) => {
     case 'n':
     case 'N':
       toggleNotes();
+      break;
+    case 'p':
+    case 'P':
+      openPresenterWindow();
+      e.preventDefault();
       break;
     case 'f':
     case 'F':
