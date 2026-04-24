@@ -987,10 +987,16 @@ truco mágico necesario.
   </thead>
   <tbody>
     <tr>
-      <td><code>FP16</code> <span class="text-muted text-sm">(original)</span></td>
+      <td><code>FP32</code> <span class="text-muted text-sm">(entrenamiento)</span></td>
+      <td>32 bits</td>
+      <td class="text-danger">104 GB</td>
+      <td>100%</td>
+    </tr>
+    <tr>
+      <td><code>FP16</code> <span class="text-muted text-sm">(estándar)</span></td>
       <td>16 bits</td>
       <td class="text-danger">52 GB</td>
-      <td>100%</td>
+      <td>~100%</td>
     </tr>
     <tr>
       <td><code>Q8_0</code></td>
@@ -998,11 +1004,23 @@ truco mágico necesario.
       <td>26 GB</td>
       <td>~99%</td>
     </tr>
+    <tr>
+      <td><code>Q6_K</code></td>
+      <td>6 bits</td>
+      <td>20 GB</td>
+      <td>~98%</td>
+    </tr>
+    <tr>
+      <td><code>Q5_K_M</code></td>
+      <td>5 bits</td>
+      <td>18 GB</td>
+      <td>~97%</td>
+    </tr>
     <tr class="highlight">
-      <td><code>Q4_K_M</code> <span class="text-accent text-sm">★ recomendado</span></td>
+      <td><code>Q4_K_M</code> <span class="text-accent text-sm">★ sweet spot</span></td>
       <td>4 bits</td>
       <td class="price-free">17 GB</td>
-      <td>~96-97%</td>
+      <td>~96%</td>
     </tr>
     <tr>
       <td><code>Q3_K_M</code></td>
@@ -1014,7 +1032,7 @@ truco mágico necesario.
       <td><code>Q2_K</code></td>
       <td>2 bits</td>
       <td>~9 GB</td>
-      <td>~85%</td>
+      <td class="text-danger">~85%</td>
     </tr>
   </tbody>
 </table>

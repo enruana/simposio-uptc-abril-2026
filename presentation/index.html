@@ -986,10 +986,94 @@ img { max-width: 100%; height: auto; }
 <!-- SLIDE 17 · Cuantización                      -->
 <!-- ============================================ -->
 <section class="slide" data-notes="slide-17">
-  <h1>Cuantización — la técnica que hizo posible la IA local</h1>
-  <div style="max-width: 900px; margin: 0 auto;">
-    <img src="public/diagrams/quantization-visual.svg" alt="Visualización de cuantización" />
+  <h1 style="font-size: clamp(1.8rem, 3.5vw, 2.5rem); margin-bottom: 1rem;">
+    Cuantización — la técnica que hizo posible la IA local
+  </h1>
+
+  <div class="grid-2" style="gap: 2rem; align-items: start;">
+
+    <!-- Columna izquierda: diagrama visual -->
+    <div>
+      <img src="public/diagrams/quantization-visual.svg" alt="Visualización de cuantización" style="width: 100%;" />
+    </div>
+
+    <!-- Columna derecha: tabla con formatos -->
+    <div>
+      <table class="comparison-table" style="font-size: 0.85rem;">
+        <thead>
+          <tr>
+            <th style="padding: 0.5rem 0.7rem;">Formato</th>
+            <th style="padding: 0.5rem 0.7rem;">Bits / peso</th>
+            <th style="padding: 0.5rem 0.7rem;">Tamaño 26B</th>
+            <th style="padding: 0.5rem 0.7rem;">Calidad</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 0.5rem 0.7rem;"><code>FP32</code> <span class="text-muted text-sm">(full)</span></td>
+            <td style="padding: 0.5rem 0.7rem;">32</td>
+            <td style="padding: 0.5rem 0.7rem;" class="text-danger">104 GB</td>
+            <td style="padding: 0.5rem 0.7rem;">100%</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.5rem 0.7rem;"><code>FP16</code> <span class="text-muted text-sm">(training)</span></td>
+            <td style="padding: 0.5rem 0.7rem;">16</td>
+            <td style="padding: 0.5rem 0.7rem;" class="text-danger">52 GB</td>
+            <td style="padding: 0.5rem 0.7rem;">~100%</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.5rem 0.7rem;"><code>Q8_0</code></td>
+            <td style="padding: 0.5rem 0.7rem;">8</td>
+            <td style="padding: 0.5rem 0.7rem;">26 GB</td>
+            <td style="padding: 0.5rem 0.7rem;">~99%</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.5rem 0.7rem;"><code>Q6_K</code></td>
+            <td style="padding: 0.5rem 0.7rem;">6</td>
+            <td style="padding: 0.5rem 0.7rem;">20 GB</td>
+            <td style="padding: 0.5rem 0.7rem;">~98%</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.5rem 0.7rem;"><code>Q5_K_M</code></td>
+            <td style="padding: 0.5rem 0.7rem;">5</td>
+            <td style="padding: 0.5rem 0.7rem;">18 GB</td>
+            <td style="padding: 0.5rem 0.7rem;">~97%</td>
+          </tr>
+          <tr class="highlight">
+            <td style="padding: 0.5rem 0.7rem;"><code>Q4_K_M</code> <span class="text-accent text-sm">★</span></td>
+            <td style="padding: 0.5rem 0.7rem;">4</td>
+            <td style="padding: 0.5rem 0.7rem;" class="price-free">17 GB</td>
+            <td style="padding: 0.5rem 0.7rem;">~96%</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.5rem 0.7rem;"><code>Q3_K_M</code></td>
+            <td style="padding: 0.5rem 0.7rem;">3</td>
+            <td style="padding: 0.5rem 0.7rem;">14 GB</td>
+            <td style="padding: 0.5rem 0.7rem;">~92%</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.5rem 0.7rem;"><code>Q2_K</code></td>
+            <td style="padding: 0.5rem 0.7rem;">2</td>
+            <td style="padding: 0.5rem 0.7rem;">9 GB</td>
+            <td style="padding: 0.5rem 0.7rem; color: var(--danger);">~85%</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div style="background: var(--bg-card); border-left: 3px solid var(--accent); padding: 0.75rem 1rem; margin-top: 1rem; border-radius: 4px; font-size: 0.85rem;">
+        <strong class="text-accent">★ Q4_K_M</strong>
+        <span class="text-muted">es el sweet spot.</span>
+        <div style="margin-top: 0.3rem; color: var(--text-muted); font-size: 0.8rem;">
+          67% menos memoria, solo ~4% menos calidad
+        </div>
+      </div>
+    </div>
   </div>
+
+  <p class="quote-ancla" style="margin-top: 1.5rem; font-size: 1.1rem; max-width: 100%; border-left: none; padding-left: 0; text-align: center;">
+    Sin cuantización → los modelos vivirían en data centers.<br>
+    <span class="text-accent">Con cuantización → viven en tu Lenovo.</span>
+  </p>
 </section>
 
 <!-- ============================================ -->
@@ -1518,7 +1602,28 @@ const SPEAKER_NOTES = {
   'slide-14': { title: 'SLIDE 14 · Capas 5-6-7 (17-18 min)', html: `<h4>Punto ancla</h4><p><strong>"El regalo pedagógico"</strong> — este framing debe quedar grabado.</p>` },
   'slide-15': { title: 'SLIDE 15 · Transición Acto 2 (18 min)', html: `<h4>Texto</h4><blockquote>"Hasta acá hablamos de qué hicieron las empresas grandes. Ahora hablemos de qué pueden hacer ustedes hoy."</blockquote>` },
   'slide-16': { title: 'SLIDE 16 · 26 mil millones (18-20 min)', html: `<h4>Cliffhanger</h4><p>Decir el número en voz alta. Pausar después de "52 GB". Anticipar la respuesta: "cuantización".</p>` },
-  'slide-17': { title: 'SLIDE 17 · Cuantización (20-21 min)', html: `<h4>Frase ancla</h4><blockquote><strong>"Sin cuantización, los modelos vivirían en data centers. Con cuantización, viven en tu Lenovo."</strong></blockquote>` },
+  'slide-17': {
+    title: 'SLIDE 17 · Cuantización (20-21 min)',
+    html: `
+      <h4>Concepto base</h4>
+      <p>Cuantización = reducir la precisión numérica de cada peso del modelo. Menos bits por peso = modelo más chico, con poca pérdida de calidad.</p>
+      <h4>Los formatos (de más precisión a menos)</h4>
+      <ul>
+        <li><code>FP32</code> — 32 bits, precisión de entrenamiento, 104 GB</li>
+        <li><code>FP16</code> — 16 bits, estándar de deploy full, 52 GB</li>
+        <li><code>Q8_0</code> — 8 bits, casi sin pérdida, 26 GB</li>
+        <li><code>Q6_K</code> / <code>Q5_K_M</code> — intermedios</li>
+        <li><strong><code>Q4_K_M</code> — 4 bits, <strong>el sweet spot</strong>, 17 GB, solo 4% menos calidad</strong></li>
+        <li><code>Q3_K_M</code>, <code>Q2_K</code> — demasiado agresivo, pérdida notable</li>
+      </ul>
+      <h4>Texto sugerido</h4>
+      <blockquote>"Miren la tabla. Arriba, el formato original, FP32, 32 bits por peso. 104 gigabytes. Impensable. Bajamos a FP16: 52 gigabytes, igual de imposible. Pero acá abajo, Q4_K_M — cuatro bits por peso — pesa solo 17 gigabytes. Y perdemos solo 4% de calidad. Esa es la magia."</blockquote>
+      <h4>Frase ancla</h4>
+      <blockquote><strong>"Sin cuantización, los modelos vivirían en data centers. Con cuantización, viven en tu Lenovo."</strong></blockquote>
+      <h4>Por qué "Q4_K_M" y no solo "Q4"</h4>
+      <p>La K significa técnica de k-quants (grupos de pesos compartiendo escala). La M es "medium" — balance entre tamaño y calidad. Hay S (small) y L (large), pero M es el default de Ollama por algo.</p>
+    `
+  },
   'slide-18': {
     title: 'SLIDE 18 · DEMO EN VIVO (21-26 min)',
     html: `
