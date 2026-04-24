@@ -1704,25 +1704,6 @@ Este es el momento de más intensidad emocional.
 -->
 
 ---
-layout: center
-class: 'transition-slide'
----
-
-<div class="act-label">Cierre</div>
-<h1 class="act-title">El elixir<br>comunitario</h1>
-
-<!--
-# SLIDE 28 · Transición al cierre (39 min)
-
-## Contexto
-Slide de respiro antes del cierre. 5 segundos.
-
-## Si dicen algo
-> "Una última cosa antes de cerrar."
-
--->
-
----
 
 # Esto no es Silicon Valley
 
@@ -1736,7 +1717,7 @@ Necesitás curiosidad y el criterio que les dieron estos cuatro años.
 </p>
 
 <!--
-# SLIDE 29 · El elixir comunitario (39-42 min)
+# SLIDE 28 · El elixir comunitario (39-42 min)
 
 ## Texto sugerido (tono íntimo)
 > "Esto no es Silicon Valley. Todo lo que vimos — los modelos open source,
@@ -1789,7 +1770,7 @@ está a un <code>git clone</code> de distancia.
 </div>
 
 <!--
-# SLIDE 30 · QR al repo (42-43 min)
+# SLIDE 29 · QR al repo (42-43 min)
 
 ## IMPORTANTE
 Este slide necesita el QR REAL generado.
@@ -1838,7 +1819,7 @@ Fue pensar.
 </div>
 
 <!--
-# SLIDE 31 · Cierre final (43-45 min)
+# SLIDE 30 · Cierre final (43-45 min)
 
 ## EL GESTO MÁS IMPORTANTE DE LA PONENCIA
 
@@ -1894,7 +1875,7 @@ Preguntas →
 </div>
 
 <!--
-# SLIDE 32 · Gracias / Q&A (45 min+)
+# SLIDE 31 · Gracias / Q&A (45 min+)
 
 ## Uso
 Este slide queda en pantalla durante las preguntas del público.
