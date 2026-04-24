@@ -171,62 +171,6 @@ Después girar y señalar hacia la audiencia al decir "en los suyos".
 -->
 
 ---
-
-# El héroe de esta sala
-
-<div class="grid-2" style="gap: 3rem; margin-top: 2rem; align-items: center;">
-
-<div>
-
-<img src="/diagrams/hero-portrait.svg" alt="Estudiante UPTC" style="max-width: 100%; opacity: 0.9;" />
-
-</div>
-
-<div>
-
-<p class="text-lg" style="line-height: 1.8;">
-Un estudiante.<br>
-Octavo, noveno semestre.<br>
-Un <strong>Lenovo</strong> o <strong>Dell</strong>, no un Mac caro.<br>
-Audífonos entre clases.<br>
-</p>
-
-<p class="quote-ancla" style="margin-top: 2rem; font-size: 1.4rem; max-width: 100%;">
-"¿Todo este esfuerzo de cuatro años va a servir para algo?"
-</p>
-
-</div>
-
-</div>
-
-<!--
-# SLIDE 4 · Nombrando al héroe (4-6 min)
-
-## Contexto
-Acá cambia el tono. Baja a conversación íntima. La audiencia debe sentir
-que están hablando de alguien específico, no de "los estudiantes en general".
-
-## Texto sugerido (tono íntimo)
-> "Quiero hablarles de alguien que está en esta sala. Un estudiante a pocos
-> meses de graduarse. Abre su laptop — no un MacBook de cinco mil dólares,
-> un Lenovo o un Dell, el que alcanzó a pagar. Tiene audífonos puestos casi
-> siempre. Y en algún rincón de su cabeza, una pregunta que no lo deja dormir:
-> ¿todo este esfuerzo de cuatro años va a servir para algo en un mundo donde
-> la IA parece escribir código mejor que yo?"
-
-## Puntos NO negociables
-- **Especificidad económica:** mencionar Lenovo/Dell explícitamente
-- **Vulnerabilidad:** "no le sobra dinero para Cursor de $20/mes"
-- **La pregunta existencial:** debe decirse EN ESAS PALABRAS exactas
-- **Cierre honesto:** "yo también me lo pregunto algunas noches" / "nosotros también nos lo preguntamos"
-
-## Por qué importa
-Este es el anclaje emocional de toda la ponencia. Si este slide no conecta,
-los siguientes 40 minutos pierden peso. La audiencia debe verse reflejada.
-
--->
-
----
 layout: center
 ---
 
@@ -263,7 +207,7 @@ de Claude Code en npm.
 </div>
 
 <!--
-# SLIDE 5 · La filtración del source map (6-8 min)
+# SLIDE 4 · La filtración del source map (6-8 min)
 
 ## Texto sugerido
 > "Hace pocas semanas, el 31 de marzo, Anthropic — la empresa detrás de Claude —
@@ -312,7 +256,7 @@ líneas de código expuestas
 </div>
 
 <!--
-# SLIDE 6 · 512,000 líneas (8-9 min)
+# SLIDE 5 · 512,000 líneas (8-9 min)
 
 ## Texto sugerido
 > "Quinientas doce mil líneas de código TypeScript.
@@ -366,7 +310,7 @@ curva de estrellas real · abril 2026
 </div>
 
 <!--
-# SLIDE 7 · Claw-Code — una persona, dos horas (9-10 min)
+# SLIDE 6 · Claw-Code — una persona, dos horas (9-10 min)
 
 ## ESTE ES UN SLIDE CLAVE
 El momento donde la audiencia conecta: "una persona sola hizo eso".
@@ -443,7 +387,7 @@ Herramientas · Internet · Memoria · Asistentes
 </div>
 
 <!--
-# SLIDE 8 · Modelo vs Harness (10-12 min)
+# SLIDE 7 · Modelo vs Harness (10-12 min)
 
 ## EL CONCEPTO MÁS IMPORTANTE DE TODA LA PONENCIA
 Si la audiencia entiende ESTO, entiende todo lo demás.
@@ -510,7 +454,7 @@ El modelo no es el producto.<br>
 </div>
 
 <!--
-# SLIDE 9 · El dato que lo prueba (12-13 min)
+# SLIDE 8 · El dato que lo prueba (12-13 min)
 
 ## Texto sugerido
 > "Y tengo el dato que lo prueba. Un benchmark independiente mostró que
@@ -596,7 +540,7 @@ Todo documentado públicamente · listo para que cualquiera lo estudie
 </p>
 
 <!--
-# SLIDE 10 · Las 7 capas en overview (13-14 min)
+# SLIDE 9 · Las 7 capas en overview (13-14 min)
 
 ## Texto sugerido
 > "Entonces, ¿qué reveló la filtración? Siete capas que hacen que un
@@ -653,7 +597,7 @@ La simplicidad es la feature.
 </div>
 
 <!--
-# SLIDE 11 · Agent Loop · 88 líneas (14-15 min)
+# SLIDE 10 · Agent Loop · 88 líneas (14-15 min)
 
 ## Texto sugerido
 > "El corazón de Claude Code — el loop que hace toda la magia —
@@ -736,7 +680,7 @@ Cada una con su esquema JSON, parámetros y sandbox.
 </div>
 
 <!--
-# SLIDE 12 · Tools + Permisos (15-16 min)
+# SLIDE 11 · Tools + Permisos (15-16 min)
 
 ## Texto sugerido
 > "A la izquierda, las cuarenta herramientas. Read, Write, Edit, Bash,
@@ -791,7 +735,7 @@ esa técnica costó años a Anthropic → ahora está en GitHub
 </div>
 
 <!--
-# SLIDE 13 · Classifier independiente (16-17 min)
+# SLIDE 12 · Classifier independiente (16-17 min)
 
 ## ESTE ES UN SLIDE CRUCIAL
 Preparar el terreno para el tercer enemigo del Acto 3 (prompt injection).
@@ -861,7 +805,7 @@ Ahora podés leerlo, replicarlo y adaptarlo.
 </p>
 
 <!--
-# SLIDE 14 · Capas 5-6-7 (17-18 min)
+# SLIDE 13 · Capas 5-6-7 (17-18 min)
 
 ## Texto sugerido
 > "Las últimas tres capas, rápido para no quedarnos atascados.
@@ -906,7 +850,7 @@ $ ollama run gemma4:26b
 </p>
 
 <!--
-# SLIDE 15 · Transición al Acto 2 (18 min)
+# SLIDE 14 · Transición al Acto 2 (18 min)
 
 ## Contexto
 Slide de descanso visual. Separador dramático. 10 segundos.
@@ -940,7 +884,7 @@ layout: center
 </p>
 
 <!--
-# SLIDE 16 · 26 mil millones de parámetros (18-20 min)
+# SLIDE 15 · 26 mil millones de parámetros (18-20 min)
 
 ## Texto sugerido
 > "Antes del demo, un número que tienen que entender.
@@ -1045,7 +989,7 @@ Sin cuantización, los modelos vivirían en data centers.<br>
 </p>
 
 <!--
-# SLIDE 17 · Tabla de cuantización (20-21 min)
+# SLIDE 16 · Tabla de cuantización (20-21 min)
 
 ## Texto sugerido
 > "Cuantizar significa reducir la precisión de cada peso.
@@ -1131,7 +1075,7 @@ sin internet, en segundos.
 </div>
 
 <!--
-# SLIDE 18 · Demo en vivo (21-26 min)
+# SLIDE 17 · Demo en vivo (21-26 min)
 
 ## ESTE ES EL MOMENTO CLAVE DE LA PONENCIA
 
@@ -1238,7 +1182,7 @@ Eso ya es más poder del que tenían ayer.
 </p>
 
 <!--
-# SLIDE 19 · Requerimientos de hardware (26-27 min)
+# SLIDE 18 · Requerimientos de hardware (26-27 min)
 
 ## ESTE SLIDE ES CRÍTICO PARA EVITAR EXCLUSIÓN
 Felipe específicamente pidió que no se sienta que "solo corre en hardware caro".
@@ -1323,7 +1267,7 @@ acaba de bajar a <span class="text-accent">cero</span>.
 </p>
 
 <!--
-# SLIDE 20 · El ticket bajó a cero (27-28 min)
+# SLIDE 19 · El ticket bajó a cero (27-28 min)
 
 ## Texto sugerido
 > "Miren la comparación. Claude Code Max, doscientos dólares al mes.
@@ -1361,7 +1305,7 @@ Es lo que te vuelve competente.
 </p>
 
 <!--
-# SLIDE 21 · Transición al Acto 3 (28-29 min)
+# SLIDE 20 · Transición al Acto 3 (28-29 min)
 
 ## ATENCIÓN AL CAMBIO DE TONO
 El tono cambia. De esperanza empoderadora a alerta constructiva.
@@ -1402,7 +1346,7 @@ layout: center
 </div>
 
 <!--
-# SLIDE 22 · Enemigo 1 · Over-Engineering (29-30 min)
+# SLIDE 21 · Enemigo 1 · Over-Engineering (29-30 min)
 
 ## Texto sugerido
 > "El primer enemigo es el más común y el más sutil: el Demonio del
@@ -1457,7 +1401,7 @@ incluso cuando <span class="text-danger">no lo estás siendo</span>.
 </div>
 
 <!--
-# SLIDE 23 · El estudio METR (30-31 min)
+# SLIDE 22 · El estudio METR (30-31 min)
 
 ## Texto sugerido
 > "Y tengo el dato más inquietante de todos. METR — una organización
@@ -1510,7 +1454,7 @@ layout: center
 </div>
 
 <!--
-# SLIDE 24 · Enemigo 2 · Slopsquatting (31-32 min)
+# SLIDE 23 · Enemigo 2 · Slopsquatting (31-32 min)
 
 ## Texto sugerido
 > "Segundo enemigo: más técnico y más caro. Se llama slopsquatting.
@@ -1567,7 +1511,7 @@ layout: center
 </div>
 
 <!--
-# SLIDE 25 · Caso huggingface-cli (32-33 min)
+# SLIDE 24 · Caso huggingface-cli (32-33 min)
 
 ## Texto sugerido
 > "Caso real. La IA alucinaba constantemente el nombre 'huggingface-cli' —
@@ -1612,7 +1556,7 @@ layout: center
 </div>
 
 <!--
-# SLIDE 26 · Enemigo 3 · Prompt Injection (33-35 min)
+# SLIDE 25 · Enemigo 3 · Prompt Injection (33-35 min)
 
 ## Texto sugerido
 > "Tercer enemigo: el más difícil de detectar porque es INVISIBLE a
@@ -1673,7 +1617,7 @@ En silencio. Durante semanas.
 </div>
 
 <!--
-# SLIDE 27 · Caso Postmark MCP (35-37 min)
+# SLIDE 26 · Caso Postmark MCP (35-37 min)
 
 ## Texto sugerido
 > "Y tengo un caso real, reciente. Septiembre del año pasado. Una
@@ -1726,7 +1670,7 @@ Critical thinkers.
 </div>
 
 <!--
-# SLIDE 28 · Frase-tesis (37-39 min)
+# SLIDE 27 · Frase-tesis (37-39 min)
 
 ## ESTE ES EL MOMENTO MÁS IMPORTANTE DE LA PONENCIA
 
@@ -1764,7 +1708,7 @@ class: 'transition-slide'
 <h1 class="act-title">El elixir<br>comunitario</h1>
 
 <!--
-# SLIDE 29 · Transición al cierre (39 min)
+# SLIDE 28 · Transición al cierre (39 min)
 
 ## Contexto
 Slide de respiro antes del cierre. 5 segundos.
@@ -1788,7 +1732,7 @@ Necesitás curiosidad y el criterio que les dieron estos cuatro años.
 </p>
 
 <!--
-# SLIDE 30 · El elixir comunitario (39-42 min)
+# SLIDE 29 · El elixir comunitario (39-42 min)
 
 ## Texto sugerido (tono íntimo)
 > "Esto no es Silicon Valley. Todo lo que vimos — los modelos open source,
@@ -1841,7 +1785,7 @@ está a un <code>git clone</code> de distancia.
 </div>
 
 <!--
-# SLIDE 31 · QR al repo (42-43 min)
+# SLIDE 30 · QR al repo (42-43 min)
 
 ## IMPORTANTE
 Este slide necesita el QR REAL generado.
@@ -1890,7 +1834,7 @@ Fue pensar.
 </div>
 
 <!--
-# SLIDE 32 · Cierre final (43-45 min)
+# SLIDE 31 · Cierre final (43-45 min)
 
 ## EL GESTO MÁS IMPORTANTE DE LA PONENCIA
 
@@ -1946,7 +1890,7 @@ Preguntas →
 </div>
 
 <!--
-# SLIDE 33 · Gracias / Q&A (45 min+)
+# SLIDE 32 · Gracias / Q&A (45 min+)
 
 ## Uso
 Este slide queda en pantalla durante las preguntas del público.
