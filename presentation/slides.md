@@ -1078,20 +1078,56 @@ layout: center
 Ahora
 </div>
 
-<h2 style="font-size: 3rem; margin-top: 1rem;">
+<h2 style="font-size: 2.5rem; margin-top: 0.5rem;">
 Demo en vivo →
 </h2>
 
-<p class="text-lg text-muted" style="margin-top: 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">
-Pedirle a Gemma 4 que construya<br>
-<strong class="text-accent">la landing page de este mismo simposio</strong>,<br>
+<p class="text-lg text-muted" style="margin-top: 1rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+Pedirle a Gemma 4 que construya
+<strong class="text-accent">la landing page de este simposio</strong>,
 sin internet, en segundos.
 </p>
 
-<p class="font-mono text-muted text-sm" style="margin-top: 3rem;">
-[los ponentes ejecutan el demo en vivo]
-</p>
+</div>
 
+<div class="code-card" style="max-width: 900px; margin: 2rem auto 0; text-align: left;">
+  <div class="code-header">
+    <span class="code-dot red"></span>
+    <span class="code-dot yellow"></span>
+    <span class="code-dot green"></span>
+    <span class="code-title">claude-local gemma4:26b — prompt del demo</span>
+  </div>
+  <div class="code-body" style="font-size: 0.9rem; line-height: 1.75;">
+
+<span class="text-accent">></span> Crea una landing page moderna para el <strong class="text-accent">Simposio UPTC 2026</strong>
+  sobre IA Open Source. Incluye:
+
+  - Hero section con el título del evento y la fecha (abril 2026)
+  - Sección "Sobre la ponencia" con un párrafo corto
+  - Sección de ponentes con 2 tarjetas:
+      · <strong class="text-accent">Felipe Mantilla</strong>
+      · <strong class="text-accent">Zabdiel Blanco</strong>
+  - Footer con información de contacto
+
+  Usa HTML + CSS moderno (flexbox/grid), sin frameworks.
+  Guardalo en un solo archivo `simposio.html`.
+  Estilo minimalista, paleta oscura, tipografía legible.
+
+  </div>
+</div>
+
+<div style="display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem; align-items: center;">
+  <div class="handwritten text-muted" style="font-size: 1.1rem;">
+    WiFi: <span class="text-danger">off</span>
+  </div>
+  <div class="handwritten text-muted">·</div>
+  <div class="handwritten text-muted" style="font-size: 1.1rem;">
+    Modelo: <span class="text-accent">Gemma 4 26B local</span>
+  </div>
+  <div class="handwritten text-muted">·</div>
+  <div class="handwritten text-muted" style="font-size: 1.1rem;">
+    Internet: <span class="text-danger">cero</span>
+  </div>
 </div>
 
 <!--
