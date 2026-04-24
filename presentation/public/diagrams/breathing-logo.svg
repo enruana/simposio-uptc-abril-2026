@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" fill="none">
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <style>
+      @keyframes pulse {
+        0%, 100% { opacity: 0.4; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.08); }
+      }
+      @keyframes ringPulse {
+        0%, 100% { opacity: 0.2; r: 85; }
+        50% { opacity: 0.6; r: 95; }
+      }
+      .core {
+        animation: pulse 3s ease-in-out infinite;
+        transform-origin: center;
+      }
+      .ring {
+        animation: ringPulse 3s ease-in-out infinite;
+      }
+    </style>
+  </defs>
+
+  <!-- Outer glow ring -->
+  <circle class="ring" cx="150" cy="150" r="85" stroke="#00ff88" stroke-width="1" fill="none" opacity="0.3"/>
+  <circle class="ring" cx="150" cy="150" r="110" stroke="#00ff88" stroke-width="0.5" fill="none" opacity="0.15" style="animation-delay: 0.5s;"/>
+
+  <!-- Central core - breathing -->
+  <g class="core" filter="url(#glow)">
+    <circle cx="150" cy="150" r="50" fill="#00ff88" opacity="0.15"/>
+    <circle cx="150" cy="150" r="30" fill="#00ff88" opacity="0.4"/>
+    <circle cx="150" cy="150" r="15" fill="#00ff88"/>
+  </g>
+
+  <!-- Symbol: {·} -->
+  <text x="150" y="165" text-anchor="middle" style="font-family: 'JetBrains Mono', monospace; font-size: 50px; fill: #ffffff; font-weight: 500;" filter="url(#glow)">
+    {·}
+  </text>
+</svg>

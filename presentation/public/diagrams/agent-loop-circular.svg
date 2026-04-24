@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 500" fill="none">
+  <defs>
+    <filter id="roughLoop">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2"/>
+    </filter>
+    <style>
+      .stroke { stroke: #d4d4d4; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .stroke-thin { stroke: #6b6b6b; stroke-width: 1.5; fill: none; stroke-linecap: round; }
+      .accent { stroke: #00ff88; stroke-width: 2.5; }
+      .text { font-family: 'Caveat', cursive; font-size: 22px; fill: #f5f5f5; font-weight: 600; }
+      .text-small { font-family: 'Caveat', cursive; font-size: 16px; fill: #6b6b6b; }
+      .text-accent { font-family: 'Caveat', cursive; font-size: 18px; fill: #00ff88; }
+      .label-center { font-family: 'Caveat', cursive; font-size: 28px; fill: #00ff88; font-weight: 700; }
+    </style>
+    <marker id="arrowLoop" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#00ff88"/>
+    </marker>
+  </defs>
+
+  <g filter="url(#roughLoop)">
+    <!-- Center: the loop label -->
+    <text class="label-center" x="300" y="240" text-anchor="middle">while</text>
+    <text class="label-center" x="300" y="275" text-anchor="middle">(true)</text>
+
+    <!-- Node 1: User input (top-left) -->
+    <g transform="translate(120, 100)">
+      <rect class="stroke" x="-60" y="-30" width="120" height="60" rx="8"/>
+      <text class="text" x="0" y="-5" text-anchor="middle">input</text>
+      <text class="text-small" x="0" y="12" text-anchor="middle">del usuario</text>
+    </g>
+
+    <!-- Node 2: Call model (top-right) -->
+    <g transform="translate(480, 100)">
+      <rect class="stroke accent" x="-70" y="-30" width="140" height="60" rx="8"/>
+      <text class="text-accent" x="0" y="-5" text-anchor="middle">llamar modelo</text>
+      <text class="text-small" x="0" y="12" text-anchor="middle">Opus / Gemma</text>
+    </g>
+
+    <!-- Node 3: Tool call? (right) -->
+    <g transform="translate(540, 280)">
+      <path class="stroke" d="M 0 -35 L 55 0 L 0 35 L -55 0 Z"/>
+      <text class="text" x="0" y="-5" text-anchor="middle">¿usar</text>
+      <text class="text" x="0" y="15" text-anchor="middle">tool?</text>
+    </g>
+
+    <!-- Node 4: Execute tool (bottom-right) -->
+    <g transform="translate(480, 420)">
+      <rect class="stroke" x="-70" y="-30" width="140" height="60" rx="8"/>
+      <text class="text" x="0" y="-5" text-anchor="middle">ejecutar</text>
+      <text class="text-small" x="0" y="15" text-anchor="middle">Read/Bash/etc</text>
+    </g>
+
+    <!-- Node 5: Push result (bottom-left) -->
+    <g transform="translate(120, 420)">
+      <rect class="stroke" x="-70" y="-30" width="140" height="60" rx="8"/>
+      <text class="text" x="0" y="-5" text-anchor="middle">resultado</text>
+      <text class="text-small" x="0" y="15" text-anchor="middle">→ messages</text>
+    </g>
+
+    <!-- Node 6: End? (left) -->
+    <g transform="translate(60, 280)">
+      <path class="stroke" d="M 0 -35 L 55 0 L 0 35 L -55 0 Z"/>
+      <text class="text" x="0" y="-5" text-anchor="middle">¿end</text>
+      <text class="text" x="0" y="15" text-anchor="middle">turn?</text>
+    </g>
+
+    <!-- ARROWS connecting the loop -->
+    <!-- input -> call model -->
+    <path class="stroke accent" d="M 180 100 Q 280 90 410 100" marker-end="url(#arrowLoop)"/>
+
+    <!-- call model -> tool? -->
+    <path class="stroke accent" d="M 495 135 Q 530 200 540 245" marker-end="url(#arrowLoop)"/>
+
+    <!-- tool? (YES) -> execute -->
+    <path class="stroke accent" d="M 540 315 Q 530 365 495 390" marker-end="url(#arrowLoop)"/>
+    <text class="text-accent" x="560" y="360" text-anchor="start">sí</text>
+
+    <!-- execute -> result -->
+    <path class="stroke accent" d="M 410 420 Q 280 430 195 420" marker-end="url(#arrowLoop)"/>
+
+    <!-- result -> end? -->
+    <path class="stroke accent" d="M 105 390 Q 70 365 60 315" marker-end="url(#arrowLoop)"/>
+
+    <!-- end? (NO) -> back to call model -->
+    <path class="stroke accent" d="M 60 245 Q 55 170 105 135" marker-end="url(#arrowLoop)" stroke-dasharray="4,3"/>
+    <text class="text-accent" x="20" y="210" text-anchor="start">no</text>
+
+    <!-- end? (YES) -> return (exit) -->
+    <path class="stroke" d="M 5 280 L -20 280" stroke-dasharray="5,3"/>
+    <text class="text-small" x="-30" y="275" text-anchor="end">sí:</text>
+    <text class="text-small" x="-30" y="292" text-anchor="end">return</text>
+
+    <!-- tool? (NO) goes direct to end -->
+    <path class="stroke-thin" d="M 540 315 Q 300 340 60 315" stroke-dasharray="3,3"/>
+    <text class="text-small" x="300" y="360" text-anchor="middle">no: saltar a end</text>
+  </g>
+
+  <!-- Labels externas -->
+  <text class="text-accent" x="300" y="55" text-anchor="middle" style="font-size: 20px;">agent loop · ~88 líneas</text>
+  <text class="text-small" x="300" y="480" text-anchor="middle">el corazón del harness</text>
+</svg>

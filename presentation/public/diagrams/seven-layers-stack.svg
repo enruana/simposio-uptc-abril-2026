@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" fill="none">
+  <defs>
+    <filter id="roughStack">
+      <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="9" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.8"/>
+    </filter>
+    <style>
+      .stroke { stroke: #d4d4d4; stroke-width: 2; fill: none; stroke-linecap: round; }
+      .stroke-thin { stroke: #6b6b6b; stroke-width: 1.5; fill: none; }
+      .accent { stroke: #00ff88; }
+      .text { font-family: 'Inter', sans-serif; font-size: 16px; fill: #f5f5f5; font-weight: 600; }
+      .text-small { font-family: 'Caveat', cursive; font-size: 16px; fill: #6b6b6b; }
+      .text-accent { font-family: 'Caveat', cursive; font-size: 14px; fill: #00ff88; }
+      .layer-num { font-family: 'Space Grotesk', sans-serif; font-size: 24px; fill: #00ff88; font-weight: 700; }
+    </style>
+  </defs>
+
+  <g filter="url(#roughStack)">
+    <!-- Título arriba -->
+    <text class="text" x="300" y="35" text-anchor="middle" style="font-size: 20px;">el harness de Claude Code</text>
+    <text class="text-small" x="300" y="55" text-anchor="middle">512,000 líneas, 7 capas</text>
+
+    <!-- Layer 7 (top) - Sandbox -->
+    <g transform="translate(60, 75)">
+      <rect class="stroke" width="480" height="55" rx="6"/>
+      <text class="layer-num" x="25" y="37" text-anchor="middle">7</text>
+      <text class="text" x="65" y="32" text-anchor="start">Sandbox OS-level</text>
+      <text class="text-small" x="65" y="48" text-anchor="start">aislamiento del sistema operativo</text>
+    </g>
+
+    <!-- Layer 6 -->
+    <g transform="translate(60, 140)">
+      <rect class="stroke" width="480" height="55" rx="6"/>
+      <text class="layer-num" x="25" y="37" text-anchor="middle">6</text>
+      <text class="text" x="65" y="32" text-anchor="start">Sub-agentes paralelos</text>
+      <text class="text-small" x="65" y="48" text-anchor="start">delegación con contexto aislado</text>
+    </g>
+
+    <!-- Layer 5 -->
+    <g transform="translate(60, 205)">
+      <rect class="stroke" width="480" height="55" rx="6"/>
+      <text class="layer-num" x="25" y="37" text-anchor="middle">5</text>
+      <text class="text" x="65" y="32" text-anchor="start">Gestión de contexto</text>
+      <text class="text-small" x="65" y="48" text-anchor="start">5 estrategias de compactación + memoria</text>
+    </g>
+
+    <!-- Layer 4 - DESTACADA -->
+    <g transform="translate(60, 270)">
+      <rect class="stroke accent" width="480" height="55" rx="6"/>
+      <text class="layer-num" x="25" y="37" text-anchor="middle">4</text>
+      <text class="text" x="65" y="32" text-anchor="start" style="fill: #00ff88;">Classifier independiente ★</text>
+      <text class="text-small" x="65" y="48" text-anchor="start" style="fill: #00ff88;">no ve la prosa del agente → anti prompt-injection</text>
+    </g>
+
+    <!-- Layer 3 -->
+    <g transform="translate(60, 335)">
+      <rect class="stroke" width="480" height="55" rx="6"/>
+      <text class="layer-num" x="25" y="37" text-anchor="middle">3</text>
+      <text class="text" x="65" y="32" text-anchor="start">Sistema de permisos</text>
+      <text class="text-small" x="65" y="48" text-anchor="start">3 tiers: auto · confirmar · bloquear</text>
+    </g>
+
+    <!-- Layer 2 -->
+    <g transform="translate(60, 400)">
+      <rect class="stroke" width="480" height="55" rx="6"/>
+      <text class="layer-num" x="25" y="37" text-anchor="middle">2</text>
+      <text class="text" x="65" y="32" text-anchor="start">~40 herramientas</text>
+      <text class="text-small" x="65" y="48" text-anchor="start">Read · Write · Edit · Bash · Grep · Agent · WebFetch...</text>
+    </g>
+
+    <!-- Layer 1 (bottom) - Agent Loop -->
+    <g transform="translate(60, 465)">
+      <rect class="stroke" width="480" height="55" rx="6"/>
+      <text class="layer-num" x="25" y="37" text-anchor="middle">1</text>
+      <text class="text" x="65" y="32" text-anchor="start">Agent Loop</text>
+      <text class="text-small" x="65" y="48" text-anchor="start">88 líneas · while loop + array de mensajes</text>
+    </g>
+
+    <!-- Arrow indicando "dirección de control" -->
+    <path class="stroke-thin" d="M 25 80 L 25 515" stroke-dasharray="4,4" marker-end="url(#arrowDown)"/>
+    <text class="text-small" x="30" y="300" text-anchor="start" transform="rotate(-90, 30, 300)">capas de control</text>
+
+    <!-- Arrow side: "lo que el modelo ve" -->
+    <path class="stroke accent" d="M 565 505 L 565 490" stroke-dasharray="3,3"/>
+    <text class="text-accent" x="568" y="505" text-anchor="start" transform="rotate(-90, 568, 505)">núcleo</text>
+
+  </g>
+
+  <defs>
+    <marker id="arrowDown" viewBox="0 0 10 10" refX="5" refY="8" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 5 10 L 10 0 z" fill="#6b6b6b"/>
+    </marker>
+  </defs>
+
+  <!-- Annotation arrows pointing to layer 4 -->
+  <g filter="url(#roughStack)">
+    <path class="accent" stroke="#00ff88" stroke-width="1.5" fill="none" d="M 560 300 Q 580 298 580 290"/>
+    <text class="text-accent" x="575" y="283" text-anchor="end">la capa más brillante</text>
+    <text class="text-accent" x="575" y="250" text-anchor="end">que revelo la filtración</text>
+  </g>
+</svg>

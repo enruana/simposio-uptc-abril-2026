@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 450" fill="none">
+  <defs>
+    <filter id="roughQ">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="11" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2"/>
+    </filter>
+    <style>
+      .stroke { stroke: #d4d4d4; stroke-width: 2; fill: none; stroke-linecap: round; }
+      .stroke-thin { stroke: #6b6b6b; stroke-width: 1.5; fill: none; }
+      .accent { stroke: #00ff88; }
+      .danger { stroke: #ff3b5f; }
+      .text { font-family: 'Inter', sans-serif; font-size: 14px; fill: #f5f5f5; font-weight: 600; }
+      .text-small { font-family: 'Caveat', cursive; font-size: 15px; fill: #6b6b6b; }
+      .text-accent { font-family: 'Caveat', cursive; font-size: 16px; fill: #00ff88; font-weight: 600; }
+      .text-danger { font-family: 'Caveat', cursive; font-size: 14px; fill: #ff3b5f; }
+      .size-label { font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 700; }
+      .bit-num { font-family: 'JetBrains Mono', monospace; font-size: 18px; fill: #6b6b6b; }
+    </style>
+  </defs>
+
+  <g filter="url(#roughQ)">
+    <!-- Título -->
+    <text class="text" x="450" y="30" text-anchor="middle" style="font-size: 20px; fill: #f5f5f5;">cuantización: el truco que hizo posible la IA local</text>
+    <text class="text-small" x="450" y="50" text-anchor="middle">menos bits por peso = modelo más chico, poca pérdida de calidad</text>
+
+    <!-- FP16 -->
+    <g transform="translate(50, 120)">
+      <!-- Box showing 16 bits as 16 squares -->
+      <rect class="danger" x="0" y="0" width="120" height="80" rx="4"/>
+      <!-- bits visualization -->
+      <g transform="translate(10, 20)">
+        <g>
+          <rect x="0" y="0" width="7" height="7" fill="#ff3b5f"/>
+          <rect x="8" y="0" width="7" height="7" fill="#ff3b5f"/>
+          <rect x="16" y="0" width="7" height="7" fill="#ff3b5f"/>
+          <rect x="24" y="0" width="7" height="7" fill="#ff3b5f"/>
+          <rect x="32" y="0" width="7" height="7" fill="#ff3b5f"/>
+          <rect x="40" y="0" width="7" height="7" fill="#ff3b5f"/>
+          <rect x="48" y="0" width="7" height="7" fill="#ff3b5f"/>
+          <rect x="56" y="0" width="7" height="7" fill="#ff3b5f"/>
+          <rect x="64" y="0" width="7" height="7" fill="#ff3b5f"/>
+          <rect x="72" y="0" width="7" height="7" fill="#ff3b5f"/>
+          <rect x="80" y="0" width="7" height="7" fill="#ff3b5f"/>
+          <rect x="88" y="0" width="7" height="7" fill="#ff3b5f"/>
+          <rect x="96" y="0" width="7" height="7" fill="#ff3b5f"/>
+          <rect x="0" y="8" width="7" height="7" fill="#ff3b5f"/>
+          <rect x="8" y="8" width="7" height="7" fill="#ff3b5f"/>
+          <rect x="16" y="8" width="7" height="7" fill="#ff3b5f"/>
+        </g>
+      </g>
+      <text class="bit-num" x="60" y="70" text-anchor="middle">16 bits</text>
+    </g>
+    <text class="text" x="110" y="220" text-anchor="middle">FP16</text>
+    <text class="text-small" x="110" y="238" text-anchor="middle">formato original</text>
+    <text class="size-label" x="110" y="275" text-anchor="middle" style="fill: #ff3b5f;">52 GB</text>
+    <text class="text-danger" x="110" y="295" text-anchor="middle">no cabe en tu laptop</text>
+
+    <!-- Arrow -->
+    <path class="stroke-thin" d="M 180 160 L 215 160" stroke-dasharray="3,3" marker-end="url(#arrowR)"/>
+
+    <!-- Q8 -->
+    <g transform="translate(230, 120)">
+      <rect class="stroke" x="0" y="0" width="120" height="80" rx="4"/>
+      <g transform="translate(22, 30)">
+        <rect x="0" y="0" width="7" height="7" fill="#d4d4d4"/>
+        <rect x="8" y="0" width="7" height="7" fill="#d4d4d4"/>
+        <rect x="16" y="0" width="7" height="7" fill="#d4d4d4"/>
+        <rect x="24" y="0" width="7" height="7" fill="#d4d4d4"/>
+        <rect x="32" y="0" width="7" height="7" fill="#d4d4d4"/>
+        <rect x="40" y="0" width="7" height="7" fill="#d4d4d4"/>
+        <rect x="48" y="0" width="7" height="7" fill="#d4d4d4"/>
+        <rect x="56" y="0" width="7" height="7" fill="#d4d4d4"/>
+      </g>
+      <text class="bit-num" x="60" y="70" text-anchor="middle">8 bits</text>
+    </g>
+    <text class="text" x="290" y="220" text-anchor="middle">Q8_0</text>
+    <text class="text-small" x="290" y="238" text-anchor="middle">~99% calidad</text>
+    <text class="size-label" x="290" y="275" text-anchor="middle" style="fill: #d4d4d4;">26 GB</text>
+
+    <!-- Arrow -->
+    <path class="stroke-thin" d="M 360 160 L 395 160" stroke-dasharray="3,3" marker-end="url(#arrowR)"/>
+
+    <!-- Q4_K_M - DESTACADO -->
+    <g transform="translate(410, 115)">
+      <rect class="accent" x="-5" y="-5" width="130" height="90" rx="6"/>
+      <g transform="translate(40, 35)">
+        <rect x="0" y="0" width="7" height="7" fill="#00ff88"/>
+        <rect x="8" y="0" width="7" height="7" fill="#00ff88"/>
+        <rect x="16" y="0" width="7" height="7" fill="#00ff88"/>
+        <rect x="24" y="0" width="7" height="7" fill="#00ff88"/>
+      </g>
+      <text class="bit-num" x="60" y="70" text-anchor="middle" style="fill: #00ff88;">4 bits</text>
+    </g>
+    <text class="text-accent" x="475" y="220" text-anchor="middle" style="font-size: 18px;">Q4_K_M ★</text>
+    <text class="text-small" x="475" y="240" text-anchor="middle">~96-97% calidad</text>
+    <text class="size-label" x="475" y="280" text-anchor="middle" style="fill: #00ff88;">17 GB</text>
+    <text class="text-accent" x="475" y="300" text-anchor="middle">cabe en 16GB unificada</text>
+
+    <!-- Arrow to Q3 -->
+    <path class="stroke-thin" d="M 555 160 L 590 160" stroke-dasharray="3,3" marker-end="url(#arrowR)"/>
+
+    <!-- Q3 -->
+    <g transform="translate(605, 130)">
+      <rect class="stroke-thin" x="0" y="0" width="90" height="60" rx="4"/>
+      <g transform="translate(20, 25)">
+        <rect x="0" y="0" width="7" height="7" fill="#6b6b6b"/>
+        <rect x="8" y="0" width="7" height="7" fill="#6b6b6b"/>
+        <rect x="16" y="0" width="7" height="7" fill="#6b6b6b"/>
+      </g>
+      <text class="bit-num" x="45" y="52" text-anchor="middle" style="font-size: 14px;">3 bits</text>
+    </g>
+    <text class="text" x="650" y="220" text-anchor="middle" style="font-size: 13px;">Q3_K_M</text>
+    <text class="text-small" x="650" y="235" text-anchor="middle">~92% calidad</text>
+    <text class="size-label" x="650" y="268" text-anchor="middle" style="fill: #6b6b6b; font-size: 22px;">14 GB</text>
+
+    <!-- Arrow to Q2 -->
+    <path class="stroke-thin" d="M 700 160 L 725 160" stroke-dasharray="3,3" marker-end="url(#arrowR)"/>
+
+    <!-- Q2 -->
+    <g transform="translate(740, 135)">
+      <rect class="stroke-thin" x="0" y="0" width="70" height="50" rx="4"/>
+      <g transform="translate(20, 22)">
+        <rect x="0" y="0" width="6" height="6" fill="#6b6b6b"/>
+        <rect x="7" y="0" width="6" height="6" fill="#6b6b6b"/>
+      </g>
+      <text class="bit-num" x="35" y="42" text-anchor="middle" style="font-size: 12px;">2 bits</text>
+    </g>
+    <text class="text" x="775" y="220" text-anchor="middle" style="font-size: 13px;">Q2_K</text>
+    <text class="text-small" x="775" y="235" text-anchor="middle">~85% (pérdida)</text>
+    <text class="size-label" x="775" y="268" text-anchor="middle" style="fill: #6b6b6b; font-size: 20px;">9 GB</text>
+
+    <!-- Main message at bottom -->
+    <line class="accent" x1="60" y1="360" x2="840" y2="360" stroke-dasharray="2,2" stroke-width="1"/>
+    <text class="text-accent" x="450" y="390" text-anchor="middle" style="font-size: 20px;">sin cuantización → los modelos vivirían en data centers</text>
+    <text class="text-accent" x="450" y="415" text-anchor="middle" style="font-size: 20px;">con cuantización → viven en tu Lenovo</text>
+  </g>
+
+  <defs>
+    <marker id="arrowR" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6b6b6b"/>
+    </marker>
+  </defs>
+</svg>

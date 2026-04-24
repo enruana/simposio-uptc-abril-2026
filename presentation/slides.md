@@ -578,51 +578,26 @@ layout: center
 
 # 1. Agent Loop
 
-<div class="grid-2" style="gap: 3rem; margin-top: 2rem;">
+<div class="grid-2" style="gap: 2rem; margin-top: 1rem;">
 
 <div>
 
-<div class="code-card">
-  <div class="code-header">
-    <span class="code-dot red"></span>
-    <span class="code-dot yellow"></span>
-    <span class="code-dot green"></span>
-    <span class="code-title">agent_loop.ts — ~88 líneas</span>
-  </div>
-  <div class="code-body" style="font-size: 0.8rem;">
-
-```typescript
-while (true) {
-  const response = await callModel(
-    messages, tools
-  );
-  messages.push(response);
-
-  if (response.stopReason === "end_turn")
-    return response;
-
-  for (const call of response.toolCalls) {
-    if (permission(call)) {
-      const result = execute(call);
-      messages.push(result);
-    }
-  }
-}
-```
-
-  </div>
-</div>
+<img src="/diagrams/agent-loop-circular.svg" alt="Agent Loop circular" style="max-width: 100%;" />
 
 </div>
 
-<div>
+<div style="display: flex; flex-direction: column; justify-content: center;">
 
-<p class="text-lg" style="line-height: 1.8;">
-El corazón de Claude Code es <strong>una lista de mensajes en memoria</strong> y un <code>while</code> loop.
+<p class="text-lg" style="line-height: 1.7;">
+El corazón de Claude Code es <strong>una lista de mensajes</strong> y un <code>while</code> loop.
 </p>
 
-<p class="text-lg" style="margin-top: 1.5rem;">
+<p class="text-lg" style="margin-top: 1.2rem;">
 No hay state machine. No hay workflow graph. No hay Redis.
+</p>
+
+<p class="text-lg" style="margin-top: 1.2rem;">
+<strong class="text-accent">~88 líneas de código.</strong> Todo.
 </p>
 
 <p class="font-serif text-xl text-accent" style="margin-top: 2rem; font-style: italic;">
@@ -940,6 +915,10 @@ truco mágico necesario.
 ---
 
 # Cuantización — la técnica que hizo posible la IA local
+
+<div style="max-width: 900px; margin: 0 auto;">
+  <img src="/diagrams/quantization-visual.svg" alt="Visualización de cuantización de pesos" style="max-width: 100%;" />
+</div>
 
 <div style="margin-top: 1rem;">
 
@@ -1263,6 +1242,10 @@ class: 'transition-slide'
 
 <div class="act-label">Acto III</div>
 <h1 class="act-title">Los enemigos<br>del viaje</h1>
+
+<div style="max-width: 900px; margin: 2rem auto 0;">
+  <img src="/diagrams/enemy-map.svg" alt="Mapa con los 3 enemigos" style="max-width: 100%; opacity: 0.9;" />
+</div>
 
 <p class="font-serif text-muted" style="margin-top: 2rem; font-style: italic; max-width: 700px; margin-left: auto; margin-right: auto;">
 Conocer a los enemigos no es debilidad.<br>
@@ -1687,41 +1670,14 @@ Slide de respiro antes del cierre. 5 segundos.
 
 # Esto no es Silicon Valley
 
-<div class="grid-2" style="gap: 3rem; margin-top: 2rem;">
-
-<div>
-
-<p class="text-lg" style="line-height: 1.8;">
-Todo lo que vimos hoy — los modelos open source, Ollama, Claude Code filtrado, Claw-Code — <strong>no es un movimiento corporativo</strong>.
-</p>
-
-<p class="text-lg" style="margin-top: 1.5rem; line-height: 1.8;">
-Es un movimiento de <span class="text-accent">personas</span>.
-</p>
-
-<ul class="text-lg" style="margin-top: 1.5rem; line-height: 2;">
-  <li>Muchas son estudiantes.</li>
-  <li>Muchas usan laptops modestos.</li>
-  <li>Muchas están en países donde $20/mes es mucho.</li>
-</ul>
-
+<div style="max-width: 900px; margin: 1rem auto;">
+  <img src="/diagrams/opensource-constellation.svg" alt="Constelación del ecosistema open source" style="max-width: 100%;" />
 </div>
 
-<div style="display: flex; flex-direction: column; justify-content: center;">
-
-<p class="quote-ancla" style="max-width: 100%; font-size: 1.4rem;">
-No necesitás permiso para entrar.<br>
-No necesitás tarjeta de crédito.<br>
-No necesitás ser de una universidad famosa.<br>
-<br>
-<span class="text-accent">Necesitás curiosidad<br>
-y el criterio que les dieron<br>
-estos cuatro años.</span>
+<p class="quote-ancla" style="margin: 1rem auto 0; text-align: center; max-width: 900px; font-size: 1.2rem; border-left: none;">
+<strong class="text-accent">No necesitás permiso para entrar.</strong>
+Necesitás curiosidad y el criterio que les dieron estos cuatro años.
 </p>
-
-</div>
-
-</div>
 
 <!--
 # SLIDE 30 · El elixir comunitario (39-42 min)
@@ -1756,9 +1712,7 @@ layout: center
 
 <div style="display: flex; gap: 4rem; justify-content: center; align-items: center; margin-top: 2rem;">
   <div style="padding: 2rem; background: white; border-radius: 12px;">
-    <div style="width: 240px; height: 240px; background: #0a0a0a; display: flex; align-items: center; justify-content: center; color: white; font-family: monospace; border: 8px solid white;">
-      [QR CODE]
-    </div>
+    <img src="/qr-repo.svg" alt="QR al repositorio github.com/enruana/simposio-uptc-abril-2026" style="width: 240px; height: 240px; display: block;" />
   </div>
   <div style="text-align: left;">
     <div class="text-sm text-muted" style="letter-spacing: 0.2em; text-transform: uppercase;">Repositorio</div>
@@ -1811,11 +1765,9 @@ layout: center
 
 <div class="flex-center" style="flex-direction: column; height: 100vh;">
 
-<div class="breathing-logo" style="font-family: var(--font-mono); font-size: 6rem; color: var(--accent); letter-spacing: -0.05em;">
-  {·}
-</div>
+<img src="/diagrams/breathing-logo.svg" alt="Logo respirando" style="width: 200px; height: 200px;" />
 
-<div style="margin-top: 6rem; text-align: center; max-width: 800px;">
+<div style="margin-top: 4rem; text-align: center; max-width: 800px;">
 
 <p class="font-serif" style="font-size: clamp(2.5rem, 5vw, 4rem); color: var(--text-primary); line-height: 1.1;">
 Porque nunca fue programar.

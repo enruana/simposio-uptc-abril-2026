@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" fill="none">
+  <defs>
+    <filter id="roughC">
+      <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="2" seed="13" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5"/>
+    </filter>
+    <style>
+      .stroke { stroke: #d4d4d4; stroke-width: 1.5; fill: none; stroke-linecap: round; }
+      .stroke-thin { stroke: #404040; stroke-width: 1; fill: none; }
+      .accent { stroke: #00ff88; }
+      .node-fill { fill: #141414; }
+      .node-fill-accent { fill: #0a2a18; }
+      .text { font-family: 'Inter', sans-serif; font-size: 13px; fill: #d4d4d4; font-weight: 500; }
+      .text-accent { font-family: 'Inter', sans-serif; font-size: 14px; fill: #00ff88; font-weight: 600; }
+      .text-small { font-family: 'Caveat', cursive; font-size: 14px; fill: #6b6b6b; }
+      .text-title { font-family: 'Instrument Serif', serif; font-size: 24px; fill: #f5f5f5; font-style: italic; }
+    </style>
+  </defs>
+
+  <!-- Background stars -->
+  <g opacity="0.3">
+    <circle cx="120" cy="60" r="1" fill="#00ff88"/>
+    <circle cx="780" cy="80" r="1" fill="#00ff88"/>
+    <circle cx="830" cy="180" r="1.5" fill="#00ff88"/>
+    <circle cx="80" cy="280" r="1" fill="#00ff88"/>
+    <circle cx="720" cy="380" r="1" fill="#00ff88"/>
+    <circle cx="160" cy="420" r="1.5" fill="#00ff88"/>
+    <circle cx="500" cy="40" r="1" fill="#00ff88"/>
+    <circle cx="50" cy="200" r="1" fill="#00ff88"/>
+    <circle cx="870" cy="300" r="1" fill="#00ff88"/>
+  </g>
+
+  <!-- Connection lines between nodes -->
+  <g filter="url(#roughC)" stroke-dasharray="3,4">
+    <line class="stroke-thin" x1="450" y1="250" x2="280" y2="130"/>
+    <line class="stroke-thin" x1="450" y1="250" x2="620" y2="130"/>
+    <line class="stroke-thin" x1="450" y1="250" x2="200" y2="250"/>
+    <line class="stroke-thin" x1="450" y1="250" x2="700" y2="250"/>
+    <line class="stroke-thin" x1="450" y1="250" x2="280" y2="370"/>
+    <line class="stroke-thin" x1="450" y1="250" x2="620" y2="370"/>
+    <line class="stroke-thin" x1="280" y1="130" x2="200" y2="250"/>
+    <line class="stroke-thin" x1="620" y1="130" x2="700" y2="250"/>
+    <line class="stroke-thin" x1="200" y1="250" x2="280" y2="370"/>
+    <line class="stroke-thin" x1="700" y1="250" x2="620" y2="370"/>
+    <line class="stroke-thin" x1="280" y1="370" x2="620" y2="370"/>
+    <line class="stroke-thin" x1="280" y1="130" x2="620" y2="130"/>
+  </g>
+
+  <!-- Central node: YOU -->
+  <g transform="translate(450, 250)" filter="url(#roughC)">
+    <circle class="accent" r="50" stroke-width="2" fill="#0a2a18"/>
+    <text class="text-accent" x="0" y="2" text-anchor="middle" style="font-size: 20px;">VOS</text>
+    <text class="text-small" x="0" y="20" text-anchor="middle" style="fill: #00ff88;">el siguiente nodo</text>
+  </g>
+
+  <!-- Surrounding nodes (proyectos) -->
+
+  <!-- Top-left: Linux -->
+  <g transform="translate(280, 130)" filter="url(#roughC)">
+    <circle class="stroke" r="35" fill="#141414"/>
+    <text class="text" x="0" y="5" text-anchor="middle">Linux</text>
+  </g>
+
+  <!-- Top-right: Python -->
+  <g transform="translate(620, 130)" filter="url(#roughC)">
+    <circle class="stroke" r="35" fill="#141414"/>
+    <text class="text" x="0" y="5" text-anchor="middle">Python</text>
+  </g>
+
+  <!-- Left: Ollama -->
+  <g transform="translate(200, 250)" filter="url(#roughC)">
+    <circle class="stroke" r="35" fill="#141414"/>
+    <text class="text" x="0" y="5" text-anchor="middle">Ollama</text>
+  </g>
+
+  <!-- Right: Rust -->
+  <g transform="translate(700, 250)" filter="url(#roughC)">
+    <circle class="stroke" r="35" fill="#141414"/>
+    <text class="text" x="0" y="5" text-anchor="middle">Rust</text>
+  </g>
+
+  <!-- Bottom-left: Gemma -->
+  <g transform="translate(280, 370)" filter="url(#roughC)">
+    <circle class="stroke" r="35" fill="#141414"/>
+    <text class="text" x="0" y="5" text-anchor="middle">Gemma 4</text>
+  </g>
+
+  <!-- Bottom-right: Claw-Code -->
+  <g transform="translate(620, 370)" filter="url(#roughC)">
+    <circle class="stroke" r="35" fill="#141414"/>
+    <text class="text" x="0" y="2" text-anchor="middle">Claw-Code</text>
+    <text class="text-small" x="0" y="16" text-anchor="middle">(Sigrid Jin)</text>
+  </g>
+
+  <!-- Far nodes (más proyectos, tenues) -->
+  <g transform="translate(110, 100)" filter="url(#roughC)" opacity="0.7">
+    <circle class="stroke-thin" r="25" fill="#0a0a0a"/>
+    <text class="text" x="0" y="3" text-anchor="middle" style="font-size: 10px;">React</text>
+  </g>
+
+  <g transform="translate(800, 100)" filter="url(#roughC)" opacity="0.7">
+    <circle class="stroke-thin" r="25" fill="#0a0a0a"/>
+    <text class="text" x="0" y="3" text-anchor="middle" style="font-size: 10px;">PostgreSQL</text>
+  </g>
+
+  <g transform="translate(80, 400)" filter="url(#roughC)" opacity="0.7">
+    <circle class="stroke-thin" r="25" fill="#0a0a0a"/>
+    <text class="text" x="0" y="3" text-anchor="middle" style="font-size: 10px;">Git</text>
+  </g>
+
+  <g transform="translate(820, 400)" filter="url(#roughC)" opacity="0.7">
+    <circle class="stroke-thin" r="25" fill="#0a0a0a"/>
+    <text class="text" x="0" y="3" text-anchor="middle" style="font-size: 10px;">Docker</text>
+  </g>
+
+  <g transform="translate(450, 70)" filter="url(#roughC)" opacity="0.7">
+    <circle class="stroke-thin" r="25" fill="#0a0a0a"/>
+    <text class="text" x="0" y="3" text-anchor="middle" style="font-size: 10px;">Kubernetes</text>
+  </g>
+
+  <g transform="translate(450, 430)" filter="url(#roughC)" opacity="0.7">
+    <circle class="stroke-thin" r="25" fill="#0a0a0a"/>
+    <text class="text" x="0" y="3" text-anchor="middle" style="font-size: 10px;">VSCode</text>
+  </g>
+
+  <!-- More faint connecting lines -->
+  <g stroke-dasharray="2,3" opacity="0.4">
+    <line class="stroke-thin" x1="280" y1="130" x2="110" y2="100" filter="url(#roughC)"/>
+    <line class="stroke-thin" x1="620" y1="130" x2="800" y2="100" filter="url(#roughC)"/>
+    <line class="stroke-thin" x1="280" y1="370" x2="80" y2="400" filter="url(#roughC)"/>
+    <line class="stroke-thin" x1="620" y1="370" x2="820" y2="400" filter="url(#roughC)"/>
+    <line class="stroke-thin" x1="280" y1="130" x2="450" y2="70" filter="url(#roughC)"/>
+    <line class="stroke-thin" x1="280" y1="370" x2="450" y2="430" filter="url(#roughC)"/>
+  </g>
+
+  <!-- Title -->
+  <text class="text-title" x="450" y="30" text-anchor="middle">el ecosistema open source</text>
+  <text class="text-small" x="450" y="485" text-anchor="middle" style="font-size: 16px;">no es Silicon Valley · es personas · y podés ser una</text>
+
+</svg>
