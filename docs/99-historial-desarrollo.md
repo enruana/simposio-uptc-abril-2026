@@ -225,7 +225,7 @@ claude-local gemma4:26b
 4. `README.md` — contexto del proyecto demo
 5. `CLAUDE.md` — memoria del proyecto
 
-**Ver detalles en `ideas-ponencia.md` y `docs/guia-practica-mac-m5max.md`.**
+**Ver detalles en `docs/02-investigacion-completa.md` y `docs/guias/mac-m5max.md`.**
 
 ```bash
 cd ~/demo-ponencia-uptc
@@ -343,13 +343,13 @@ git commit -m "Initial demo setup"
 
 | Archivo | Para qué |
 |---------|----------|
-| `propuesta-ponencia.md` | Propuesta ejecutiva para organizadores |
-| `ideas-ponencia.md` | Reporte completo de investigación en 3 actos |
-| `docs/fundamentos-completos.md` | Estudio profundo de cada tema (ANEXO A sobre MCP complementario) |
+| `docs/01-propuesta.md` | Propuesta ejecutiva para organizadores |
+| `docs/02-investigacion-completa.md` | Reporte completo de investigación en 3 actos |
+| `docs/04-fundamentos-tecnicos.md` | Estudio profundo de cada tema (ANEXO A sobre MCP complementario) |
 | `docs/deep-dive-agent-architecture.md` | Arquitectura de agentes con detalles |
-| `docs/guia-modelos-locales.md` | Guía práctica de modelos locales |
-| `docs/guia-practica-claude-code-gemma.md` | Integración Claude Code + Ollama |
-| `docs/guia-practica-mac-m5max.md` | Guía específica para MacBook M5 Max |
+| `docs/guias/modelos-locales.md` | Guía práctica de modelos locales |
+| `docs/guias/claude-code-gemma.md` | Integración Claude Code + Ollama |
+| `docs/guias/mac-m5max.md` | Guía específica para MacBook M5 Max |
 | `scripts/benchmark.sh` | Script de benchmark E4B vs 26B |
 | `scripts/benchmark-results.md` | Resultados del benchmark (citables para la ponencia) |
 | `scripts/claude-mode.sh` | Toggle `settings.json` entre modo Ollama y Anthropic |
