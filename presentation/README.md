@@ -101,8 +101,11 @@ presentation/
     │   ├── gemma-4.png
     │   ├── ollama.webp
     │   └── uptc.png
-    └── screenshots/
-        └── x-filtracion.png Tweet de la filtración
+    ├── screenshots/
+    │   └── x-filtracion.png Tweet de la filtración
+    └── demo-output/         🎬 Artefactos generados en vivo por Gemma 4
+        ├── README.md        Provenance y notas técnicas
+        └── feedback_form.html  Form retro-terminal generado por Gemma 4 26B
 ```
 
 ---

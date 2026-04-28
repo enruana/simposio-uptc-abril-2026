@@ -106,6 +106,8 @@ Ver [`presentation/README.md`](presentation/README.md) para detalles completos.
     └── claude-mode.sh                  Toggle settings.json Ollama/Anthropic
 ```
 
+> 💡 **Demo artifacts:** [`presentation/public/demo-output/`](presentation/public/demo-output/) guarda lo que Gemma 4 26B generó en vivo durante las pruebas — útil como evidencia y como plan B si el demo en vivo falla.
+
 ---
 
 ## 🎯 ¿Qué vas a encontrar acá?
@@ -125,6 +127,7 @@ Ver [`presentation/README.md`](presentation/README.md) para detalles completos.
 - 📖 [**Fundamentos técnicos completos**](docs/04-fundamentos-tecnicos.md) (cuantización, harness, agentes, AI slop)
 - 🎓 Contexto sobre **MCP, DeepSeek, Ollama, Claude Code**, y por qué 2026 cambia todo
 - 🚨 Evidencia del **estudio METR 2025** sobre productividad real con IA
+- 🎬 [**Artefactos del demo en vivo**](presentation/public/demo-output/) — qué generó Gemma 4 26B local en tiempo real durante las pruebas
 
 ---
 
